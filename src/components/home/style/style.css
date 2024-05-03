@@ -1,0 +1,50 @@
+.width {
+    width: calc(80% + 50px);
+}
+
+.categoryw {
+    width: calc(100%/6);
+}
+
+.borderserc {
+    border-top: 1px solid rgb(245, 244, 244);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+@keyframes search {
+    from {
+        top: 96px;
+        opacity: 0;
+    }
+    to {
+        top: 106px;
+        opacity: 1;
+    }
+}
+
+.animation { 
+    opacity: 0; 
+    animation: search 0.6s forwards; 
+}
+
+::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #f0f0f0;
+}
+
+
