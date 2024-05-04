@@ -1,12 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import registerReduces from '../features/Registration/registration-reducer'
-import user from '../features/User/UserSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import registerReducer from '../features/Registration/RegistrationSlice';
+import userReducer from '../features/User/UserSlice';
+import homeReducer from '../features/Home/Categoryies'; 
 
 export const store = configureStore({
   reducer: {
-    register: registerReduces,
-    user: user 
+    register: registerReducer,
+    user: userReducer,
+    home: homeReducer, 
   },
-})
+});
 
-export default store
+export default store;

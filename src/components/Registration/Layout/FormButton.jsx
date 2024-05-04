@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { ChangeLoginMethod } from "../../../features/Registration/registration-reducer";
+import { ChangeLoginMethod } from "../../../features/Registration/RegistrationSlice";
 
 
 function FormButton({ content, style, method }) {

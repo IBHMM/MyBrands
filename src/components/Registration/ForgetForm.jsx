@@ -4,7 +4,7 @@ import FormButton from "./Layout/FormButton"
 import { useState } from "react"
 import {isValidNumber} from '../../utils/Registration/helperfunctions'
 import { useDispatch, useSelector } from "react-redux"
-import { SetUserNumber } from "../../features/Registration/registration-reducer"
+import { SetUserNumber } from "../../features/Registration/RegistrationSlice"
 
 function ForgetForm() {
 

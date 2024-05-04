@@ -17,59 +17,59 @@ function Search() {
     }
 
     return(
-        <section className={`flex w-[80%] items-center justify-between font-normal absolute top-[100px] max-[1200px]:w-full borderserc animation z-10000 bg-white`}>
-            <div className="w-[180px] min-w-[100px] inline"></div>
+        <section className="flex w-[80%] items-center justify-between font-normal fixed top-[100px] max-[1200px]:w-full borderserc animation bg-white max-[768px]:hidden zindex">
+            <div className="w-[180px] min-w-[100px] inline bg-white"></div>
             <div className="flex flex-col items-end w-full mr-[30px]">
 
-                <div className="flex flex-col items-end width justify-between gap-[20px]">
-                        <div className="flex w-full justify-between items-center">
-                            <p className="text-[16px] font-[500]">
-                                Ən son axtarilanlar
-                            </p>
-                            <p className="text-[14px] text-red-600">
-                                Təmizlə
-                            </p>
-                        </div> 
-                        <div className="w-full flex items-between flex-col justify-center ">
+                    <div className="flex flex-col items-end width justify-between gap-[20px]">
+                            <div className="flex w-full justify-between items-center">
+                                <p className="text-[16px] font-[500]">
+                                    Ən son axtarilanlar
+                                </p>
+                                <p className="text-[14px] text-red-600">
+                                    Təmizlə
+                                </p>
+                            </div> 
+                            <div className="w-full flex items-between flex-col justify-center ">
+                                {
+                                    lastS.map((search, index) => {
+                                        return (
+                                            <LastSearch msg={search} key={index} />
+                                        )
+                                    })
+                                }
+                            </div>
+                    </div>
+
+                    <div className="flex flex-col items-start width justify-between gap-[10px] mt-[20px] mb-[20px]">
+                        <p className="text-[16px] font-[500]">
+                            Ən çox axtarılanlar
+                        </p>
+                        <div className="flex gap-[15px]">
                             {
-                                lastS.map((search, index) => {
+                                mostS.map((search, index) => {
                                     return (
-                                        <LastSearch msg={search} key={index} />
+                                        <MostSearched name={search} type={"star"} key={index} />
                                     )
                                 })
-                            }
+                            }     
                         </div>
-                </div>
-
-                <div className="flex flex-col items-start width justify-between gap-[10px] mt-[20px] mb-[20px]">
-                    <p className="text-[16px] font-[500]">
-                        Ən çox axtarılanlar
-                    </p>
-                    <div className="flex gap-[15px]">
-                        {
-                            mostS.map((search, index) => {
-                                return (
-                                    <MostSearched name={search} type={"star"} key={index} />
-                                )
-                            })
-                        }     
                     </div>
-                </div>
-               
-                <div className="flex flex-col items-start width justify-between gap-[10px] mt-[20px]">
-                    <p className="text-[16px] font-[500]">
-                        Ən çox axtarılanlar
-                    </p>
-                    <div className="flex gap-[15px]">
-                        {
-                            mostS.map((search, index) => {
-                                return (
-                                    <MostSearched name={search} type={"fire"} key={index} />
-                                )
-                            })
-                        }     
+                
+                    <div className="flex flex-col items-start width justify-between gap-[10px] mt-[20px]">
+                        <p className="text-[16px] font-[500]">
+                            Ən çox axtarılanlar
+                        </p>
+                        <div className="flex gap-[15px]">
+                            {
+                                trends.map((search, index) => {
+                                    return (
+                                        <MostSearched name={search} type={"fire"} key={index} />
+                                    )
+                                })
+                            }     
+                        </div>
                     </div>
-                </div>
             </div>
             <div className="min-w-[190px] bg-blue-300 inline"></div>
         </section>
