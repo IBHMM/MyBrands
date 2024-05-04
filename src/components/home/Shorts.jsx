@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function Shorts() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([{src: '../../assets/temp/temp.png'}, {src: '../../assets/temp/temp.png'}, {src: '../../assets/temp/temp.png'}]);
 
     useEffect(() => {
         // Fetch data from an API 
@@ -12,7 +12,7 @@ function Shorts() {
     }, []); 
 
     return (
-        <section className="flex w-[80%] items-center justify-start max-[1200px]:w-full font-normal h-[96px] px-1">
+        <section className="flex w-[80%] items-center justify-start max-[1200px]:w-full font-normal h-[96px]">
             {data.map((short, index) => (
                 <div className="flex items-center justify-center flex-col w-[82px]" key={index}>
                     <div className="flex items-center justify-center rounded-[50%] w-[58px] h-[58px] p-[1px] border-[2px] border-red-500">

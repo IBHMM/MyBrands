@@ -23,8 +23,8 @@ export default function Carousel({images}) {
   }, [currentImage]);
 
   return (
-    <section className="relative flex w-[80%] items-center justify-center bg-[#bd4747] max-[1200px]:w-[90%] overflow-hidden">
-      <div className="relative flex max-h-[500px] max-[1008px]:h-[400px] max-[600px]:h-[270px] max-[400px]:h-[200px] bg-red-500 min-w-full transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentImage * 100}%)` }}>
+    <section className="relative flex w-[79%] items-center justify-center bg-[#bd4747] max-[1200px]:w-[90%] overflow-hidden">
+      <div className="relative flex  max-[1008px]:h-[400px] max-[600px]:h-[270px] max-[400px]:h-[200px] bg-red-500 min-w-full transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentImage * 100}%)` }}>
         {images.map((image, index) => {
           return (
             <img
@@ -43,7 +43,7 @@ export default function Carousel({images}) {
       <button onClick={prevSlide} className="absolute top-1/2 transform -translate-y-1/2 left-[10px] w-10 h-10 rounded-md bg-[rgba(255,255,255,0.5)] max-[500px]:hidden">
         <img src={Left} alt="Previous" className="w-6 h-6 mx-auto" />
       </button>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
         {images.map((_, index) => (
           <div
             key={index}

@@ -5,15 +5,18 @@ import { useSelector } from "react-redux";
 import CategorieDropdown from '../../components/home/Layout/CategorieDropdown';
 import Shorts from '../../components/home/Shorts';
 import Carusel from '../../components/home/Carusel';
+import Trends from '../../components/home/Trends';
+import slide from  "../../assets/temp/slide.png"
 const images = [
-    'https://images.unsplash.com/photo-1714692547691-790c7f7284d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8',
-    'https://plus.unsplash.com/premium_photo-1675436294167-aac1559fa832?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8'
-  ];
+    slide,
+    slide,
+    slide,
+    slide,
+    slide,
+    slide,
+];
+
+
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
 
@@ -27,6 +30,7 @@ function Home() {
             }
             <Shorts />
             <Carusel images={images}/>
+            <Trends />
         </section>
     );
 }
