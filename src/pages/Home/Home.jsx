@@ -47,12 +47,13 @@ const categories = [
 import Book from '../../components/home/Book';
 import BestSellers from '../../components/home/BestSellers';
 import Brends from '../../components/home/Brends';
+import BrendCard from '../../components/home/BrendCart'
 
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
 
     return (
-        <section className="w-full font-[Arial] flex items-center justify-center flex-col relative pb-[100px]">
+        <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative pb-[100px]">
             <Header />
             <Navbar />
             <Categories />
@@ -66,6 +67,7 @@ function Home() {
             <BestSellers />
             <Brends brends={brends}/>
             <ProductCategories categories={categories}/>
+            <BrendCard />
         </section>
     );
 }
