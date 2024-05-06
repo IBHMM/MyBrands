@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Layout/Card";
 
-function Trends() {
+function BestSellers() {
     
     const [data, setData] = useState([
         {
@@ -79,8 +79,8 @@ function Trends() {
 
     return (
         <section className="relative flex flex-col justify-center items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[50px] gap-[30px]">
-            <div className="flex items-center justify-between w-full">
-                <p className="text-[30px]">Hazirda trend</p>
+            <div className="flex items-center justify-between w-full ">
+                <p className="text-[30px]">En cox Satilanlar</p>
             </div>
             <div className="flex items-center justify-start w-full overflow-y-auto gap-[47px] max-[898px]:justify-center max-[500px]:justify-evenly max-[500px]:gap-3">
                 {data.map((item, idx) => (
@@ -91,4 +91,4 @@ function Trends() {
     );
 }
 
-export default Trends;
+export default BestSellers;

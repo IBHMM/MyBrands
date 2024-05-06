@@ -1,37 +1,40 @@
-import { useState } from 'react';
-import whiteheart from '../../../assets/home/whiteH.svg';
-import blackheart from '../../../assets/home/blackH.svg';
+import React, { useState } from 'react';
+import whiteHeart from '../../../assets/home/whiteH.svg';
+import blackHeart from '../../../assets/home/blackH.svg';
 
+function Card({ product }) {
+  const [liked, setLiked] = useState(false);
 
-function Card({product}) {
+  const handleLike = () => {
+    setLiked(!liked);
+  };
 
-    const [liked, setLiked] = useState(false);
+  return (
+    <section className="relative w-[22%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#F4F4F6] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
+      <div className="w-full max-h-[240px] max-[768px]:max-h-[200px]">
+        <img src={product.src} alt="" className="max-h-[240px] w-full max-[768px]:max-h-[200px]"/>
+        <button
+          className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[768px]:hidden`}
+          onClick={handleLike}
+        >
+          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-6 h-6" />
+        </button>
+      </div>
 
-    const handleLike = () => {
-        setLiked(!liked);
-    };
-
-    return(
-        <section className="relative  w-[22%] min-w-[150px] flex flex-col items-between justify-start bg-gray-50 border border-gray-100">
-            <div className="w-[calc(100% + 2px)] max-h-[296px]">
-                <img src={product.src} alt="" className="max-h-[296px] w-full"/>
-                <button
-                    className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1`}
-                    onClick={handleLike}
-                >
-                    <img src={liked ? whiteheart : blackheart} alt="heart" className="w-6 h-6" />
-                </button>
-            </div>
-
-            
-            <div className="flex flex-col justify-center h-full pl-2">
-                <p className='text-[20px]'>Logo</p>
-                <p className="text-xs text-gray-500">{product.category}</p>
-                <p className="text-red-500">{product.price}$</p>
-            </div>
-           
-        </section>
-    )
+      <div className="relative  flex flex-col justify-center items-start w-full h-[80px] pl-2 py-2 max-[768px]:max-h-[100px]">
+        <p className='text-[20px]'>Logo</p>
+        <p className="text-xs text-gray-500">{product.category}</p>
+        <p className="text-red-500">{product.price}$</p>
+        <button
+          className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[768px]:block`}
+          onClick={handleLike}
+        >
+          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-6 h-6" />
+        </button>
+      </div>
+    
+    </section>
+  );
 }
 
-export default Card
+export default Card;

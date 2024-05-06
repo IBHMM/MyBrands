@@ -17,7 +17,7 @@ function Search() {
     }
 
     return(
-        <section className="flex w-[80%] items-center justify-between font-normal fixed top-[100px] max-[1200px]:w-full borderserc animation bg-white max-[768px]:hidden zindex">
+        <section className="flex w-[80%] items-center justify-between font-normal absolute top-[100px] max-[1200px]:w-full borderserc animation bg-white max-[768px]:hidden zindex">
             <div className="w-[180px] min-w-[100px] inline bg-white"></div>
             <div className="flex flex-col items-end w-full mr-[30px]">
 
