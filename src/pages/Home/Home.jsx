@@ -48,12 +48,13 @@ import Book from '../../components/home/Book';
 import BestSellers from '../../components/home/BestSellers';
 import Brends from '../../components/home/Brends';
 import BrendCard from '../../components/home/BrendCart'
-
+import Services from '../../components/home/Services';
+import Footer from '../../components/home/Layout/Footer';
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
 
     return (
-        <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative pb-[100px]">
+        <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative ">
             <Header />
             <Navbar />
             <Categories />
@@ -68,6 +69,8 @@ function Home() {
             <Brends brends={brends}/>
             <ProductCategories categories={categories}/>
             <BrendCard />
+            <Services />
+            <Footer />
         </section>
     );
 }

@@ -22,8 +22,6 @@ function BrendCard() {
       return () => clearTimeout(timer);
     }, [currentImage]);
 
-    console.log(currentImage)
-
     return (
         <section className="flex items-stretch justify-center w-[80%] max-[1200px]:w-[90%] mt-[100px]">
             <section className="bg-[#26264C] flex flex-col justify-center items-start w-[50%] pl-10 max-[500px]:hidden">
@@ -38,9 +36,9 @@ function BrendCard() {
                     <img key={index} src={src} alt="" className='flex-grow transition-all duration-500' style={{ transform: `translateX(-${currentImage * 100}%)` }}/>
                 ))}
                 <div className='hidden max-[500px]:flex flex-col items-center justify-center absolute w-full bottom-5'> 
-                    <p className="text-[13px] text-[#9B96B7] w-[80%] p-0 m-0">Type</p>
-                    <p className='text-white text-[20px] w-[80%] p-0 m-0'>General name</p>
-                    <button className="w-[80%] max-[800px]:h-[40px] bg-white max-[700px]:text-[14px] mt-10">
+                    <p className="text-[14px] text-[#9B96B7] w-[80%] p-0 m-0">Type</p>
+                    <p className='text-white text-[30px] w-[80%] p-0 m-0'>General name</p>
+                    <button className="w-[80%] max-[800px]:h-[40px] bg-white max-[700px]:text-[14px]">
                         Sifaris et
                     </button>
                 </div>

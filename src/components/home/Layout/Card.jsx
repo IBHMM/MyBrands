@@ -10,7 +10,7 @@ function Card({ product }) {
   };
 
   return (
-    <section className="relative w-[22%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#F4F4F6] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
+    <section className="relative w-[22%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#f4f4f68b] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
       <div className="w-full max-h-[240px] max-[768px]:max-h-[200px]">
         <img src={product.src} alt="" className="max-h-[240px] w-full max-[768px]:max-h-[200px]"/>
         <button

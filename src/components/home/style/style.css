@@ -116,3 +116,8 @@
     background-color: #555;
   }
   
+  .a{
+    font-size: 14px;
+    color: #484C52;
+    min-width: max-content;
+  }

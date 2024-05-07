@@ -1,7 +1,6 @@
 
 
 function Categories({categories}) {
-    console.log(categories)
     return (
         <section className="relative flex justify-between items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[100px] max-[500px]:flex-col max-[500px]:gap-[20px]">
             {
