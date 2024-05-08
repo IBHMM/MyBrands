@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     wishlist : [],
-    wisitedpaces : [],
-    card : []
+    wisitedpages :["Ana səhifə"],
+    card : [],
+    name: "Ibrahim",
 }
 
 export const user = createSlice({
@@ -14,14 +15,17 @@ export const user = createSlice({
             state.wishlist = [...state.wishlist, action.payload]
         },
         SetPages : (state, action) => {
-            state.wisitedpaces = [...state.wisitedpaces, action.payload]
+            state.wisitedpages = [...state.wisitedpages, action.payload]
         },
         SetCard : (state, action) => {
             state.card = [...state.card, action.payload]
+        },
+        setName : (state, action) => {
+            state.name = action.payload
         }
     },
 })
 
-export const { SetCard, SetPages, SetWishlist } = user.actions
+export const { SetCard, SetPages, SetWishlist, setName } = user.actions
 
 export default user.reducer

@@ -12,29 +12,29 @@ import '../style/style.css'
 
 function Footer () {
   return (
-    <footer className='flex items-stretch justify-between w-[80%] max-[1200px]:w-[90%] mt-[100px] gap-[100px] relative left-0 pb-20 border-t-[1px] pt-1 border-gray-100 max-[1069px]:flex-col'>
-        <div className="flex items-start justify-between w-full">
-            <div className="flex flex-col justify-center gap-4 w-"> 
-                <p className="text-[18px] mb-5">MyBrands</p>
+    <footer className='flex items-stretch justify-between w-[80%] max-[1200px]:w-[90%] mt-[100px] gap-[100px] relative left-0 pb-20 border-t-[1px] pt-1 border-gray-100 max-[900px]:flex-col'>
+        <div className="flex items-start justify-between w-full min-[390px]:gap-[30px] order-1">
+            <div className="flex flex-col justify-center gap-4"> 
+                <p className="text-[18px] mb-5 max-[400px]:text-[15px]">MyBrands</p>
                 <a className="a">Haqqımızda</a>
                 <a className="a">Ödəniş və çatdırılma</a>
                 <a className="a">Qaytarılma siyasət</a>
                 <a className="a">Müştəri xidməti</a>
             </div>
             <div className="flex flex-col justify-center gap-4"> 
-                <p className="text-[18px] mb-5">Mağaza</p>
+                <p className="text-[18px] mb-5 max-[400px]:text-[15px]">Mağaza</p>
                 <a className="a">Kişi</a>
                 <a className="a">Qadın</a>
                 <a className="a">Uşaq</a>
                 <a className="a">Endirimlər</a>
             </div>
             <div className="flex flex-col justify-center gap-4"> 
-                <p className="text-[18px] mb-5">Hesab</p>
+                <p className="text-[18px] mb-5 max-[400px]:text-[15px]">Hesab</p>
                 <a className="a">Qeydiyyat</a>
                 <a className="a">Sifariş</a>
             </div>
         </div>
-        <div className="flex flex-col items-start justify-start gap-4 w-full">
+        <div className="flex flex-col items-start justify-start gap-4 w-full order-2 max-[900px]:order-3">
             <p className="text-[18px] mb-5">Əlaqə</p>
             <div className="flex items-center">
                 <img src={email} alt="" />
@@ -55,7 +55,7 @@ function Footer () {
                 </div>
             </div>
         </div>
-        <div className="flex flex-col items-start justify-start gap-4 w-full">
+        <div className="flex flex-col items-start justify-start gap-4 w-full order-3 max-[900px]:order-2">
             <p className="text-[18px] mb-5">Bizi izləməyi unutmayın</p>
             <p className="text-[#9B96B7] text-[18px]">Bizim müştərilər qrupuna qoşulun. Yeni məhsullar <br /> və aksiyalardan ilk siz xəbərdar olun.</p>
             <div className="flex flex-col ">
@@ -63,24 +63,24 @@ function Footer () {
                     <input type="text" name="" id="" placeholder="numune@gmail.com" className="w-full border border-[#F4F4F6] py-1 focus:outline-none pl-2"/>
                     <span className="border-[2px] rounded-md border-[#F84568] text-[#F84568] w-[140px] flex items-center justify-center py-1">Abunə ol</span>
                 </div>
-                <div className="flex items-center gap-[20px] w-[80%] mt-[30px]">
-                    <div className="flex items-center justify-center w-[50px] h-[50px] border border-gray-200">
+                <div className="flex items-center gap-[20px] w-[80%] mt-[30px] max-[900px]:w-full" >
+                    <div className="flex items-center justify-center min-w-[40px] min-h-[40px] w-[50px] h-[50px] border border-gray-200">
                         <img src={FB} alt="" className="" />
                     </div>
-                    <div className="bg-[#26264C] flex items-center justify-center w-[50px] h-[50px] ">
+                    <div className="bg-[#26264C] flex items-center justify-center min-w-[40px] min-h-[40px] w-[50px] h-[50px] ">
                         <img src={IN} alt="" className="" />
                     </div>
-                    <div className="flex items-center justify-center w-[50px] h-[50px] border border-gray-200">
+                    <div className="flex items-center justify-center min-w-[40px] min-h-[40px] w-[50px] h-[50px] border border-gray-200">
                         <img src={YT} alt="" className="" />
                     </div>
-                    <div className="flex items-center justify-center w-[50px] h-[50px] border border-gray-200">
+                    <div className="flex items-center justify-center min-w-[40px] min-h-[40px] w-[50px] h-[50px] border border-gray-200">
                         <img src={TT} alt="" className="" />
                     </div>
                
                 </div>
             </div>
         </div>
-        <div className="absolute bottom-0 flex left-0 gap-[10px]">
+        <div className="absolute bottom-0 flex left-0 gap-[10px] order-last max-[400px]:flex-col ">
             <img src={appstore} alt="" />
             <img src={googleplay} alt="" />
         </div>

@@ -10,11 +10,17 @@ import Search from './Search'
 import MobileM from './Menu'
 import useNavbar from '../../../hooks/Home/Menu'
 import { setMenu } from "../../../features/Home/Categoryies";
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
 
-    const {search, menu, setSearch, dispatch} = useNavbar();
+    const {search, menu, setSearch, dispatch, SetPages} = useNavbar();
 
+    const HandleProfile = e => {
+        dispatch(SetPages("Hesabim"))
+    }
+    
     return (
         <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>
             <div className='min-w-[100px]'>
@@ -34,9 +40,9 @@ function Navbar() {
                 }
             </div>
             <div className='flex itemc-center justify-between gap-[30px] min-w-[180px]'>
-                <a href="" className='hidden items-center justify-center md:flex'>
+                <Link to="/profile" className='hidden items-center justify-center md:flex' onClick={e => HandleProfile(e)}>
                     <img className="" src={Profile} alt="" />
-                </a>
+                </Link>
                 <a href="" className='flex items-center justify-center'>
                     <img className="" src={Liked} alt="" />
                 </a>

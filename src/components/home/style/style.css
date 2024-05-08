@@ -116,8 +116,19 @@
     background-color: #555;
   }
   
-  .a{
+  .a {
     font-size: 14px;
     color: #484C52;
     min-width: max-content;
+  }
+  
+  @media (max-width: 400px) {
+    .a {
+      font-size: 12px;
+    }
+  }
+
+  .header {
+    background-color: white;
+    z-index: 100;
   }

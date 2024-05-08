@@ -17,7 +17,7 @@ function Card({ product }) {
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[768px]:hidden`}
           onClick={handleLike}
         >
-          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-6 h-6" />
+          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-5 h-5" />
         </button>
       </div>
 
@@ -29,7 +29,7 @@ function Card({ product }) {
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[768px]:block`}
           onClick={handleLike}
         >
-          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-6 h-6" />
+          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />
         </button>
       </div>
     

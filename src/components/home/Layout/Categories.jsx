@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 function Categories() {
     const [categories, setCategories] = useState(["KISI", "QADIN", "USAQ", "CANTA & AKSESUAR", "HEDIYYE KARTLARI", "ENDIRIM"]);
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [underline, setUnderline] = useState(null)
     const dispatch = useDispatch();
 
 
@@ -19,9 +20,8 @@ function Categories() {
             {categories.map((element, index) => (
                 <div
                     key={index}
-                    className={`categoryw flex items-center justify-center h-[48px] ${selectedCategory === index ? 'bg-gray-50' : ''}`}
+                    className={`categoryw flex items-center justify-center h-[48px] ${selectedCategory === index ? 'bg-gray-50' : ''} ${element == 'ENDIRIM' ? 'text-red-400 font-semibold' : ''}`}
                     onMouseEnter={() => handleCategoryClick(index, element)}
-                    onMouseLeave={(e) => handleCategoryClick(null, "", e)} 
                 >
                     {element}
                 </div>

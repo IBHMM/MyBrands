@@ -1,10 +1,10 @@
 import Header from '../../components/home/Layout/Header';
 import Navbar from '../../components/home/Layout/Navbar';
 import ProductCategories from '../../components/home/Categories';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Categories from '../../components/home/Layout/Categories'
 import CategorieDropdown from '../../components/home/Layout/CategorieDropdown';
-import Shorts from '../../components/home/Shorts';
+import Shorts from '../../components/home/Stories';
 import Carusel from '../../components/home/Carusel';
 import Trends from '../../components/home/Trends';
 import slide from  "../../assets/temp/slide.png"
@@ -50,6 +50,10 @@ import Brends from '../../components/home/Brends';
 import BrendCard from '../../components/home/BrendCart'
 import Services from '../../components/home/Services';
 import Footer from '../../components/home/Layout/Footer';
+import { useEffect } from 'react';
+import { SetPages } from '../../features/User/UserSlice';
+
+
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
 
