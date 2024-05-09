@@ -3,78 +3,12 @@ import Card from "./Layout/Card";
 
 function Trends() {
     
-    const [data, setData] = useState([
-        {
-            id: 1,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 1',
-            price: 20.99
-        },
-        {
-            id: 2,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 2',
-            price: 15.49
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 25.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 22131235.99
-        },
-        {
-            id: 3,
-            src: 'https://cdn.dsmcdn.com/ty1268/product/media/images/prod/SPM/PIM/20240420/00/d6b443a0-5303-3b65-b3f7-b93e19f3320c/1_org_zoom.jpg',
-            category: 'Category 3',
-            price: 2212135.99
-        },
-
-    ])
+    const [data, setData] = useState([])
 
     useEffect(() => {
-        // Fetch data
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>setData(json))
     }, []);
 
     return (

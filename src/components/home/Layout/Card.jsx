@@ -9,10 +9,11 @@ function Card({ product }) {
     setLiked(!liked);
   };
 
+
   return (
     <section className="relative w-[22%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#f4f4f68b] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
       <div className="w-full max-h-[240px] max-[768px]:max-h-[200px]">
-        <img src={product.src} alt="" className="max-h-[240px] w-full max-[768px]:max-h-[200px]"/>
+        <img src={product.image} alt="" className="max-h-[240px] min-[768px]:min-h-[240px] max-[768px]:min-h-[200px] w-full max-[768px]:max-h-[200px]"/>
         <button
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[768px]:hidden`}
           onClick={handleLike}
@@ -32,7 +33,6 @@ function Card({ product }) {
           <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />
         </button>
       </div>
-    
     </section>
   );
 }

@@ -1,10 +1,34 @@
+import { useEffect, useState } from "react";
+import category from '../../assets/home/category.png'
 
 
 function Categories({categories}) {
+
+    const [data, setData] = useState([
+        {
+            image: category,
+            name: "USAQ"
+        },
+        {
+            image: category,
+            name: "USAQ"
+        },
+        {
+            image: category,
+            name: "USAQ"
+        },
+    ]);
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res=>res.json())
+            .then(json=>{})
+    }, [])
+
     return (
         <section className="relative flex justify-between items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[100px] max-[500px]:flex-col max-[500px]:gap-[20px]">
             {
-                categories.map((category, index) => {
+                data.map((category, index) => {
                     return (
                         <Category category={category} key={index} />
                     )

@@ -1,0 +1,12 @@
+@keyframes opening {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.animate {
+    animation: opening 0.3s;
+}
