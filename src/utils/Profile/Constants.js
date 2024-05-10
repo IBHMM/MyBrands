@@ -16,7 +16,7 @@ export const services = [
     { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus },
     { name: "SEÇİLMİŞLƏR", src: liked },
     { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment },
-    { name: "TEZ-TEZ VERILƐN SUALLAR", src: questions },
+    { name: "TEZ-TEZ VERILEN SUALLAR", src: questions },
     { name: "refund", src: refund },
     { name: "Müştərİ Xİdmətlərİ", src: customerservice },
     { name: "REFERRAL PROGRAMI", src: referal },
@@ -24,3 +24,59 @@ export const services = [
     { name: "HESABDAN ÇIX", src: exit },
 ];
 
+const data = [
+    {
+        title : "Umumi",
+        faqs: [{
+            question : "Necə sifariş etməli?",
+            answer : undefined   
+        },{
+            question : "MyBrands kartını necə yeniləmək olar ?",
+            answer : undefined 
+        }]
+    },
+    {
+        title : "Geri qaytarılma",
+        faqs: [{
+            question : "Məhsulu necə geri qaytara bilərəm?",
+            answer : undefined   
+        },{
+            question : "Məhsulun geri qaytarılma müddəti neçə gündür?",
+            answer : undefined 
+        },{
+            question : "Məhsulun qaytarılması halında ödəniş nə zaman geri qaytarılacaqdır?",
+            answer : undefined 
+        },{
+            question : "Ölçü uyğun deyil. Məhsulu dəyişdirə bilərəm ?",
+            answer : undefined 
+        }]
+    },
+    {
+        title : "Çatdırılma",
+        faqs: [{
+            question : "Sifariş neçə gün ərzində çatdırılır ? ",
+            answer : undefined   
+        },{
+            question : "Çatdırılma ödənişlidir?",
+            answer : undefined 
+        },{
+            question : "Mən sifarişi qəbul edə bilmədim. Yeni çatdırılma tarixi təyin edə bilərəm?",
+            answer : undefined 
+        }]
+    },
+    {
+        title : "Ödəniş",
+        faqs: [{
+            question : "Ödənişi həyata keçirildiyi karta deyil, başqa karta qaytarmaq mümkündür?",
+            answer : undefined   
+        },{
+            question : "Ödənişi həyata keçirildiyi deyil, digər üsulla qaytarmaq olar?",
+            answer : undefined 
+        },{
+            question : "Rəqəmsal hədiyyə kartını harda istifadə edə bilərəm ?",
+            answer : undefined 
+        }]
+    }
+]
+
+export {data}

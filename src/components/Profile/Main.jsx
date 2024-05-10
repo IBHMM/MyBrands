@@ -3,11 +3,13 @@ import {services} from '../../utils/Profile/Constants'
 import ProfileCard from "./Layout/ProfileCard";
 import { useState } from "react";
 import Exit from './Layout/Exit'
+import Referal from "./Layout/Referal";
 
 function Main() {
 
     const name = useSelector(state => state.user.name);
     const [exit, setExit] = useState(false)
+    const [referal, setReferal] = useState(false)
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%]">
@@ -21,12 +23,13 @@ function Main() {
                 {
                     services.map((service, index) => {
                         return(
-                            <ProfileCard service={service} key={index} setExit={setExit}/>
+                            <ProfileCard service={service} key={index} setExit={setExit} setReferal={setReferal}/>
                         )
                     })
                 }
             </div>
             {exit && <Exit setExit={setExit}/>}
+            {referal && <Referal setReferal={setReferal}/>}
         </section>
     )
 }

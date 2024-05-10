@@ -9,7 +9,6 @@ function Exit({ setExit }) {
         // delete user cookies
     }
 
-
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-1000000">
             <section className="animate  bg-white rounded-lg p-8 max-w-md">

@@ -1,10 +1,16 @@
 import '../style/style.css'
 
-function ProfileCard({service, setExit}) {
+function ProfileCard({service, setExit, setReferal}) {
 
     const HandleProfileClick = (e, name) => {
         if(name == "HESABDAN ÇIX") {
             setExit(true)
+        }else if (name == "REFERRAL PROGRAMI") {
+            setReferal(true)
+        }else if (name == "TEZ-TEZ VERILEN SUALLAR") {
+            window.location = '/profile/questions'
+        }else if (name == "SEÇİLMİŞLƏR") {
+            window.location = '/profile/liked'
         }
     }
 

@@ -11,6 +11,8 @@ import Succesful from './pages/Registration/SuccesfulReset'
 import Signup from './pages/Registration/Signup'
 import Story from './pages/Home/Story'
 import Profile from './pages/Profile/Profile'
+import AskedQuestions from './pages/Profile/AskedQuestions'
+import Liked from './pages/Profile/Liked'
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
               <Route path='/success' element={<Succesful />} />
               <Route path='/signup' element={<Signup />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/questions' element={<AskedQuestions />} />
+              <Route path='/profile/liked' element={<Liked />} />
           </Routes>     
       </>
     </Provider>

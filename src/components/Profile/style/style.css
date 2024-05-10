@@ -10,3 +10,17 @@
 .animate {
     animation: opening 0.3s;
 }
+
+
+@keyframes accordion {
+    from {
+        transform: scale(0.3);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.accordionanimate {
+    animation: accordion 0.2s;
+}
