@@ -6,9 +6,10 @@ function BestSellers() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://api.escuelajs.co/api/v1/products')
             .then(res=>res.json())
-            .then(json=>setData(json))
+            .then(json=>setData(json.slice(10)))
+            .catch(err => console.error(err))
     }, []);
 
 

@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import whiteHeart from '../../../assets/home/whiteH.svg';
 import blackHeart from '../../../assets/home/blackH.svg';
+import { useDispatch } from 'react-redux';
+import { SetWishlist, SpliceWishList } from '../../../features/User/UserSlice.js';
 
-function Card({ product, isliked, unlike }) {
+
+function Card({ product, isliked }) {
   const [liked, setLiked] = useState(isliked);
+  const dispatch = useDispatch()
 
   const handleLike = e => {
-    unlike(e, product, liked)
+    if (isliked) {
+        dispatch(SpliceWishList(product.id))
+        console.log(isliked)
+    } else {
+        dispatch(SetWishlist(product))
+    }
     setLiked(!liked);
   };
 
@@ -16,7 +25,7 @@ function Card({ product, isliked, unlike }) {
         <img src={product.images[0]} alt="" className="max-h-[240px] min-[768px]:min-h-[240px] max-[768px]:min-h-[200px] w-full max-[768px]:max-h-[200px]"/>
         <button
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[768px]:hidden`}
-          onClick={handleLike}
+          onClick={e => handleLike(product, liked)}
         >
           <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-5 h-5" />
         </button>
@@ -28,9 +37,9 @@ function Card({ product, isliked, unlike }) {
         <p className="text-red-500">{product.price}$</p>
         <button
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[768px]:block`}
-          onClick={e => handleLike(e, product, liked)}
+          onClick={e => handleLike(product, isliked)}
         >
-          <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />
+          <img src={isliked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />
         </button>
       </div>
     </section>

@@ -11,6 +11,10 @@ function ProfileCard({service, setExit, setReferal}) {
             window.location = '/profile/questions'
         }else if (name == "SEÇİLMİŞLƏR") {
             window.location = '/profile/liked'
+        }else if (name == "ÜNVANLAR") {
+            window.location = '/profile/address'
+        }else if (name == "İSTIFADECI MELUMATLARI") {
+            window.location = '/profile/userinfo';
         }
     }
 

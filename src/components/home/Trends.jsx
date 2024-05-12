@@ -6,9 +6,10 @@ function Trends() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://api.escuelajs.co/api/v1/products')
             .then(res=>res.json())
-            .then(json=>setData(json))
+            .then(json=>setData(json.slice(0,5)))
+            .catch(err => console.error(err))
     }, []);
 
     return (

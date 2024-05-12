@@ -35,6 +35,8 @@ import Brends from '../../components/home/Brends';
 import BrendCard from '../../components/home/BrendCart'
 import Services from '../../components/home/Services';
 import Footer from '../../components/home/Layout/Footer';
+import { SetWishlist } from '../../features/User/UserSlice';
+import { useEffect } from 'react';
 
 function Home() {
     const category = useSelector(state => state.home.CategoryType);

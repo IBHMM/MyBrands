@@ -13,6 +13,8 @@ import Story from './pages/Home/Story'
 import Profile from './pages/Profile/Profile'
 import AskedQuestions from './pages/Profile/AskedQuestions'
 import Liked from './pages/Profile/Liked'
+import Address from './pages/Profile/Address'
+import UserInformation from './pages/Profile/UserInformation'
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/profile/questions' element={<AskedQuestions />} />
               <Route path='/profile/liked' element={<Liked />} />
+              <Route path='/profile/address' element={<Address />} />
+              <Route path='/profile/userinfo' element={<UserInformation />} />
           </Routes>     
       </>
     </Provider>

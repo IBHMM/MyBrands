@@ -8,14 +8,24 @@ const initialState = {
 }
 
 export const user = createSlice({
-    name: 'register',
+    name: 'user',
     initialState: initialState,
     reducers: {
         SetWishlist : (state, action) => {
-            state.wishlist = [...state.wishlist, action.payload]
+           state.wishlist = action.payload
+        },
+        AddProduct : (state, action) => {
+            const newlist = [...state.wishlist, action.payload]
+            state.wishlist = newlist
+        },
+        SpliceWishList : (state, action) => {
+            const newwishlist = state.wishlist.filter(product => product.id !== action.payload)
+            state.wishlist = newwishlist
         },
         SetPages : (state, action) => {
-            state.wisitedpages = [...state.wisitedpages, action.payload]
+            if(state.wisitedpages[state.wisitedpages != action.payload]) {
+                state.wisitedpages = [...state.wisitedpages, action.payload]
+            }
         },
         SetCard : (state, action) => {
             state.card = [...state.card, action.payload]
@@ -26,6 +36,7 @@ export const user = createSlice({
     },
 })
 
-export const { SetCard, SetPages, SetWishlist, setName } = user.actions
+
+export const { SetCard, SetPages, SetWishlist, setName, SpliceWishList } = user.actions
 
 export default user.reducer

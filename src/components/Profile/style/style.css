@@ -24,3 +24,7 @@
 .accordionanimate {
     animation: accordion 0.2s;
 }
+
+.zindex {
+    z-index: 10000000;
+}
