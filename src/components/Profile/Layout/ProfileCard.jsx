@@ -15,6 +15,10 @@ function ProfileCard({service, setExit, setReferal}) {
             window.location = '/profile/address'
         }else if (name == "İSTIFADECI MELUMATLARI") {
             window.location = '/profile/userinfo';
+        }else if (name == "ÖDƐNIŞ Ve ÇATDIRILMA") {
+            window.location = "/profile/paymentdelivery";
+        }else if(name == 'Müştərİ Xİdmətlərİ'){
+            window.location = "/profile/CustomerService";
         }
     }
 

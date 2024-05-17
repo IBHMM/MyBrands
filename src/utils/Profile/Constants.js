@@ -24,7 +24,7 @@ export const services = [
     { name: "HESABDAN ÇIX", src: exit },
 ];
 
-const data = [
+const questionsdata = [
     {
         title : "Umumi",
         faqs: [{
@@ -79,4 +79,56 @@ const data = [
     }
 ]
 
-export {data}
+const paymentdeliverydata = [
+    {
+        faqs: [{
+            title : "1. Ödəmə",
+            answer : [
+                "1.1. Alınan məhsulların və onların çatdırılmasının dəyərinin ödənilməsi Sifariş formasında göstərilən ödəmə üsulu ilə həyata keçirilməlidir. Heç bir halda ödəməni almaq üçün Satıcı tərəfindən müəyyən hallarda xərclənən əlavə ödəniş sizdən tutulmayacaq. "   
+                , "1.2. Ödəmə kredit / debet kartı ( VISA və MasterCard )  ilə yerinə yetirildikdə siz müvafiq bankın ödəniş üçün nəzərdə tutulmuş səhifəsinə keçid alacaqsız. "
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            title : "2. Promo-kodlar / Hədiyyə kartları / Bonus kartları",
+            answer : [
+                "2.1. Promo-kodlar mybrands.az saytında alış-veriş edərkən bonus qazanmağa imkan verən kodlardır.",
+                `2.2. Hədiyyə kartlarının istifadəsi:
+
+                Kart balansındakı məbləğ pula konvertasiya oluna bilməz.
+                
+                Hədiyyə kartının qüvvədə olma müddəti alış-veriş tarixindən etibarən 12 ay təşkil edir.
+                
+                Sahibi tərəfindən itirilmiş hədiyyə kartları bərpa olunmur.
+                
+                Hədiyyə kartları yalnız MYBRANDS mağazalar şəbəkəsində etibarlıdır və  bank kartları qismində və ya digər ödəmə növləri şəklində istifadə oluna bilməz.
+                
+                *Rəqəmsal hədiyyə kartı yalnız mybrands.az saytımızda etibarlıdır. Rəqəmsal hədiyyə kartı fiziki mağazalarımızda etibarlı deyil. `,
+                `2.3. Bonus kartlarının istifadəsi 
+                    MYBRANDS bonus kartınız varsa, “mybrands.az” saytında ödəmə həyata keçirərkən onu istifadə edə bilərsiniz. 
+                `,
+                "2.4. Hər hansı səbəbdən aldığınız sifarişdən məmnun qalmadığınız təqdirdə “Geri qaytarma siyasəti” bölməsində təsvir olunan standart geri qaytarma proseduruna riayət etməklə, dəyəri ödənilərkən kupondan istifadə olunan məhsulu geri qaytarmaq hüququna maliksiniz. Geri qaytarılan məhsullar Satıcı tərəfindən qəbul olunandan sonra müvafiq kuponun ilkin qiyməti bərpa olunacaq."  
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            title : "3. Çatdırılma",
+            answer : [
+                "3.1. Məhsulların çatdırılması proseduru haqqında ətraflı məlumat “Müştəri xidməti” bölməsində verilmişdir. Həmin bölmə ilə diqqətlə tanış olmağı sizdən xahiş edirik. Bu bölmədə verilmiş məlumat hazırkı Ümumi müddəalar və satış şərtlərinin ayrılmaz hissəsidir və, deməli, tərəfinizdən Sifariş göndərildiyi halda həmin məlumatla tam şəkildə tanış olmuş və onu qəbul etmiş hesab olunursunuz."
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            title : "4. Müştəri xidməti ",
+            answer : [
+                "4.1 Hər hansı suallar yarandıqda bizim Müştəri xidmətinə müraciət etməyinizi xahiş edirik. Daha ətraflı məlumatı “Müştəri xidməti”  bölməsindən əldə edə bilərsiniz."
+            ]
+            }]
+    },
+]
+
+export {paymentdeliverydata}
+export {questionsdata}

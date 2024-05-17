@@ -15,6 +15,9 @@ import AskedQuestions from './pages/Profile/AskedQuestions'
 import Liked from './pages/Profile/Liked'
 import Address from './pages/Profile/Address'
 import UserInformation from './pages/Profile/UserInformation'
+import PaymentDelivery from './pages/Profile/Payment&Delivery'
+import About from './pages/Home/About'
+import CustomerService from './pages/Profile/Customerservices'
 
 function App() {
 
@@ -35,6 +38,9 @@ function App() {
               <Route path='/profile/liked' element={<Liked />} />
               <Route path='/profile/address' element={<Address />} />
               <Route path='/profile/userinfo' element={<UserInformation />} />
+              <Route path='/profile/paymentdelivery' element={<PaymentDelivery />} />
+              <Route path='/profile/CustomerService' element={<CustomerService />} />
+              <Route path='/home/about' element={<About />} />
           </Routes>     
       </>
     </Provider>
