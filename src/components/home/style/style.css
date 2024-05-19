@@ -132,3 +132,7 @@
     background-color: white;
     z-index: 100;
   }
+
+  .z {
+    z-index: 10000000000;
+  }

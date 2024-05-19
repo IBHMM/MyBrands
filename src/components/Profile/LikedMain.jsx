@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import GoBack from '../../assets/profile/goback.png';
 import like from '../../assets/profile/liked.png';
-import { useEffect, useState } from 'react';
 import Card from '../home/Layout/Card';
-import EmptyLikedMain from '../../components/Profile/EmptyLiked.jsx'
-import { useSelector } from 'react-redux';
+import EmptyLikedMain from '../../components/Profile/EmptyLiked.jsx';
+import { useSelector } from "react-redux";
 
-function LikedMain () {
+function LikedMain() {  
     const products = useSelector(state => state.user.wishlist);
+
+    console.log(products);
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
@@ -23,16 +24,16 @@ function LikedMain () {
             </section>
  
             <section className="flex items-center justify-around w-full flex-wrap mt-[30px]">
-                { 
-                        products != undefined ?
-                            products.map((product, index) => <span className='p-2' key={index}><Card product={product} isliked={true}/></span>) :
-                        <EmptyLikedMain />
-                }
+                {products.length > 0 ? (
+                    products.map((product, index) => (
+                        <span className='p-2' key={index}><Card product={product} isliked={true}/></span>
+                    ))
+                ) : (
+                    <EmptyLikedMain />
+                )}
             </section>
         </section>
-    )
+    );
 }
 
-
-
-export default LikedMain
+export default LikedMain;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { SetPages } from "../../features/User/UserSlice";
+import { setPages } from "../../features/User/UserSlice";
 
 export default function useNavbar() {
     const [search, setSearch] = useState(false);
@@ -8,6 +8,6 @@ export default function useNavbar() {
     const dispatch = useDispatch()
 
     return {
-        search, menu, setSearch, dispatch, SetPages
+        search, menu, setSearch, dispatch, setPages
     }
 }

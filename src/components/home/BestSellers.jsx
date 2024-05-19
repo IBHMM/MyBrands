@@ -6,10 +6,10 @@ function BestSellers() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
-            .then(res=>res.json())
-            .then(json=>setData(json.slice(10)))
-            .catch(err => console.error(err))
+        fetch('https://dummyjson.com/products')
+        .then(res => res.json())
+        .then(json => setData(json.products))
+        .catch(err => console.error(err))
     }, []);
 
 

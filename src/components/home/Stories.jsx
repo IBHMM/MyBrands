@@ -1,24 +1,43 @@
 import { useEffect, useState } from "react";
 import img1 from '../../assets/temp/slide.png';
+import Story from './Story'
 
 function Shorts() {
-    const [data, setData] = useState([
-        { src: img1, title: "title1" },
-        { src: img1, title: "title2" },
-        { src: img1, title: "title3" }
-    ]);
+    const [data, setData] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [click, setClick] = useState(undefined)
+    
+    useEffect(() => {
+        fetch('https://dummyjson.com/products')
+        .then(res => res.json())
+        .then(json => setData(json.products))
+        .catch(err => console.error(err))
+    }, [])
+
+    const handleShort = (e, short) => {
+        e.preventDefault();
+        setOpen(!open);
+        setClick(short);
+    }
 
     return (
-        <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px]">
-            {data.map((short, index) => (
-                <a className="flex items-center justify-center flex-col w-[82px]" key={index} href="/home/story">
-                    <div className="flex items-center justify-center rounded-[50%] w-[58px] h-[58px] p-[2px] border-[2px] border-red-500">
-                        <img src={short.src} alt="" className="rounded-[50%] w-full h-full" />
-                    </div>
-                    <p className="text-[14px]">{short.title}</p>
-                </a>
-            ))}
-        </section>
+        <>
+            {
+                open ? 
+                <Story data={click} setOpen={setOpen}/> :
+
+                <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px] overflow-auto gap-[20px]">
+                    {data.map((short, index) => (
+                        <div className="flex items-center justify-center flex-col w-[82px] hover:scale-90 transition-all duration-300 " key={index} onClick={e => handleShort(e, short)}>
+                            <div className="flex items-center justify-center rounded-[50%] w-[58px] h-[58px] p-[2px] border-[2px] border-red-500">
+                                <img src={short.thumbnail} alt="" className="rounded-[50%] w-full h-full" />
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            }
+        </>
+
     );
 }
 

@@ -9,14 +9,13 @@ function Categories() {
     const [underline, setUnderline] = useState(null)
     const dispatch = useDispatch();
 
-
     const handleCategoryClick = (index, type, e) => {
         setSelectedCategory(index);
         dispatch(setCategoryType(type));        
     };
 
     return (
-        <section className='z-10 flex w-[80%] items-center justify-between max-[1200px]:w-full font-normal h-[48px] px-1 text-[12px] relative max-[1200px]:text-[12px] max-[768px]:hidden' id="category">
+        <section className='z-10 flex w-[80%] items-center justify-between max-[1200px]:w-full font-normal h-[48px] px-1 text-[12px] relative max-[1200px]:text-[12px] max-[768px]:hidden' id="category" onMouseLeave={e => dispatch(setCategoryType(null))}>
             {categories.map((element, index) => (
                 <div
                     key={index}

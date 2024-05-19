@@ -16,7 +16,7 @@ function CategorieDropdown() {
 
     
     return (
-        <section className="flex w-[80%] top-[160px] items-center absolute justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[200px] px-1 max-[768px]:hidden animation" id="categoryd" onMouseEnter={(e) => dispatch(setCategoryType(type))} onMouseLeave={e => dispatch(setCategoryType(null))}>
+        <section className={`flex w-[80%] top-[160px] items-center absolute justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[200px] px-1 max-[768px]:hidden animation ${type == null ? 'hidden' : 'flex'}`} id="categoryd" onMouseEnter={(e) => dispatch(setCategoryType(type))} onMouseLeave={e => dispatch(setCategoryType(null))}>
             {
                 // data.map((c, i) => {
                 //     reutnr 
