@@ -32,7 +32,7 @@ function App() {
               <Route path='/reset' element={<Reset />} />
               <Route path='/success' element={<Succesful />} />
               <Route path='/signup' element={<Signup />} />
-              <Route path='/profile' element={<Profile />} />
+              <Route path='/home/profile' element={<Profile />} />
               <Route path='/profile/questions' element={<AskedQuestions />} />
               <Route path='/profile/liked' element={<Liked />} />
               <Route path='/profile/address' element={<Address />} />

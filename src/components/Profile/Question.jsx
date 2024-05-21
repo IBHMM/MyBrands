@@ -13,7 +13,7 @@ function QuestionMain() {
                     <img src={questions} alt="" />
                     <p className='text-[24px] max-[500px]:text-[20px]'>Tez-tez verilən suallar</p>
                 </div>
-                <Link to={'/profile'} className='flex items-center justify-end gap-[10px]'>
+                <Link to={'/home/profile'} className='flex items-center justify-end gap-[10px]'>
                     <img src={GoBack} alt="" />
                     <p className='text-[14px] text-[#292D32]'>Geri qayit</p>
                 </Link>

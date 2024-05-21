@@ -12,17 +12,17 @@ import order from '../../assets/profile/orders.png'
 import gears from '../../../public/texniki.svg'
 
 export const services = [
-    { name: "İSTIFADECI MELUMATLARI", src: profile },
-    { name: "ÜNVANLAR", src: address },
-    { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus },
-    { name: "SEÇİLMİŞLƏR", src: liked },
-    { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment },
-    { name: "TEZ-TEZ VERILEN SUALLAR", src: questions },
-    { name: "refund", src: refund },
-    { name: "Müştərİ Xİdmətlərİ", src: customerservice },
-    { name: "REFERRAL PROGRAMI", src: referal },
-    { name: "SİFARİŞLƏR", src: order },
-    { name: "HESABDAN ÇIX", src: exit },
+    { name: "İSTIFADECI MELUMATLARI", src: profile, address:  "/profile/userinfo"},
+    { name: "ÜNVANLAR", src: address , address: "/profile/address"},
+    { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus , address: ""},
+    { name: "SEÇİLMİŞLƏR", src: liked , address: "/profile/liked"},
+    { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment , address: "/profile/paymentdelivery"},
+    { name: "TEZ-TEZ VERILEN SUALLAR", src: questions , address: "/profile/questions"},
+    { name: "refund", src: refund , address: ""},
+    { name: "Müştərİ Xİdmətlərİ", src: customerservice , address: "/profile/CustomerService"},
+    { name: "REFERRAL PROGRAMI", src: referal , address: ""},
+    { name: "SİFARİŞLƏR", src: order , address: ""},
+    { name: "HESABDAN ÇIX", src: exit , address: ""},
 ];
 
 const questionsdata = [

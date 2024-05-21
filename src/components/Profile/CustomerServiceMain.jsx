@@ -7,8 +7,6 @@ import { useState } from 'react';
 
 function CustomerServiceMain() {
 
-    console.log(customerservices, 'Hello')
-
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
             <section className="w-full flex items-center justify-between py-5 px-2 border border-gray-50">
@@ -16,7 +14,7 @@ function CustomerServiceMain() {
                     <img src={payment} alt="" />
                     <p className='text-[24px] max-[500px]:text-[20px]'>Ödəniş və çatdırılma</p>
                 </div>
-                <Link to={'/profile'} className='flex items-center justify-end gap-[10px]'>
+                <Link to={'/home/profile'} className='flex items-center justify-end gap-[10px]'>
                     <img src={GoBack} alt="" />
                     <p className='text-[14px] text-[#292D32]'>Geri qayit</p>
                 </Link>

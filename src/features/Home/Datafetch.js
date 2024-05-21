@@ -9,7 +9,6 @@ async function TakeUserWishList() {
                 select: 'title,price,images,category'
             }
         });
-        console.log(response.data.products)
         return response.data.products;
     } catch (error) {
         console.error('Failed to fetch data:', error);

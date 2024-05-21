@@ -9,7 +9,7 @@ function CustomerService () {
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Navbar />
             <Header />
-            <WisitedPages />
+            <WisitedPages pages={["Ana sehife", "Profile"]}/>
             <CustomerServiceMain />
             <Footer />
         </section>

@@ -14,14 +14,11 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setWishlist: (state, action) => {
-      state.wishlist = action.payload;
-    },
     addProduct: (state, action) => {
       state.wishlist.push(action.payload);
     },
-    spliceWishlist: (state, action) => {
-      state.wishlist = state.wishlist.filter(product => product.id !== action.payload);
+    removeProduct: (state, action) => {
+      state.wishlist = state.wishlist.filter(product => product.id !== action.payload.id);
     },
     setPages: (state, action) => {
       if (!state.visitedPages.includes(action.payload)) {
@@ -37,6 +34,6 @@ export const userSlice = createSlice({
   }
 });
 
-export const { setWishlist, addProduct, spliceWishlist, setPages, setCard, setName } = userSlice.actions;
+export const { addProduct, removeProduct, setPages, setCard, setName } = userSlice.actions;
 
 export default userSlice.reducer;

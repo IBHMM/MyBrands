@@ -37,17 +37,21 @@ import Services from '../../components/home/Services';
 import Footer from '../../components/home/Layout/Footer';
 import { useEffect, useState } from 'react';
 import {WaitingAnimation} from '../../components/home/Animation'
+import { setFirstTime } from '../../features/Home/Loading';
 
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
-    const [start, setStart] = useState(false);
-    
+    const start = useSelector(state => state.basic.firsttime);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         setTimeout(() => {
-            setStart(true);
-        }, 5000)
+            dispatch(setFirstTime(true));
+        }, 2000)
     }, [])
-    
+
+    console.log(start)
+
     return (
         <>
             {

@@ -23,7 +23,7 @@ function Main() {
                 {
                     services.map((service, index) => {
                         return(
-                            <ProfileCard service={service} key={index} setExit={setExit} setReferal={setReferal}/>
+                            <ProfileCard service={service} key={index} setExit={setExit} setReferal={setReferal} />
                         )
                     })
                 }

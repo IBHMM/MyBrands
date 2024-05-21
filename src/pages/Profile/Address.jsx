@@ -9,7 +9,7 @@ function Address() {
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Header />
             <Navbar />
-            <WisitedPages />
+            <WisitedPages pages={["Ana sehife", "Profile"]}/>
             <AddressMain />
             <Footer />
         </section>
