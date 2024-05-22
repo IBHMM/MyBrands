@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 function LikedMain() {  
     const products = useSelector(state => state.user.wishlist);
 
+    console.log(products.length)
+
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
             <section className="w-full flex items-center justify-between py-5 px-3 border border-gray-50">
@@ -20,16 +22,20 @@ function LikedMain() {
                     <p className='text-[14px] text-[#292D32]'>Geri qayit</p>
                 </Link>
             </section>
+
+            {
+                products.length != 0 ? 
+                    <section className="w-full mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 px-1">
+                            {
+                            products.map((product, index) => <Card key={index} product={product} />)
+                            }
+                    </section> : 
+                    
+                    <div className='w-full flex items-center justify-center'>
+                        <EmptyLikedMain />
+                    </div>
+            }
  
-            <section className="w-full mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 px-1">
-                {products.length > 0 ? (
-                    products.map((product, index) => (
-                        <Card key={index} product={product} />
-                    ))
-                ) : (
-                    <EmptyLikedMain />
-                )}
-            </section>
         </section>
     );
 }

@@ -1,28 +1,27 @@
 import { useState } from "react";
 import '../style/style.css';
-import { setCategoryType } from "../../../features/Home/Categoryies";
-import { useDispatch } from 'react-redux'
+import { ActiveCategory } from "../../../features/Home/Categoryies";
+import { useDispatch, useSelector } from 'react-redux'
 
 function Categories() {
-    const [categories, setCategories] = useState(["KISI", "QADIN", "USAQ", "CANTA & AKSESUAR", "HEDIYYE KARTLARI", "ENDIRIM"]);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [underline, setUnderline] = useState(null)
     const dispatch = useDispatch();
+    const categories = useSelector(state => state.home.AllCategories);
 
     const handleCategoryClick = (index, type, e) => {
         setSelectedCategory(index);
-        dispatch(setCategoryType(type));        
+        dispatch(ActiveCategory(categories[index]));        
     };
 
     return (
-        <section className='z-10 flex w-[80%] items-center justify-between max-[1200px]:w-full font-normal h-[48px] px-1 text-[12px] relative max-[1200px]:text-[12px] max-[768px]:hidden' id="category" onMouseLeave={e => dispatch(setCategoryType(null))}>
+        <section className='z-10 flex w-[80%] items-center justify-between max-[1200px]:w-full font-normal h-[48px] px-1 text-[12px] relative max-[1200px]:text-[12px] max-[768px]:hidden' id="category" onMouseLeave={e => dispatch(ActiveCategory(null))}>
             {categories.map((element, index) => (
                 <div
                     key={index}
                     className={`categoryw flex items-center justify-center h-[48px] ${selectedCategory === index ? 'bg-gray-50' : ''} ${element == 'ENDIRIM' ? 'text-red-400 font-semibold' : ''}`}
                     onMouseEnter={() => handleCategoryClick(index, element)}
                 >
-                    {element}
+                    {element.main}
                 </div>
             ))}
             {selectedCategory !== null && (

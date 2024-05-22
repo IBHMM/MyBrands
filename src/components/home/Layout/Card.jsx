@@ -16,9 +16,9 @@ function Card({ product }) {
     }
   }, [liked])
 
-  console.log(product.title, liked)
 
   const handleLike = e => {
+    e.pereventDefault;
     if (liked) {
         dispatch(removeProduct(product))
     } else {
@@ -26,6 +26,7 @@ function Card({ product }) {
     }
     setLiked(() => setLiked(!liked));
   };
+
 
   return (
     <section className="my-4 relative w-[24%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#f4f4f68b] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
@@ -40,8 +41,8 @@ function Card({ product }) {
       </div>
 
       <div className="relative  flex flex-col justify-center items-start w-full h-[80px] pl-2 py-2 max-[768px]:max-h-[100px]">
-        <p className='text-[20px]'>{product.title}</p>
-        <p className="text-xs text-gray-500">{product.category.name && product.category.name}</p>
+        <p className='text-[20px]'>{product.category}</p>
+        <p className="text-xs text-gray-500">{product.title}</p>
         <p className="text-red-500">{product.price}$</p>
         <button
           className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[768px]:block`}

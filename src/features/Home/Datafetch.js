@@ -16,5 +16,15 @@ async function TakeUserWishList() {
     }
 }
 
+async function TakeCategories() {
+    try {
+        const response = await axios.get('https://mocki.io/v1/74e38bf1-56c9-4dc6-8c47-1c8ca286796c');
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch data:', error);
+        return [];
+    }
+}
 
-export {TakeUserWishList}
+
+export {TakeUserWishList, TakeCategories}
