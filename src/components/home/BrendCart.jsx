@@ -23,7 +23,7 @@ function BrendCard() {
     }, [currentImage]);
 
     return (
-        <section className="flex items-stretch justify-center w-[80%] max-[1200px]:w-[90%] mt-[100px]">
+        <section className="flex items-stretch justify-between w-[80%] max-[1200px]:w-[90%] mt-[100px]">
             <section className="bg-[#26264C] flex flex-col justify-center items-start w-[50%] pl-10 max-[500px]:hidden">
                 <p className="text-[13px] text-[#9B96B7]">Type</p>
                 <p className='text-white text-[56px] max-[1000px]:text-[40px] max-[750px]:text-[30px] max-[650px]:text-[22px]'>General name</p>

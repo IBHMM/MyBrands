@@ -1,0 +1,14 @@
+
+@keyframes append {
+    from {
+        height: 0%;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+.animate {
+    animation: append 1s ease-in-out;
+    transition: all;
+}

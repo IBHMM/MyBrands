@@ -6,6 +6,7 @@ import CategorieDropdown from '../../components/home/Layout/CategorieDropdown';
 import Footer from '../../components/home/Layout/Footer';
 import WisitedPages from '../../components/home/Layout/WisitedPages';
 import NumberOFProduct from '../../components/products/NumberOFProduct'
+import ProductMain from '../../components/products/ProductMain';
 
 function Product() {
     const category = useSelector(state => state.home.CategoryType);
@@ -18,8 +19,9 @@ function Product() {
             {
                 category != "" && <CategorieDropdown />
             }
-            <WisitedPages />
+            <WisitedPages pages={['home', 'products']}/>
             <NumberOFProduct number={30}/>
+            <ProductMain />
             <Footer />
         </section>
     );

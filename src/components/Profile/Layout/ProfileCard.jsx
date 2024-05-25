@@ -18,7 +18,7 @@ function ProfileCard({service, setExit, setReferal}) {
             onClick={e => HandleProfileClick(e, service.name)}
         >
             <img src={service.src} />
-            <p className="text-[12px] font-semibold">{service.name}</p>
+            <p className="text-[12px] font-semibold w-full text-center">{service.name}</p>
         </Link>
     )
 }
