@@ -18,6 +18,7 @@ import PaymentDelivery from './pages/Profile/Payment&Delivery'
 import About from './pages/Home/About'
 import CustomerService from './pages/Profile/Customerservices'
 import Product from './pages/Products/Product'
+import ProductCard from './pages/Products/Card'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
               <Route path='/profile/CustomerService' element={<CustomerService />} />
               <Route path='/home/about' element={<About />} />
               <Route path='/products' element={<Product />} />
+              <Route path='/products/product' element={<ProductCard />} />
           </Routes>     
       </>
     </Provider>

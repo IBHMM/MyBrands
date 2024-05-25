@@ -7,7 +7,8 @@ const initialState = {
   card: [],
   name: "Ibrahim",
   loading: false,
-  error: null
+  error: null,
+  ActiveProduct: {}
 };
 
 export const userSlice = createSlice({
@@ -31,9 +32,12 @@ export const userSlice = createSlice({
     setName: (state, action) => {
       state.name = action.payload;
     },
+    setProduct : (state, action) => {
+      state.ActiveProduct = action.payload;
+    }
   }
 });
 
-export const { addProduct, removeProduct, setPages, setCard, setName } = userSlice.actions;
+export const { addProduct, removeProduct, setPages, setCard, setName, setProduct } = userSlice.actions;
 
 export default userSlice.reducer;
