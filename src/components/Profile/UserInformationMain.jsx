@@ -10,20 +10,20 @@ function UserInformationMain() {
     const [change, setChange] = useState(false);
     
     return (
-        <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px] gap-[30px]"> 
+        <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px] gap-[30px] "> 
              <section className="w-full flex items-center justify-between py-5 px-3 border border-gray-100">
                 <div className='flex items-center justify-start gap-[10px]'>
                     <img src={profile} alt="" />
                     <p className='text-[24px] max-[500px]:text-[20px]'>İstifadəçi məlumatları</p>
                 </div>
-                <Link to={'/profile'} className='flex items-center justify-end gap-[10px]'>
+                <Link to={'/home/profile'} className='flex items-center justify-end gap-[10px]'>
                     <img src={GoBack} alt="" />
                     <p className='text-[14px] text-[#292D32]'>Geri qayit</p>
                 </Link>
             </section>
 
-            <section className='w-full flex items-center justify-between gap-[30px]'>
-                <section className='w-[70%] flex flex-col justify-between items-start border p-3 border-gray-100 min-h-[550px] max-h-[550px]'>
+            <section className='w-full flex items-center justify-between gap-[30px] max-[800px]:flex-col'>
+                <section className='w-[70%] flex flex-col justify-between items-start border p-3 border-gray-100 min-h-[550px] max-h-[550px] max-[800px]:w-full'>
 
                     <div className="w-full flex items-center justify-start border border-gray-50 gap-[20px]">
                         <img src={profile} alt="" />
@@ -108,13 +108,13 @@ function UserInformationMain() {
                         </div>
                     </div>
 
-                    <div className='text-white bg-[#26264C] w-[70%] py-3 flex items-center justify-center'>
+                    <div className='text-white bg-[#26264C] w-[70%] py-3 flex items-center justify-center max-[800px]:w-full'>
                         Yadda Saxla
                     </div>
 
                 </section>
 
-                <section className='w-[30%] flex flex-col justify-between border p-3 border-gray-100 max-h-[550px] min-h-[550px]'>
+                <section className='w-[30%] flex flex-col justify-between border p-3 border-gray-100 max-h-[550px] min-h-[550px] max-[800px]:w-full'>
 
                     <div className="w-full flex items-center justify-start border border-gray-50 gap-[20px]">
                         <img src={password} alt="" />

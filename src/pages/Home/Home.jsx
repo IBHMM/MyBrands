@@ -35,31 +35,48 @@ import Brends from '../../components/home/Brends';
 import BrendCard from '../../components/home/BrendCart'
 import Services from '../../components/home/Services';
 import Footer from '../../components/home/Layout/Footer';
-import { SetWishlist } from '../../features/User/UserSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import {WaitingAnimation} from '../../components/home/Animation'
+import { setFirstTime } from '../../features/Home/Loading';
 
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
+    const start = useSelector(state => state.basic.firsttime);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(setFirstTime(true));
+        }, 2000)
+    }, [])
+
+    console.log(start)
 
     return (
-        <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
-            <Header />
-            <Navbar />
-            <Categories />
+        <>
             {
-                category != "" && <CategorieDropdown />
+                start ? 
+                <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
+                    <Header />
+                    <Navbar />
+                    <Categories />
+                    {
+                        category != "" && <CategorieDropdown />
+                    }
+                    <Shorts />
+                    <Carusel images={images}/>
+                    <Trends />
+                    <Book image1={slide} image2={slide}/>
+                    <BestSellers />
+                    <Brends brends={brends}/>
+                    <ProductCategories />
+                    <BrendCard />
+                    <Services />
+                    <Footer />
+                </section> :  
+                    <WaitingAnimation />
             }
-            <Shorts />
-            <Carusel images={images}/>
-            <Trends />
-            <Book image1={slide} image2={slide}/>
-            <BestSellers />
-            <Brends brends={brends}/>
-            <ProductCategories />
-            <BrendCard />
-            <Services />
-            <Footer />
-        </section>
+        </>
     );
 }
 

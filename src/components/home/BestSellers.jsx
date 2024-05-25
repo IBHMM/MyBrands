@@ -6,10 +6,10 @@ function BestSellers() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
-            .then(res=>res.json())
-            .then(json=>setData(json.slice(10)))
-            .catch(err => console.error(err))
+        fetch('https://dummyjson.com/products')
+        .then(res => res.json())
+        .then(json => setData(json.products))
+        .catch(err => console.error(err))
     }, []);
 
 
@@ -18,7 +18,7 @@ function BestSellers() {
             <div className="flex items-center justify-between w-full ">
                 <p className="text-[30px]">En cox Satilanlar</p>
             </div>
-            <div className="flex items-center justify-start w-full overflow-y-auto gap-[47px] max-[898px]:justify-center max-[500px]:justify-evenly max-[500px]:gap-3">
+            <div className="flex items-center justify-between w-full overflow-y-auto gap-[47px] max-[898px]:justify-center max-[500px]:justify-evenly max-[500px]:gap-3">
                 {data != undefined && data.map((item, idx) => (
                     <Card product={item} key={idx} />
                 ))}

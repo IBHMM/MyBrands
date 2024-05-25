@@ -9,19 +9,20 @@ import refund from '../../assets/profile/refund.png'
 import customerservice from '../../assets/profile/customerservice.png'
 import referal from '../../assets/profile/referal.png'
 import order from '../../assets/profile/orders.png'
+import gears from '../../../public/texniki.svg'
 
 export const services = [
-    { name: "İSTIFADECI MELUMATLARI", src: profile },
-    { name: "ÜNVANLAR", src: address },
-    { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus },
-    { name: "SEÇİLMİŞLƏR", src: liked },
-    { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment },
-    { name: "TEZ-TEZ VERILEN SUALLAR", src: questions },
-    { name: "refund", src: refund },
-    { name: "Müştərİ Xİdmətlərİ", src: customerservice },
-    { name: "REFERRAL PROGRAMI", src: referal },
-    { name: "SİFARİŞLƏR", src: order },
-    { name: "HESABDAN ÇIX", src: exit },
+    { name: "İSTIFADECI MELUMATLARI", src: profile, address:  "/profile/userinfo"},
+    { name: "ÜNVANLAR", src: address , address: "/profile/address"},
+    { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus , address: ""},
+    { name: "SEÇİLMİŞLƏR", src: liked , address: "/profile/liked"},
+    { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment , address: "/profile/paymentdelivery"},
+    { name: "TEZ-TEZ VERILEN SUALLAR", src: questions , address: "/profile/questions"},
+    { name: "refund", src: refund , address: ""},
+    { name: "Müştərİ Xİdmətlərİ", src: customerservice , address: "/profile/CustomerService"},
+    { name: "REFERRAL PROGRAMI", src: referal , address: ""},
+    { name: "SİFARİŞLƏR", src: order , address: ""},
+    { name: "HESABDAN ÇIX", src: exit , address: ""},
 ];
 
 const questionsdata = [
@@ -130,5 +131,71 @@ const paymentdeliverydata = [
     },
 ]
 
+const customerservices = [
+    {
+        faqs: [{
+            src: `../../../public/truck.svg`,
+            title : "Çatdırılma",
+            answer : [
+                "1.Məhsulların çatdırılması kuryer xidmətimiz vasitəsilə həyata keçirilir. "   
+                , "2.Çatdırılma müddəti 1-3 iş günü təşkil edir. ",
+                "3.Sifariş göndərildikdən sonra sifarişin aktual statusu haqqında elektron məktub alacaqsınız."
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            src: `../../../public/box.svg`,
+            title : "Qüsurlu və çatışmayan məhsul",
+            answer : [
+                `Məhsulu Satıcının səhvi və ya məhsulun zədəli və ya qüsurlu olması səbəbindən geri qaytarırsınızsa, bu halda məhsulun çatdırıldığı tarixdən on dörd (14) gün ərzində Satıcını elektron qaytarış vasitəsilə məlumatlandırmalısınız.
+                Zədələnmiş, qüsurlu məhsulları və ya Sifarişə uyğun olmayan məhsulları aldığınız vəziyyətdə geri qaytarmalısınız.`,
+                `Məhsulu Satıcının səhvi və ya Sifarişinizə uyğun olmadığı səbəbindən geri qaytarırsınızsa, bu halda məhsulun çatdırıldığı tarixdən on dörd (14) gün ərzində Satıcını elektron qaytarış vasitəsilə məlumatlandırmalısınız.  Zədələnmiş, Sifarişə uyğun olmayan məhsulları aldığınız vəziyyətdə geri qaytarmalısınız.`
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            src: `../../../public/olcu.svg`,
+            title : "Ölçü cədvəli",
+            answer : [
+                "Kişilər",
+                "Qadınlar",
+                "Uşaqlar"
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            src: `../../../public/geri.svg`,
+            title : "Məhsulu necə geri qaytarmaq olar? ",
+            answer : [
+                "Əvvəlcədən elektron geri qaytarılma formasını əlavə edərək məhsulu Hüseyn Cavid pr. 520/2 ünvanına göndərməklə məhsulu geri qaytara bilərsiniz. Sifarişi geri qaytar"
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            src: `../../../public/odenis.svg`,
+            title : "Ödənişlər ",
+            answer : [
+                `Saytda VISA və MasterСard Bank kartları ilə ödənişlər qəbul olunur.  
+                Sifarişi bitirdikdə sistem sizi bank kartınız haqqında sorğu olunan bütün məlumatları daxil etməli olduğunuz ödəniş səhifəsinə yönləndirəcəkdir.`
+            ]
+            }]
+    },
+    {
+        faqs: [{
+            src: gears,
+            title : "Texniki səbəblər",
+            answer : [
+                `Əgər saytda qeydiyyatla bağlı probleminiz vardırsa, +994504114114  zəng etməyinizi xahiş edirik. `,
+                `Səhifə yükləmə problemi. Digər bir pəncərə açaraq hər hansı internet səhifəsinin yüklənməsini yoxlayın, məsələn  google.com və ya  mozilla.org. Digər brauzeri işə salaraq, probleminiz olan səhifəni yükləməyə çalışın. İnternet qoşulmanızı yoxlayın.`
+            ]
+            }]
+    },
+]
+
 export {paymentdeliverydata}
 export {questionsdata}
+export {customerservices}

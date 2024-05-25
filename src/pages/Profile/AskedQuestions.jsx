@@ -9,7 +9,7 @@ function AskedQuestions() {
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Header />
             <Navbar />
-            <WisitedPages />
+            <WisitedPages pages={["Ana sehife", "Profile"]}/>
             <QuestionsMain />
             <Footer />
         </section>

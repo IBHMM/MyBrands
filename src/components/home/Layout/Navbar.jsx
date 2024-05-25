@@ -10,27 +10,10 @@ import MobileM from './Menu'
 import useNavbar from '../../../hooks/Home/Menu'
 import { setMenu } from "../../../features/Home/Categoryies";
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { SetWishlist } from '../../../features/User/UserSlice'
-import { useEffect } from 'react'
 
 function Navbar() {
 
-    const {search, menu, setSearch, dispatch, SetPages} = useNavbar();
-    const p = useSelector(state => state.user.wishlist)
-    
-    useEffect(() => {
-        if(p.length == 0) {
-            fetch('https://api.escuelajs.co/api/v1/products')
-            .then(res=>res.json())
-            .then(json=>dispatch(SetWishlist(json.slice(0,9))))
-            .catch(err => console.error(err))
-        }
-    }, []);
-    
-    const HandleProfile = e => {
-        dispatch(SetPages("Hesabim"))
-    }
+    const {search, menu, setSearch, dispatch, setPages, wishlistL} = useNavbar();
     
     return (
         <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>
@@ -51,22 +34,19 @@ function Navbar() {
                 }
             </div>
             <div className='flex itemc-center justify-between gap-[30px] min-w-[180px]'>
-                <Link to="/profile" className='hidden items-center justify-center md:flex relative ' onClick={e => HandleProfile(e)}>
+                <Link to="/home/profile" className='hidden items-center justify-center md:flex relative '>
                     <img className="" src={Profile} alt="" />
                 </Link>
                 <Link to="/profile/liked" className='flex items-center justify-center relative'>
-                    <img className="" src={Liked} alt="" />
-                    {
-                        p != undefined &&  
-                        <div className={`w-[19px] h-[12px] text-[8px] flex items-center justify-center rounded-[10px] bg-[#E12D55] text-white absolute right-[-3px] top-[0px]`}>
-                            {p.length} 
-                        </div>
-                    }
+                    <img className="" src={Liked} alt="" />            
+                    <div className={`w-[19px] h-[12px] text-[8px] flex items-center justify-center rounded-[10px] bg-[#E12D55] text-white absolute right-[-3px] top-[0px]`}>
+                        {wishlistL} 
+                    </div>
                 </Link>
-                <a href="" className='flex gap-[10px] items-center justify-center'>
+                <Link href="" className='flex gap-[10px] items-center justify-center'>
                     <img className="" src={Card} alt="" />
                     Sebet
-                </a>
+                </Link>
                 <div className='flex items-center justify-center md:hidden' onClick={() => dispatch(setMenu(true))}>
                     <img src={Menu} alt="" />
                 </div>
