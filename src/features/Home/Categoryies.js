@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TakeCategories } from './Datafetch';
+import { TakeBrands, TakeCategories } from './Datafetch';
 
 const initialState = {
     ActiveCategory: {},
     AllCategories: await TakeCategories(),
+    Brands: await TakeBrands(),
     menu: false
 }
 

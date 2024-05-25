@@ -7,7 +7,7 @@ function EmptyLikedMain() {
             <img src={BrokenH} alt="" />
             <p>Hazırda seçilmişlər boşdur</p>
             <p className='text-center text-[#9B96B7]'>Bəyəndiyiniz məhsulları buraya əlavə edərək alış-verişə başlaya bilərsiniz.</p>
-            <Link to={'/home'} className='bg-[#26264C] w-full text-white py-3 flex items-center justify-center'>
+            <Link to={'/products'} className='bg-[#26264C] w-full text-white py-3 flex items-center justify-center'>
                 Alış-verişə başla
             </Link>
         </section>

@@ -26,5 +26,15 @@ async function TakeCategories() {
     }
 }
 
+async function TakeBrands() {
+    try {
+        const response = await axios.get('https://mocki.io/v1/4434ebcb-d6e6-49f8-8dfa-29d5c4a4701e');
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch data:', error);
+        return [];
+    }
+}
 
-export {TakeUserWishList, TakeCategories}
+
+export {TakeUserWishList, TakeCategories, TakeBrands}
