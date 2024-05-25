@@ -46,4 +46,63 @@ export const colors = [
 ];
 
 
-export const sizes = ["Lg", "Sm", "Xl", "Md", "Sm", "Lg", "Xs", "Xl", "Sm", "Md", "Lg", "Xs"];
+export const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
+
+export const ParentCategories = [
+    "Bəzək əşyaları",
+    "Bluzlar / Koftalar",
+    "Don",
+    "Uzun/qısaqol köynək / Polo",
+    "Пальто",
+    "Ətəklər",
+    "Idman",
+    "Üst geyimi",
+    "Cins",
+    "Sviter / Kardiqan",
+    "Şalvarlar",
+    "Alt paltarı / Gecə geyimi",
+    "Çimərlik geyimləri",
+    "Bel çantası",
+    "Klaçlar",
+    "Çiyindən asmalı çantalar",
+    "Çiyindən aşırmalı çantalar",
+    "Qulplu çantalar",
+    "Kəmər çantalar",
+    "Böyük həcmli çantalar",
+    "Kəmərlər",
+    "Pulqabılar / Cüzdanlar",
+    "Gün eynəkləri",
+    "Papaqlar",
+    "Saç aksesuarları",
+    "Corablar",
+    "Kolqotqalar",
+    "Digər",
+    "Loferlər",
+    "Qısaboğaz çəkmələr",
+    "Espadrilyalar",
+    "Baletkalar",
+    "Myulilər",
+    "Səndəllər",
+    "Krossovka / Kedlər",
+    "Tərliklər",
+    "Ətriyyat",
+    "Dəriyə qulluq",
+    "Köynəklər",
+    "Çantalar",
+    "Kombinezonlar / Dəstlər",
+    "Tuflilər",
+    "Şortlar",
+    "Куртки / Блейзеры",
+    "Kombinezonlar",
+    "Hədiyyə üçün",
+    "Şamlar",
+    "Qulluq",
+    "Odekolon",
+    "Diffuzer",
+    "Əl kremi",
+    "Ətir",
+    "Sabun"
+];
+
+
+

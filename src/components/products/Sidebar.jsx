@@ -3,11 +3,12 @@ import bottom from '../../assets/products/bottom.png';
 import { useState } from 'react';
 import './style/style.css';
 import { useSelector } from 'react-redux';
-import {colors, sizes} from '../../utils/Products/Constants'
+import {colors, sizes, ParentCategories} from '../../utils/Products/Constants'
 
 function SideBar() {
     const [gender, setGender] = useState({ value: [], state: false });
     const [price, setPrice] = useState({ min: 0, max: 0, state: false });
+    const [category, setCategory] = useState({ value: "", state: false });
     const [color, setColor] = useState({value: [], state: false})
     const [brand, setBrand] = useState({ value: [], state: false });
     const [size, setSize] = useState({value: [], state: false });
@@ -167,7 +168,7 @@ function SideBar() {
             
             <section className="max-w-full min-w-full flex flex-col items-center justify-between  bg-red border border-gray-300 px-3 p-4 gap-[20px] mt-[10px]">
                 <div className='flex w-full items-center justify-between'>
-                    <p>Rəng</p>
+                    <p>Ölçü</p>
                     <img
                         src={bottom}
                         alt=""
@@ -176,11 +177,63 @@ function SideBar() {
                     />
                 </div>  
 
-                <div className='w-full grid grid-cols-4 p-3'>
-
+                <div className={`w-full grid-cols-4 p-3 gap-[4px] ${size.state ? "grid" : "hidden"}`}>
+                    {
+                        sizes.map((sz, index) => {
+                            return (
+                                <div 
+                                    className={`cursor-pointer animate flex items-center justify-center text-gray-500 border border-gray-100 py-1 px-2 rounded-md text-[13px] transition-all duration-300  ${size.value.some(s => s == sz) ? "bg-[#fb7b6d] text-white" : 'bg-white text-gray-500'}`} 
+                                    onClick={e => HandleSize(e, sz)}
+                                    key={index}>
+                                    
+                                    {sz}
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
             </section>
+
+
+            <section className="max-w-full min-w-full flex flex-col items-center justify-between  bg-red border border-gray-300 px-3 p-4 gap-[20px] mt-[10px]">
+                <div className='flex w-full items-center justify-between'>
+                    <p>Kateqoriyalar</p>
+                    <img
+                        src={bottom}
+                        alt=""
+                        onClick={() => setCategory({...category, state : !category.state})}
+                        className={`${category.state ? "rotate" : "rotateb"}`}
+                    />
+                </div>  
+
+                <form className={`w-full flex flex-col p-3 gap-[4px] animate ${category.state ? "flex" : "hidden"}`}>
+                    {
+                        ParentCategories.map((ctg, index) => {
+                            return (
+                                <div className='flex items-center w-full justify-start gap-[7px]' key={index}>
+                                    <input 
+                                        type="radio"
+                                        name="category"
+                                        id={ctg} 
+                                        value={ctg} 
+                                        onChange={e => setCategory({...category, value: e.target.value})}
+                                        className="appearance h-4 w-4 border border-gray-500 rounded-full checked:bg-gray-500 checked:border-transparent focus:outline-none"
+                                        />
+                                    <input name="color" type="radio"
+        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+        id="black" />
+                                    <label htmlFor={ctg} className='text-gray-500 text-[14px]'>{ctg}</label>
+                            
+                                </div>
+                            )
+                        })
+                    }
+                </form>
+
+            </section>
+
+            
 
         </aside>
     );

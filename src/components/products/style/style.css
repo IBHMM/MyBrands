@@ -35,6 +35,22 @@
     }
 }
 
+@keyframes Size {
+    from {
+        background-color: #fff;
+    }
+    to {
+        background-color: #6dc9fb;
+        color: white;
+    }
+}
+
+.size {
+    background-color: white;
+    animation: size 2s ease-out alternate;
+    animation-fill-mode: forwards;
+}
+
 .expandd {
     animation: expand 2s ease-out alternate;
     animation-fill-mode: forwards;
