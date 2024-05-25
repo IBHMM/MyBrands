@@ -104,5 +104,25 @@ export const ParentCategories = [
     "Sabun"
 ];
 
-
+export const childs = [
+    "Koftalar",
+    "Qısaqol köynəklər",
+    "Gödəkçələr",
+    "Jiletlər",
+    "Şalvarlar",
+    "Svitşot",
+    "Kardiqanlar",
+    "Sviterlər",
+    "Hudilər",
+    "Polo",
+    "Leqqinslər",
+    "Maykalar",
+    "Alt paltarları",
+    "Pijamalar",
+    "Klassik köynəklər",
+    "Gündəlik şalvarlar",
+    "Klassik şalvarlar",
+    "Tərliklər",
+    "Pencəklər"
+];
 
