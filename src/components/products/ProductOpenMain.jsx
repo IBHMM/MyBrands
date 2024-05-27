@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import greentruck from '../../assets/products/greentruck.png'
 import right from '../../assets/home/rightT.png'
 import card from '../../assets/products/card.png'
 import like from '../../assets/products/like.png'
+import addProduct from '../../features/User/UserSlice'
+import RatingSize from "./Layout/Rating";
 
 function ProductOpenMain() {
     const product = useSelector(state => state.user.ActiveProduct);
 
     return (
-        <section className="w-[80%] max-[1200px]:w-[90%] flex flex-col items-start justify-start px-3 py-2 max-h-[611px] mt-[50px]">
+        <section className="w-[80%] max-[1200px]:w-[90%] flex flex-col items-start justify-start px-3 py-2  mt-[50px]">
             <ProductOrderPart product={product}/>
             <AboutProduct product={product}/>
         </section>        
@@ -21,8 +23,7 @@ function ProductOrderPart({product}) {
     const [activesrc, setActiveSrc] = useState(product.images[0]);
     const [activecolor, setActiveColor] = useState(product.images[0]);
     const [activesize, setActiveSize] = useState({size: '', aviable: ''})
-
-    console.log(activesize)
+    const dispatch = useDispatch();
 
     return (
         <section className="w-full flex items-center justify-start px-3 py-2 max-h-full">
@@ -45,6 +46,7 @@ function ProductOrderPart({product}) {
             <section className="flex flex-col w-[612px] items-start justify-start h-[611px]">
                 <p className="text-[16px] text-[#9B96B7]">{product.brand}</p>
                 <p className="text-[20px] text-[#292D32]">{product.title}</p>
+                <RatingSize value={product.rating}/>
                 <p className="text-[24px] text-[#292D32]">{product.price} AZN</p>
                 
                 <div className="w-[400px] h-[77px] border border-[#14AE5C] bg-[#14AE5C] bg-opacity-5 flex flex-col items-start justify-center pl-5 mt-[30px]">
@@ -117,9 +119,21 @@ function ProductOrderPart({product}) {
 
 
 function AboutProduct({product}) {
+    console.log(product)
     return (
-        <section className="w-[80%] max-[1200px]:w-[90%] flex items-center justify-start px-3 py-2">
-            About
+        <section className="w-full flex flex-col items-center justify-start ">
+            <div className="w-full text-[20px]">
+                Məhsul haqqında
+            </div>
+            <div className="w-full flex flex-col items-start justify-start">
+                <p className="text-[18px] py-3">Məhsulun kodu: {product.sku}</p>
+                <ul className="text-[#484C52] text-[16px]">
+                    <li>- {product.description}</li>
+                    <li>- {product.title}</li>
+                    <li>- {product.category}</li>
+                    <li>- {product.brand}</li>
+                </ul>
+            </div>
         </section>
     )
 }
