@@ -5,8 +5,10 @@ import Footer from "../../components/home/Layout/Footer";
 import Navbar from '../../components/home/Layout/Navbar';
 import ProductOpenMain from "../../components/products/ProductOpenMain";
 import WisitedPages from "../../components/home/Layout/WisitedPages";
+import { useSelector } from "react-redux";
 
 function ProductCard() {
+    const product = useSelector(state => state.user.ActiveProduct);
 
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -23,7 +25,6 @@ function ProductCard() {
                     <Navbar />
                     <WisitedPages pages={['home', 'product']}/>
                     <ProductOpenMain />
-                    {/* <SimilarProducts /> */}
                     <Footer />
                 </section>
                     :

@@ -19,6 +19,7 @@ import About from './pages/Home/About'
 import CustomerService from './pages/Profile/Customerservices'
 import Product from './pages/Products/Product'
 import ProductCard from './pages/Products/Card'
+import UserCard from './pages/Profile/UserCard'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
               <Route path='/profile/userinfo' element={<UserInformation />} />
               <Route path='/profile/paymentdelivery' element={<PaymentDelivery />} />
               <Route path='/profile/CustomerService' element={<CustomerService />} />
+              <Route path='/profile/Card' element={<UserCard />} />
               <Route path='/home/about' element={<About />} />
               <Route path='/products' element={<Product />} />
               <Route path='/products/product' element={<ProductCard />} />

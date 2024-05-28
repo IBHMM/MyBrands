@@ -83,3 +83,14 @@
     border-radius: 50%;
     border: 2px solid #ccc;
 }
+
+.custom {
+    display: flex;
+}
+
+
+@media (max-width: 799px) {
+    .custom {
+      display: none;
+    }
+}

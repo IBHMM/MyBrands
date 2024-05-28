@@ -38,30 +38,30 @@ function Card({ product }) {
     return (
       <section 
 
-        className="my-4 relative w-[24%] min-w-[230px] max-h-[320px ] flex flex-col items-center justify-start bg-[#f4f4f68b] border border-gray-100 max-[768px]:min-w-[180px] max-[768px]:max-h-[300px]">
+        className="my-4 relative max-w-[294px] min-w-[230px] max-h-[390px] flex flex-col items-center justify-center bg-[#f4f4f68b] border border-gray-100 max-[500px]:min-w-[180px] max-[500px]:max-h-[300px]">
         
         <section 
             onClick={e => HandleCard(e)}
-            className="w-full max-h-[240px] max-[768px]:max-h-[200px]">
+            className="w-full max-h-[240px] max-[500px]:max-h-[200px]">
           <Link to={'/products/product'}>
-            <img src={product.images[0]} alt="" className="max-h-[240px] min-[768px]:min-h-[240px] max-[768px]:min-h-[200px] w-full max-[768px]:max-h-[200px]"/>
+            <img src={product.images[0]} alt="" className="max-h-[240px] min-[500px]:min-h-[240px] max-[500px]:min-h-[200px] w-full max-[500px]:max-h-[200px]"/>
           </Link>
           <button
             id='possitive1'
-            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[768px]:hidden`}
+            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[500px]:hidden`}
             onClick={e => handleLike(product, liked)}
           >
             <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-5 h-5" />
           </button>
         </section>
 
-        <div className="relative  flex flex-col justify-center items-start w-full h-[80px] pl-2 py-2 max-[768px]:max-h-[100px]">
+        <div className="relative  flex flex-col justify-center items-start w-full pl-2 py-2 max-[500px]:max-h-[100px]">
           <p className='text-[20px]'>{product.category}</p>
           <p className="text-xs text-gray-500">{product.title}</p>
           <p className="text-red-500">{product.price}$</p>
           <button
             id='possitive2'
-            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[768px]:block`}
+            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[500px]:block`}
             onClick={e => handleLike(product, liked)}
           >
             <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />

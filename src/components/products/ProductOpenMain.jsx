@@ -7,14 +7,16 @@ import like from '../../assets/products/like.png'
 import { removeProduct, addProduct } from "../../features/User/UserSlice";
 import RatingSize from "./Layout/Rating";
 import liked from '../../assets/products/likedC.png';
+import Card from '../../components/home/Layout/Card'
 
 function ProductOpenMain() {
     const product = useSelector(state => state.user.ActiveProduct);
 
     return (
-        <section className="w-[80%] max-[1200px]:w-[90%] flex flex-col items-start justify-start px-3 py-2  mt-[50px]">
+        <section className="w-[80%] max-[1200px]:w-[100%] flex flex-col items-start justify-start px-3 py-2  mt-[50px]">
             <ProductOrderPart product={product}/>
             <AboutProduct product={product}/>
+            <SimilarProducts product={product}/>
         </section>        
     )
 }
@@ -40,9 +42,9 @@ function ProductOrderPart({product}) {
 
 
     return (
-        <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[1100px]:flex-col">
+        <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[800px]:flex-col max-[800px]:w-full gap-[10px]">
 
-            <section className="flex items-center justify-between min-w-[609px] max-[1100px]:w-full">
+            <section className="flex items-center justify-between w-full min-[800]:w-[60%]">
                 <section className="flex flex-col items-start justify-start gap-[10px] h-[611px] max-[1300px]:hidden">
                     {
                         product.images.map((src, index) => {
@@ -52,28 +54,43 @@ function ProductOrderPart({product}) {
                         })
                     }
                 </section>
-                <section className="flex w-full items-center justify-center overflow-x-auto">
 
-                    <img src={activesrc} alt="" className="min-[1100px]:w-[506px] h-[611px] max-[1100px]:max-w-full max-[1100px]:hidden" />
-                    <div className="flex w-full h-full items-center justify-start min-[1100px]:hidden">
-                        {
-                            product.images.map((picture, index) => {
-                                return (
-                                    <img src={picture} key={index}/>
-                                )
-                            }) 
-                        }
-                    </div>
+                <section className="w-full items-center justify-evenly overflow-x-auto hidden max-[1300px]:flex">
+
+                    {
+                        product.images.map((img, index) => {
+                            return (
+                                <img src={img} alt="" className="min-[800px]:h-[611px] h-[500px] w-full" />                
+                            )
+                        })
+                    }
+                
                 </section>
+
+                <section className="flex w-full items-center justify-evenly overflow-x-auto max-[1300px]:hidden">
+                    <img src={activesrc} alt="" className="min-[800px]:h-[611px] h-[500px] w-full" />                
+                </section>
+
+
+
             </section>
 
-            <section className="w-full flex flex-col items-start justify-start h-[611px]">
-                <p className="text-[16px] text-[#9B96B7]">{product.brand}</p>
-                <p className="text-[20px] text-[#292D32]">{product.title}</p>
-                <RatingSize value={product.rating}/>
-                <p className="text-[24px] text-[#292D32]">{product.price} AZN</p>
+            <section className="w-full min-[800]:w-[40%] flex flex-col items-start justify-center h-[611px]">
                 
-                <div className="w-[340px] h-[77px] border border-[#14AE5C] bg-[#14AE5C] bg-opacity-5 flex flex-col items-start justify-center pl-5 mt-[30px]">
+                <div className="w-full flex flex-col  items-start justify-center max-[800px]:flex-col-reverse">
+                    <p className="text-[16px] text-[#9B96B7]">{product.brand}</p>
+                    <p className="text-[20px] text-[#292D32]">{product.title}</p>
+                    <RatingSize value={product.rating}/>
+                    <div className="flex items-center justify-between w-full">
+                        <p className="text-[24px] text-[#292D32]">{product.price} AZN</p>
+                        <button className={` hidden max-[800px]:flex items-center justify-center w-[48px] h-[48px] transition-all duration-300 hover:scale-80 ${isliket ? 'border-[0px] bg-white' : 'flex'}`} onClick={HandleLike}>
+                            <img src={isliket ? liked : like} alt="" />
+                        </button>
+                    </div>
+                    
+                </div>
+                
+                <div className="max-w-[340px] h-[77px] border border-[#14AE5C] bg-[#14AE5C] bg-opacity-5 flex flex-col items-start justify-center p-10 mt-[30px]">
                     <div className="flex items-center gap-[10px]">
                         <p className="text-[#14AE5C] text-[18px]">Pulsuz çatdırılma!</p>
                         <img src={greentruck} alt="" />
@@ -105,7 +122,7 @@ function ProductOrderPart({product}) {
                                 <img src={right} alt="" className="w-[8px] flex items-center justify-center"/>
                             </button>
                         </div>
-                        <div className="w-full flex items-center justify-between">
+                        <div className="w-full max-w-[500px] flex items-center justify-between">
                             {
                                 temp.map((size, index) => {
                                     return (
@@ -127,14 +144,17 @@ function ProductOrderPart({product}) {
                 </div>
 
                 <div className="flex items-center justify-between w-full h-10 mt-[30px] gap-[10px]">
-                    <button className="w-[90%] h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] text-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
+                    <button className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
                         <img src={card} alt="" />
-                        {'Səbətə əlavə et'.toUpperCase()}
+                        {'SƏBƏTƏ ƏLAVƏ ET'}
                     </button>
-                    <button className={`border border-[#ECECEE] flex items-center justify-center bg-[#FAFAFA] w-[48px] h-[48px] transition-all duration-300 hover:scale-80 ${isliket ? 'border-[0px] bg-white' : 'flex'}`} onClick={HandleLike}>
+                    <button className={`custom items-center justify-center w-[48px] h-[48px] transition-all duration-300 hover:scale-80`} onClick={HandleLike}>
                         <img src={isliket ? liked : like} alt="" />
                     </button>
                 </div>
+
+
+                
             </section>
 
         </section>
@@ -143,7 +163,8 @@ function ProductOrderPart({product}) {
 
 
 function AboutProduct({product}) {
-    console.log(product)
+
+
     return (
         <section className="w-full flex flex-col items-center justify-start ">
             <div className="w-full text-[20px]">
@@ -160,6 +181,24 @@ function AboutProduct({product}) {
             </div>
         </section>
     )
+}
+
+function SimilarProducts({product}) {
+
+    const produ = useSelector(state => state.user.wishlist);
+
+    return (
+        <section className="relative flex flex-col justify-center items-center w-full mt-[70px] gap-[30px] overflow-auto">
+            <div className="flex items-center justify-between w-full">
+                <p className="text-[30px]">Bənzər məhsullar</p>
+            </div>
+            <div className="flex items-center justify-between w-full overflow-y-auto gap-[18px] max-[500px]:gap-3">
+                {produ.map((item, idx) => (
+                    <Card product={item} key={idx} />
+                ))}
+            </div>
+        </section>
+    );
 }
 
 
