@@ -18,7 +18,7 @@ async function TakeUserWishList() {
 
 async function TakeUserCard() {
     try {
-        const response = await axios.get('https://dummyjson.com/products', {
+        const response = await axios.get('https://dummyjson.com/carts/1', {
             params: {
                 limit: 2,
                 skip: 10,

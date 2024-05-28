@@ -43,7 +43,7 @@ function Navbar() {
                         {wishlistL} 
                     </div>
                 </Link>
-                <Link href="" className='flex gap-[10px] items-center justify-center'>
+                <Link to={'/profile/Card'} className='flex gap-[10px] items-center justify-center'>
                     <img className="" src={Card} alt="" />
                     Sebet
                 </Link>
