@@ -8,7 +8,8 @@ const initialState = {
   name: "Ibrahim",
   loading: false,
   error: null,
-  ActiveProduct: {}
+  ActiveProduct: {},
+  gender: ""
 };
 
 export const userSlice = createSlice({
@@ -23,6 +24,9 @@ export const userSlice = createSlice({
     },
     addProducttocard: (state, action) => {
       state.userCard.push(action.payload);
+    },
+    UpdateProductcard: (state, action) => {
+        state.userCard = [...action.payload];
     },
     removeProductfromcard: (state, action) => {
       state.userCard = state.userCard.filter(product => product.id !== action.payload.id);
@@ -40,10 +44,13 @@ export const userSlice = createSlice({
     },
     setProduct : (state, action) => {
       state.ActiveProduct = action.payload;
+    },
+    setGender : (state, action) => {
+      state.gender = action.payload;
     }
   }
 });
 
-export const { addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard } = userSlice.actions;
+export const { addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard, UpdateProductcard, setGender } = userSlice.actions;
 
 export default userSlice.reducer;

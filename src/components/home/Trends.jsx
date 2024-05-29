@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Card from "./Layout/Card";
+import { useSelector } from "react-redux";
 
 function Trends() {
     
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const gender = useSelector(state => state.user.gender);
 
     useEffect(() => {
         fetch('https://dummyjson.com/products')

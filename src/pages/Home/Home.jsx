@@ -50,8 +50,6 @@ function Home() {
         }, 2000)
     }, [])
 
-    console.log(start)
-
     return (
         <>
             {

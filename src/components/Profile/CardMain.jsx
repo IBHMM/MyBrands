@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import greentruck from '../../assets/products/greentruck.png'
 import like from '../../assets/products/like.png'
 import bin from '../../assets/products/bin.png'
+import redM from '../../assets/products/redminus.png'
+import blackM from '../../assets/products/blackminus.png'
+import redplus from '../../assets/products/redplus.png'
+import { UpdateProductcard } from "../../features/User/UserSlice";
 
 function CardMain() {
 
     const card = useSelector(state => state.user.userCard);
     const [totalCost, setTotalCost] = useState();
     const [productcost, setProductCost] = useState();
-
+    const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let total = 0;
@@ -24,8 +29,31 @@ function CardMain() {
             setTotalCost(Math.round(total) + 50)
             setProductCost(Math.round(total))
         }
-    })
+    }, [card])
 
+
+    const HandleCard = (e, order, type) => {
+        const newCard = card.filter(ord => ord);
+        console.log(order.quantity)
+        if (type == 1 && order.quantity > 1)
+        {
+            newCard.forEach((ord, index) => {
+                if (ord.title == order.title) {
+                    ord.quantity = ord.quantity + 1;
+                }
+            });
+            dispatch(UpdateProductcard(newCard))
+        }
+        else if (type == 2) 
+        {
+            newCard.forEach((ord, index) => {
+                if (ord.title == order.title) {
+                    ord.quantity = ord.quantity + 1;
+                }
+            });
+            dispatch(UpdateProductcard(newCard))
+        }
+    }
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
@@ -67,7 +95,27 @@ function CardMain() {
                                                     }
                                                 </div>
                                             </div>
-                                            <div></div>
+                                            <div className="flex items-center justify-end gap-[30px] pr-5">
+                                                    <div className="flex flex-col items-center justify-center">
+                                                        <div className="flex items-center justify-center">
+                                                            <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90" onClick={e => HandleCard(e, order, 1)}>
+                                                                <img src={minuscolor} alt="" />
+                                                            </div>
+                                                            <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90">
+                                                                {order.quantity}
+                                                            </div>
+                                                            <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90"  onClick={e => HandleCard(e, order, 1)}>
+                                                                <img src={redplus} alt="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <img src={bin} alt="" />
+                                                    </div>
+                                                    <div>
+                                                        <img src={like} alt="" />
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
                                 )
