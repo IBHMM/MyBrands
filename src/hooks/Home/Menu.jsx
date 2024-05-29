@@ -6,9 +6,10 @@ export default function useNavbar() {
     const [search, setSearch] = useState(false);
     const menu = useSelector(state => state.home.menu)
     const wishlistL = useSelector(state => state.user.wishlist).length;
+    const usercard = useSelector(state => state.user.userCard).length;
     const dispatch = useDispatch()
 
     return {
-        search, menu, setSearch, dispatch, setPages, wishlistL
+        search, menu, setSearch, dispatch, setPages, wishlistL, usercard
     }
 }

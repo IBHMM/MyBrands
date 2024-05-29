@@ -17,7 +17,7 @@ function Trends() {
             <div className="flex items-center justify-between w-full">
                 <p className="text-[30px]">Hazirda trend</p>
             </div>
-            <div className="flex items-center justify-start w-full overflow-y-auto gap-[47px] max-[898px]:justify-center max-[500px]:justify-evenly max-[500px]:gap-3">
+            <div className="flex items-center justify-between  w-full overflow-y-auto gap-[47px] max-[500px]:gap-3">
                 {data.map((item, idx) => (
                     <Card product={item} key={idx} />
                 ))}

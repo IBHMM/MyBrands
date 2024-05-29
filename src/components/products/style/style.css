@@ -35,6 +35,22 @@
     }
 }
 
+@keyframes Size {
+    from {
+        background-color: #fff;
+    }
+    to {
+        background-color: #6dc9fb;
+        color: white;
+    }
+}
+
+.size {
+    background-color: white;
+    animation: size 2s ease-out alternate;
+    animation-fill-mode: forwards;
+}
+
 .expandd {
     animation: expand 2s ease-out alternate;
     animation-fill-mode: forwards;
@@ -58,4 +74,23 @@
 
 .z {
     z-index: 10;
+}
+
+.radio-circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.custom {
+    display: flex;
+}
+
+
+@media (max-width: 799px) {
+    .custom {
+      display: none;
+    }
 }

@@ -18,7 +18,7 @@ function BestSellers() {
             <div className="flex items-center justify-between w-full ">
                 <p className="text-[30px]">En cox Satilanlar</p>
             </div>
-            <div className="flex items-center justify-between w-full overflow-y-auto gap-[47px] max-[898px]:justify-center max-[500px]:justify-evenly max-[500px]:gap-3">
+            <div className="flex items-center justify-between w-full overflow-y-auto gap-[47px]  max-[500px]:gap-3">
                 {data != undefined && data.map((item, idx) => (
                     <Card product={item} key={idx} />
                 ))}

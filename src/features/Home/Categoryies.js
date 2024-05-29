@@ -17,7 +17,7 @@ export const homeSlice = createSlice({
         },
         setMenu: (state, action) => {
             state.menu = action.payload
-        }
+        },
     },
 })
 
