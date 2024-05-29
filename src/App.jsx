@@ -28,7 +28,7 @@ function App() {
     <Provider store={store}>
       <>
           <Routes>
-              <Route path='/home/genders' element={<TakeGender />}/>
+              <Route path='/' element={<TakeGender />}/>
               <Route path='/home' element={<Home />}/>
               <Route path='/signin' element={<Signin />} />
               <Route path='/forget' element={<ForgetPassword />} />
