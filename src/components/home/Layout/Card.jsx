@@ -29,7 +29,6 @@ function Card({ product }) {
 
     const HandleCard = e => {
       if(e.target.id != 'possitive1' || e.target.id != 'possitive2'){
-        e.pereventDefault;
         dispatch(setProduct(product))
       }
     }
@@ -42,8 +41,8 @@ function Card({ product }) {
         
         <section 
             onClick={e => HandleCard(e)}
-            className="w-full max-h-[240px] max-[500px]:max-h-[200px]">
-          <Link to={'/products/product'}>
+            className="w-full max-h-[240px] max-[500px]:max-h-[230px]">
+          <Link to={`/products/product?id=${product.id}`}>
             <img src={product.images[0]} alt="" className="max-h-[240px] min-[500px]:min-h-[240px] max-[500px]:min-h-[200px] w-full max-[500px]:max-h-[200px]"/>
           </Link>
           <button
@@ -55,7 +54,7 @@ function Card({ product }) {
           </button>
         </section>
 
-        <div className="relative  flex flex-col justify-center items-start w-full pl-2 py-2 max-[500px]:max-h-[100px]">
+        <div className="relative  flex flex-col justify-center items-start w-full pl-2 py-2 max-[500px]:max-h-[120px]">
           <p className='text-[20px]'>{product.category}</p>
           <p className="text-xs text-gray-500">{product.title}</p>
           <p className="text-red-500">{product.price}$</p>

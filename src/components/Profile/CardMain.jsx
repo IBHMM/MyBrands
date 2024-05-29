@@ -8,14 +8,24 @@ function CardMain() {
 
     const card = useSelector(state => state.user.userCard);
     const [totalCost, setTotalCost] = useState();
+    const [productcost, setProductCost] = useState();
 
-    console.log(card)
 
     useEffect(() => {
-        let cost = 0;
-        card.forEach(element => cost += element.price);
-        setTotalCost(cost); 
-    }, [])
+        let total = 0;
+        card.forEach(element => {
+            total += element.total;
+        });
+
+        if(total > 100) {
+            setTotalCost(Math.round(total))
+            setProductCost(Math.round(total))
+        }else {
+            setTotalCost(Math.round(total) + 50)
+            setProductCost(Math.round(total))
+        }
+    })
+
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
@@ -37,12 +47,25 @@ function CardMain() {
                                 return (
                                     <div className="flex h-[130px] border border-[#F4F4F6] w-full" key={index}>
                                         <div className="bg-[#F9F8FC] flex items-center justify-center h-full w-[96px]">
-                                            <img src={order.images[0]} alt="" className="w-full h-full"/>
+                                            <img src={order.thumbnail} alt="" className="w-full h-full"/>
                                         </div>
-                                        <div className="w-full flex items-center justify-between  pl-3"> 
-                                            <div className="flex flex-col items-start justify-between">
+                                        <div className="w-full flex items-center justify-between pl-3"> 
+                                            <div className="flex flex-col items-start justify-between gap-[10px]">
                                                 <p>{order.title}</p>
-                                                <p className="text-[#F84568]">{order.price} AZN</p>
+                                                <div className="w-full flex items-center justify-start gap-[10px]">
+                                                    <p className="text-[#F84568]">{order.price} AZN</p>
+                                                    {
+                                                        (order.discountPercentage > 0) && 
+                                                        <>
+                                                            <p className="text-[13px] text-[#9B96B7] line-through">
+                                                                {order.price*order.discountPercentage / 100}
+                                                            </p>
+                                                            <p className="text-[#F84568]">
+                                                                {order.discountPercentage}%
+                                                            </p>
+                                                        </>
+                                                    }
+                                                </div>
                                             </div>
                                             <div></div>
                                         </div>
@@ -62,7 +85,7 @@ function CardMain() {
                             Məhsulun dəyəri:
                         </p>
                         <p className="text-[16px] text-[#9B96B7]">
-                            {totalCost} AZN
+                            {productcost} AZN
                         </p>
                     </div>
                     <div className="w-full flex flex-col  gap-[20px] items-center justify-between p-5 border-t-[1px] border-[#F4F4F6]">
@@ -73,6 +96,7 @@ function CardMain() {
                             <p className="text-[20px] text-[#F84568]">
                                 {totalCost} AZN
                             </p>
+
                         </div>
                         <div className="w-full flex items-center justify-center">
                             <button className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">

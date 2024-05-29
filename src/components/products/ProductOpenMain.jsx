@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import greentruck from '../../assets/products/greentruck.png'
 import right from '../../assets/home/rightT.png'
 import card from '../../assets/products/card.png'
 import like from '../../assets/products/like.png'
-import { removeProduct, addProduct } from "../../features/User/UserSlice";
+import { removeProduct, addProduct, addProducttocard } from "../../features/User/UserSlice";
 import RatingSize from "./Layout/Rating";
 import liked from '../../assets/products/likedC.png';
 import Card from '../../components/home/Layout/Card'
@@ -40,6 +40,11 @@ function ProductOrderPart({product}) {
         }
     }
 
+    const HandleAddCard = e => {
+        e.preventDefault();
+        dispatch(addProducttocard(product))
+    }
+
 
     return (
         <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[800px]:flex-col max-[800px]:w-full gap-[10px]">
@@ -60,7 +65,7 @@ function ProductOrderPart({product}) {
                     {
                         product.images.map((img, index) => {
                             return (
-                                <img src={img} alt="" className="min-[800px]:h-[611px] h-[500px] w-full" />                
+                                <img src={img} alt="" className="min-[800px]:h-[611px] h-[500px] w-full max-[800px]:w-[50%]" />                
                             )
                         })
                     }
@@ -114,7 +119,7 @@ function ProductOrderPart({product}) {
                     </div>
                 </div>
 
-                <div className=" flex flex-col items-start justify-start gap-[15px] mt-[30px]">
+                <div className=" flex flex-col items-start justify-start gap-[15px] mt-[30px] w-full">
                         <div className="w-full flex items-center justify-between ">
                             <p className="text-[#292D32] text-[16px] font-semibold">Bədən:</p>
                             <button className="flex items-center justify-between gap-[7px] text-[14px] text-[#484C52]">
@@ -122,7 +127,7 @@ function ProductOrderPart({product}) {
                                 <img src={right} alt="" className="w-[8px] flex items-center justify-center"/>
                             </button>
                         </div>
-                        <div className="w-full max-w-[500px] flex items-center justify-between">
+                        <div className="w-[400px] max-[800px]:w-full flex items-center justify-between">
                             {
                                 temp.map((size, index) => {
                                     return (
@@ -144,7 +149,7 @@ function ProductOrderPart({product}) {
                 </div>
 
                 <div className="flex items-center justify-between w-full h-10 mt-[30px] gap-[10px]">
-                    <button className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
+                    <button className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90" onClick={e => HandleAddCard(e)}>
                         <img src={card} alt="" />
                         {'SƏBƏTƏ ƏLAVƏ ET'}
                     </button>
@@ -185,7 +190,13 @@ function AboutProduct({product}) {
 
 function SimilarProducts({product}) {
 
-    const produ = useSelector(state => state.user.wishlist);
+    const [similar, setSimilar] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://dummyjson.com/products/category/${product.category}`)
+            .then(res => res.json())
+            .then(json => setSimilar(json.products));
+    }, [])
 
     return (
         <section className="relative flex flex-col justify-center items-center w-full mt-[70px] gap-[30px] overflow-auto">
@@ -193,7 +204,7 @@ function SimilarProducts({product}) {
                 <p className="text-[30px]">Bənzər məhsullar</p>
             </div>
             <div className="flex items-center justify-between w-full overflow-y-auto gap-[18px] max-[500px]:gap-3">
-                {produ.map((item, idx) => (
+                {similar.map((item, idx) => (
                     <Card product={item} key={idx} />
                 ))}
             </div>

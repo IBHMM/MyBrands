@@ -5,7 +5,6 @@ const initialState = {
   wishlist: await TakeUserWishList(),
   userCard: await TakeUserCard(),
   visitedPages: ["Ana səhifə"],
-  card: [],
   name: "Ibrahim",
   loading: false,
   error: null,
