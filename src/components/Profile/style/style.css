@@ -28,3 +28,19 @@
 .zindex {
     z-index: 10000000;
 }
+
+.cardbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  @media (max-width: 1147px) {
+    .cardbox {
+      flex-direction: column;
+      gap: 0;
+      align-items: flex-start;
+      justify-content: start;
+    }
+  }
