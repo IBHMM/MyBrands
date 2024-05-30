@@ -59,7 +59,7 @@ function Home() {
                     <Navbar />
                     <Categories />
                     {
-                        category != null  && <CategorieDropdown />
+                        category != ""  && <CategorieDropdown />
                     }
                     <Shorts />
                     <Carusel images={images}/>

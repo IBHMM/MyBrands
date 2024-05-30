@@ -5,7 +5,7 @@ import WisitedPages from '../../components/home/Layout/WisitedPages'
 import OrderMain from '../../components/Profile/OrdersMain.jsx'
 
 
-function OrderMain () {
+function Orders () {
 
     return (
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
@@ -20,4 +20,4 @@ function OrderMain () {
 
 
 
-export default OrderMain;
+export default Orders;

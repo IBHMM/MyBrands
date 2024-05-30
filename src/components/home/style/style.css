@@ -135,4 +135,18 @@
 
   .z {
     z-index: 10000000000;
+  } 
+
+  @keyframes a {
+      from {
+        transform: scale(0);
+      }
+      to{
+        transform: scale(100);
+      }
+  }
+
+  .toggle {
+    animation: a easy-in-out 1s;
+    animation-fill-mode: backwards;
   }

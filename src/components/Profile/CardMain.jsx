@@ -14,16 +14,13 @@ import info from '../../assets/products/info.png'
 function CardMain() {
 
     const card = useSelector(state => state.user.userCard);
-    const wishlist = useSelector(state => state.user.wishlist);
     const [totalCost, setTotalCost] = useState();
     const [productcost, setProductCost] = useState();
-    const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         let total = 0;
         card.forEach(element => {
-            total += element.total;
+            total += element.price * element.quantity;
         });
 
         if(total > 100) {
@@ -33,35 +30,8 @@ function CardMain() {
             setTotalCost(Math.round(total) * 20 / 100)
             setProductCost(Math.round(total))
         }
-    }, [card])
+    }, [card]);
 
-
-    const HandleCard = (e, order, type) => {
-        const newCard = card.filter(ord => ord);
-        console.log(order.quantity)
-        if (type == 1 && order.quantity > 1)
-        {
-            newCard.forEach((ord, index) => {
-                if (ord.title == order.title) {
-                    ord.quantity = ord.quantity + 1;
-                }
-            });
-            dispatch(UpdateProductcard(newCard))
-        }
-        else if (type == 2) 
-        {
-            newCard.forEach((ord, index) => {
-                if (ord.title == order.title) {
-                    ord.quantity = ord.quantity + 1;
-                }
-            });
-            dispatch(UpdateProductcard(newCard))
-        }
-    }
-
-    const HandleDelete = (e, order) => {
-        dispatch(removeProductfromcard(order))
-    }
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
@@ -84,84 +54,7 @@ function CardMain() {
                             {
                                 card.map((order, index) => {
                                     return (
-                                        <div className="flex flex-col min-h-[130px] border border-[#F4F4F6] w-full" key={index}>
-                                            <div className="flex h-[130px]  w-full" key={index}>
-                                                <div className="bg-[#F9F8FC] flex items-center justify-center h-full min-w-[96px]">
-                                                    <img src={order.thumbnail} alt="" className="w-full h-full"/>
-                                                </div>
-                                                <div className="w-full flex items-center justify-between pl-3"> 
-                                                    <div className="flex flex-col items-start justify-between gap-[10px]">
-                                                        <p className="max-[800px]:text-[12px]">{order.title}</p>
-                                                        <div className="w-full flex items-center justify-start gap-[10px]">
-                                                            <p className="text-[#F84568] max-[800px]:text-[12px]">{order.price} AZN</p>
-                                                            {
-                                                                (order.discountPercentage > 0) && 
-                                                                <>
-                                                                    <p className="text-[13px] text-[#9B96B7] line-through max-[800px]:text-[10px]">
-                                                                        {Math.round(order.price * order.discountPercentage / 100)}
-                                                                    </p>
-                                                                    <p className="text-[#F84568] max-[800px]:text-[12px]">
-                                                                        {Math.round(order.discountPercentage)}%
-                                                                    </p>
-                                                                </>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex items-center justify-end gap-[30px] pr-5">
-                                                            
-                                                            <div className="flex flex-col items-center justify-center max-[1147px]:hidden">
-                                                                <div className="flex items-center justify-center">
-                                                                    <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90" onClick={e => HandleCard(e, order, 1)}>
-                                                                        <img src={minuscolor} alt="" />
-                                                                    </div>
-                                                                    <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90">
-                                                                        {order.quantity}
-                                                                    </div>
-                                                                    <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90"  onClick={e => HandleCard(e, order, 1)}>
-                                                                        <img src={redplus} alt="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="cardbox">
-                                                                <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => HandleDelete(e, order)}>
-                                                                    <img src={bin} alt="" className="w-[15px] h-[17px]"/>
-                                                                </div>
-                                                                <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]">
-                                                                                            {/* Make it id after */}
-                                                                    {
-                                                                        wishlist.some(p => p.title == order.title) ?
-                                                                        <img src={liked} alt="" className="w-[27px] h-[27px]" onClick={() => dispatch(removeProduct(order))}/> :
-                                                                        <img src={like} alt="" className="w-[17px] h-[17px]"  onClick={() => dispatch(addProduct(order))}/> 
-                                                                    }
-                                                                </div>
-                                                            </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="hidden max-[1147px]:flex items-center justify-end border border-t-[1px] py-1">
-                                                <div className="flex  items-center justify-between w-full">
-                                                    <div className="flex items-center justify-center gap-[10px] px-3">
-                                                        <img src={info} alt="" />
-                                                        <p className="text-[14px] text-[#484C52]">
-                                                            Son 3 məhsul
-                                                        </p>
-                                                    </div>
-                                                    <div className="flex items-center justify-center">
-                                                        <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90 rounded-l-[20px]" onClick={e => HandleCard(e, order, 1)}>
-                                                            <img src={minuscolor} alt="" />
-                                                        </div>
-                                                        <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF] w-[40px] ">
-                                                            {order.quantity}
-                                                        </div>
-                                                        <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300  hover:scale-110 active:scale-90 rounded-r-[20px]"  onClick={e => HandleCard(e, order, 1)}>
-                                                            <img src={redplus} alt="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <Order order={order} key={index} card={card}/>
                                     )
                                 })
                             }
@@ -216,6 +109,100 @@ function CardMain() {
 }
 
 
+function Order({ order, card }) {
+    const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
+    const [count, setCount] = useState(order.quantity);
+    const dispatch = useDispatch();
+    const wishlist = useSelector(state => state.user.wishlist);
+
+    const handleCardChange = (e, order, delta) => {
+        const newCount = count + delta;
+        if (newCount >= 0) {
+            setCount(newCount);
+            dispatch(UpdateProductcard({ ...order, quantity: newCount }));
+        }
+    };
+
+    const handleDelete = (e, order) => {
+        dispatch(removeProductfromcard(order));
+    };
+
+    return (
+        <div className="flex flex-col min-h-[130px] border border-[#F4F4F6] w-full" key={order.id}>
+            <div className="flex h-[130px] w-full" key={order.id}>
+                <div className="bg-[#F9F8FC] flex items-center justify-center h-full min-w-[96px]">
+                    <img src={order.thumbnail} alt={order.title} className="w-full h-full" />
+                </div>
+                <div className="w-full flex items-center justify-between pl-3">
+                    <div className="flex flex-col items-start justify-between gap-[10px]">
+                        <p className="max-[800px]:text-[12px]">{order.title}</p>
+                        <div className="w-full flex items-center justify-start gap-[10px]">
+                            <p className="text-[#F84568] max-[800px]:text-[12px]">{order.price} AZN</p>
+                            {order.discountPercentage > 0 && (
+                                <>
+                                    <p className="text-[13px] text-[#9B96B7] line-through max-[800px]:text-[10px]">
+                                        {Math.round(order.price * order.discountPercentage / 100)}
+                                    </p>
+                                    <p className="text-[#F84568] max-[800px]:text-[12px]">
+                                        {Math.round(order.discountPercentage)}%
+                                    </p>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-end gap-[30px] pr-5">
+                        <div className="flex flex-col items-center justify-center max-[1147px]:hidden">
+                            <div className="flex items-center justify-center">
+                                <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300 hover:scale-110 active:scale-90" onClick={e => handleCardChange(e, order, -1)}>
+                                    <img src={minuscolor} alt="Decrease" />
+                                </div>
+                                <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF] w-[40px] h-[40px] transition-all duration-300 hover:scale-110 active:scale-90">
+                                    {count}
+                                </div>
+                                <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300 hover:scale-110 active:scale-90" onClick={e => handleCardChange(e, order, 1)}>
+                                    <img src={redplus} alt="Increase" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cardbox">
+                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => handleDelete(e, order)}>
+                                <img src={bin} alt="Delete" className="w-[15px] h-[17px]" />
+                            </div>
+                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]">
+                                {wishlist.some(p => p.title === order.title) ? (
+                                    <img src={liked} alt="Remove from Wishlist" className="w-[27px] h-[27px]" onClick={() => dispatch(removeProduct(order))} />
+                                ) : (
+                                    <img src={like} alt="Add to Wishlist" className="w-[17px] h-[17px]" onClick={() => dispatch(addProduct(order))} />
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="hidden max-[1147px]:flex items-center justify-end border-t border-[1px] py-1">
+                <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center justify-center gap-[10px] px-3">
+                        <img src={info} alt="Info" />
+                        <p className="text-[14px] text-[#484C52]">
+                            Son 3 məhsul
+                        </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300 hover:scale-110 active:scale-90 rounded-l-[20px]" onClick={e => handleCardChange(e, order, -1)}>
+                            <img src={minuscolor} alt="Decrease" />
+                        </div>
+                        <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF] w-[40px]">
+                            {count}
+                        </div>
+                        <div className="flex items-center justify-center cursor-pointer bg-[#FAFAFA] w-[40px] h-[40px] transition-all duration-300 hover:scale-110 active:scale-90 rounded-r-[20px]" onClick={e => handleCardChange(e, order, 1)}>
+                            <img src={redplus} alt="Increase" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 
 export default CardMain;

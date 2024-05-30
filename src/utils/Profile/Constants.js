@@ -1,7 +1,7 @@
 import profile from '../../assets/profile/profile.png'
 import exit from '../../assets/profile/exit.png'
 import address from '../../assets/profile/address.png'
-import bonus from '../../assets/profile/bonus.png'
+// import bonus from '../../assets/profile/bonus.png'
 import liked from '../../assets/profile/liked.png'
 import payment from '../../assets/profile/payment.png'
 import questions from '../../assets/profile/questions.png'
@@ -14,14 +14,13 @@ import gears from '../../../public/texniki.svg'
 export const services = [
     { name: "İSTIFADECI MELUMATLARI", src: profile, address:  "/profile/userinfo"},
     { name: "ÜNVANLAR", src: address , address: "/profile/address"},
-    { name: "BONUS VƏ HƏDİYYƐ KARTLARI", src: bonus , address: ""},
     { name: "SEÇİLMİŞLƏR", src: liked , address: "/profile/liked"},
     { name: "ÖDƐNIŞ Ve ÇATDIRILMA", src: payment , address: "/profile/paymentdelivery"},
     { name: "TEZ-TEZ VERILEN SUALLAR", src: questions , address: "/profile/questions"},
     { name: "refund", src: refund , address: ""},
     { name: "Müştərİ Xİdmətlərİ", src: customerservice , address: "/profile/CustomerService"},
     { name: "REFERRAL PROGRAMI", src: referal , address: ""},
-    { name: "SİFARİŞLƏR", src: order , address: ""},
+    { name: "SİFARİŞLƏR", src: order , address: "/profile/order"},
     { name: "HESABDAN ÇIX", src: exit , address: ""},
 ];
 
@@ -196,6 +195,14 @@ const customerservices = [
     },
 ]
 
+const orderfilters = [
+    "Hamisi",
+    "Təslim edilən",
+    "Ləğv edilən",
+    "Davam edən"
+]
+
 export {paymentdeliverydata}
 export {questionsdata}
 export {customerservices}
+export {orderfilters}

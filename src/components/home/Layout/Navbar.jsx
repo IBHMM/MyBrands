@@ -13,10 +13,8 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
 
-    const {search, menu, setSearch, dispatch, setPages, wishlistL, usercard} = useNavbar();
+    const {search, menu, setSearch, dispatch, setPages, wishlistL, usercard, searchstr, setSearchstr} = useNavbar();
 
-    console.log(usercard)
-    
     return (
         <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>
             <Link to={'/home'}>
@@ -26,7 +24,7 @@ function Navbar() {
                 {
                     search ? 
                     <>
-                        <input type="text" name="" id="" placeholder='Metni daxil edin ...' className='w-[80%] h-[40px] border border-gray-300 focus:outline-none pl-2'/>
+                        <input type="text" name="" id="" placeholder='Metni daxil edin ...' className='w-[80%] h-[40px] border border-gray-300 focus:outline-none pl-2' onChange={e => setSearchstr(e.target.value)}/>
                         <div className='h-[40px] w-[50px] border border-gray-300 border-l-0 flex items-center justify-center' onClick={() => setSearch(!search)}>
                             <img src={Close} alt="" />
                         </div> 
@@ -58,7 +56,7 @@ function Navbar() {
             </div>
 
             {
-                search && <Search />
+                search && <Search search={searchstr}/>
             }
 
             {
