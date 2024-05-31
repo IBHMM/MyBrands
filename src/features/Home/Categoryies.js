@@ -3,8 +3,8 @@ import { TakeBrands, TakeCategories } from './Datafetch';
 
 const initialState = {
     ActiveCategory: null,
-    AllCategories: await TakeCategories(),
-    Brands: await TakeBrands(),
+    AllCategories: TakeCategories(),
+    Brands: TakeBrands(),
     menu: false
 }
 
