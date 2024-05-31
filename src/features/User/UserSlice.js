@@ -5,10 +5,12 @@ const initialState = {
   wishlist: await TakeUserWishList(),
   userCard: await TakeUserCard(),
   visitedPages: ["Ana səhifə"],
-  name: "Ibrahim",
+  name: "",
   loading: false,
   error: null,
-  ActiveProduct: {}
+  ActiveProduct: {},
+  gender: "",
+  address: []
 };
 
 export const userSlice = createSlice({
@@ -24,6 +26,10 @@ export const userSlice = createSlice({
     addProducttocard: (state, action) => {
       state.userCard.push(action.payload);
     },
+    UpdateProductcard: (state, action) => {
+      const index = state.userCard.findIndex(order => order.id == action.payload.id);
+      state.userCard[index] = action.payload;
+    },
     removeProductfromcard: (state, action) => {
       state.userCard = state.userCard.filter(product => product.id !== action.payload.id);
     },
@@ -38,12 +44,18 @@ export const userSlice = createSlice({
     setName: (state, action) => {
       state.name = action.payload;
     },
+    setAdr: (state, action) => {
+      state.address = action.payload;
+    },
     setProduct : (state, action) => {
       state.ActiveProduct = action.payload;
+    },
+    setGender : (state, action) => {
+      state.gender = action.payload;
     }
   }
 });
 
-export const { addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard } = userSlice.actions;
+export const { addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard, UpdateProductcard, setGender, setAdr } = userSlice.actions;
 
 export default userSlice.reducer;

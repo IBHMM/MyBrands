@@ -2,54 +2,33 @@ import adr from '../../assets/profile/address.png'
 import { Link } from 'react-router-dom'
 import GoBack from '../../assets/profile/goback.png';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import phone from '../../assets/profile/phone.png'
 import bin from '../../assets/profile/bin.png'
 import edit from '../../assets/profile/edit.png'
 import redadd from '../../assets/profile/redplus.png'
 import Adradd from './Layout/AddressAdd';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAdr } from '../../features/User/UserSlice';
 
 function AddressMain() {
 
-    const [address, setAddress] = useState([{
-        id: 1,
-        name: 'Ibrahim',
-        surname: 'Muradov',
-        telephone: "+994 70 738 84 53",
-        city: 'Baki',
-        address: "Yasamal ray, Ayaz Salayev Kuc."
-    },
-    {
-        id: 2,
-        name: 'Ibrahim',
-        surname: 'Muradov',
-        telephone: "+994 70 738 84 53",
-        city: 'Baki',
-        address: "Yasamal ray, Ayaz Salayev Kuc."
-    },
-    {
-        id: 3,
-        name: 'Ibrahim',
-        surname: 'Muradov',
-        telephone: "+994 70 738 84 53",
-        city: 'Baki',
-        address: "Yasamal ray, Ayaz Salayev Kuc."
-    },]);
+    const address = useSelector(state => state.user.address);
     const [activeaddress, setActiveAddress] = useState({name: '', surname: '', mobile: '', id : 0, address: '', city : ''});
     const [New, setNew] = useState(false)
     const [type, setType] = useState('add')
+    const dispatch = useDispatch();
 
     const HandleAddAdr = newadr => {
         const newaddress = address.map(adr => adr);
         if(type == 'add') {
             newadr.id = Math.floor(Math.random() * 100000);
             newaddress.push(newadr);
-            setAddress(newaddress);
+            dispatch(setAdr(newaddress));
             setType('edit');
         }else if(type == 'edit') {
             const index = address.findIndex(add => add.id == newadr.id);
             newaddress[index] = newadr;
-            setAddress(newaddress);
+            dispatch(setAdr(newaddress));
             setType('add'); 
             setActiveAddress({});
         }
@@ -57,7 +36,7 @@ function AddressMain() {
 
     const HandleDelete = adr => {
         const newaddress = address.filter(add => add.id != adr.id);
-        setAddress(newaddress)
+        dispatch(setAdr(newaddress))
     }
 
     const HandleEdit = adrss => {

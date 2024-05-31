@@ -20,6 +20,8 @@ import CustomerService from './pages/Profile/Customerservices'
 import Product from './pages/Products/Product'
 import ProductCard from './pages/Products/Card'
 import UserCard from './pages/Profile/UserCard'
+import TakeGender from './pages/Home/TakeGender'
+import Orders from './pages/Profile/Orders'
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
     <Provider store={store}>
       <>
           <Routes>
+              <Route path='/' element={<TakeGender />}/>
               <Route path='/home' element={<Home />}/>
               <Route path='/signin' element={<Signin />} />
               <Route path='/forget' element={<ForgetPassword />} />
@@ -42,6 +45,7 @@ function App() {
               <Route path='/profile/paymentdelivery' element={<PaymentDelivery />} />
               <Route path='/profile/CustomerService' element={<CustomerService />} />
               <Route path='/profile/Card' element={<UserCard />} />
+              <Route path='/profile/order' element={<Orders />} />
               <Route path='/home/about' element={<About />} />
               <Route path='/products' element={<Product />} />
               <Route path='/products/product' element={<ProductCard />} />

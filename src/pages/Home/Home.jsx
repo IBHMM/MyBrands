@@ -50,8 +50,6 @@ function Home() {
         }, 2000)
     }, [])
 
-    console.log(start)
-
     return (
         <>
             {
@@ -61,7 +59,7 @@ function Home() {
                     <Navbar />
                     <Categories />
                     {
-                        category != "" && <CategorieDropdown />
+                        category != ""  && <CategorieDropdown />
                     }
                     <Shorts />
                     <Carusel images={images}/>

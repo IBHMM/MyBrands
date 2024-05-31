@@ -3,20 +3,18 @@ import exitC from '../../../assets/profile/closeC.png';
 import '../style/style.css';
 
 function Adradd({ setNew, HandleAddAdr, adr, type }) {
-    const [name, setName] = useState(adr.name);
-    const [surname, setSurname] = useState(adr.surname);
-    const [mobileNumber, setMobileNumber] = useState(adr.mobile);
-    const [city, setCity] = useState(adr.city);
-    const [address, setAddress] = useState(adr.address);
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [city, setCity] = useState("");
+    const [address, setAddress] = useState("");
 
     const handleSubmit = e => {
         if(type == 'add') {
-            console.log('update')
             const newaddress = {name: name, surname: surname, city: city, address: address, telephone: mobileNumber, id : undefined};
             HandleAddAdr(newaddress);
             setNew(false);
         }else if(type == 'edit') {
-            console.log('update')
             const newaddress = {name: name, surname: surname, city: city, address: address, telephone: mobileNumber, id: adr.id};
             HandleAddAdr(newaddress);
             setNew(false);
@@ -47,7 +45,6 @@ function Adradd({ setNew, HandleAddAdr, adr, type }) {
                                 type="text"
                                 id="ad"
                                 className="w-full py-2 rounded-md border border-gray-300 pl-1 focus:outline-none"
-                                value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
                             />
@@ -60,7 +57,6 @@ function Adradd({ setNew, HandleAddAdr, adr, type }) {
                                 type="text"
                                 id="soyad"
                                 className="w-full py-2 rounded-md border border-gray-300 pl-1 focus:outline-none"
-                                value={surname}
                                 onChange={(e) => setSurname(e.target.value)}
                                 required
                             />
@@ -74,7 +70,6 @@ function Adradd({ setNew, HandleAddAdr, adr, type }) {
                                 type="text"
                                 placeholder="077 325 69 75"
                                 className="w-full py-2 pl-2 focus:outline-none"
-                                value={mobileNumber}
                                 onChange={(e) => setMobileNumber(e.target.value)}
                                 required
                             />
@@ -84,7 +79,6 @@ function Adradd({ setNew, HandleAddAdr, adr, type }) {
                         <label htmlFor="" className='text-[14px] mb-1 ml-1'>Şəhər</label>
                         <select
                             className="flex border-gray-300 border rounded-md w-full px-2 py-2 focus:outline-none"
-                            value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required
                         >
@@ -99,7 +93,6 @@ function Adradd({ setNew, HandleAddAdr, adr, type }) {
                             type="text"
                             placeholder="Ünvan"
                             className="w-full py-2 pl-2 focus:outline-none border-gray-300 border rounded-md"
-                            value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             required
                         />

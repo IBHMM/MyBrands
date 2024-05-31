@@ -1,56 +1,71 @@
 import { useEffect, useState } from "react";
-import category from '../../assets/home/category.png'
+import child from '../../assets/home/child.png'
+import boy from '../../assets/home/boys.png'
+import girls from '../../assets/home/girls.png'
+import men from '../../assets/home/men.png'
+import women from '../../assets/home/women.png'
+import { useDispatch } from "react-redux";
+import { setGender } from "../../features/User/UserSlice";
+import { Link } from "react-router-dom";
 
 
-function Categories({categories}) {
+function Categories() {
 
-    const [data, setData] = useState([
+    const genders = [
         {
-            image: category,
-            name: "USAQ"
+            image: men,
+            name: "men"
         },
         {
-            image: category,
-            name: "USAQ"
+            image: women,
+            name: "women"
         },
         {
-            image: category,
-            name: "USAQ"
+            image: child,
+            name: "child"
         },
-    ]);
+    ];
 
-    // useEffect(() => {
-    //     fetch('https://mocki.io/v1/ec26b692-db5e-4302-aebb-b302b961d5b6')
-    //         .then(res=>res.json())
-    //         .then(json=>{})
-    // }, [])
+    const [isChild, setIschild] = useState(false);
+    const dispatch = useDispatch();
+
+    const HandleGender = (e, category) => {
+        if (category.name == 'child' && isChild == false) {
+            e.preventDefault();
+            setIschild(true);
+        }else {
+            dispatch(setGender(category.name))
+        }
+    }
 
     return (
-        <section className="relative flex justify-between items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[100px] max-[500px]:flex-col max-[500px]:gap-[20px]">
+        <section className="relative flex justify-between items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[30px] max-[500px]:flex-col max-[500px]:gap-[20px]">
             {
-                data.map((category, index) => {
-                    return (
-                        <Category category={category} key={index} />
-                    )
-                })
+                !isChild ? 
+            
+                    genders.map((category, index) => {
+                        return (
+                            <Link
+                                key={index}
+                                to={'/home'}
+                                onClick={e => HandleGender(e, category)}
+                                className="w-[30%] h-full flex items-center justify-center relative max-[500px]:w-full">
+                                <img src={category.image} alt="" className="w-full h-full"/>
+                            </Link>
+                        )
+                    }) : 
+
+                <section className="flex w-full items-center justify-between gap-[30px] max-[500px]:flex-col ">
+                    <Link to={'/home'} className="w-[50%] max-[500px]:w-full flex items-center justify-center h-full bg-red-500">
+                        <img src={boy} alt="" className="w-full" onClick={e => HandleGender(e, 'boy')}/>
+                    </Link>
+                    <Link to={'/home'} className="w-[50%] max-[500px]:w-full  flex items-center justify-center">
+                        <img src={girls} alt="" className="w-full" onClick={e => HandleGender(e, 'girl')}/>
+                    </Link>
+                </section>    
             }
         </section>
     )
 }
-
-
-
-function Category({category}) {
-
-    return (
-        <section className="w-[30%] h-full flex items-center justify-center relative max-[500px]:w-full">
-            <img src={category.image} alt="" className="w-full h-full"/>
-            <button className="absolute bottom-[10px] w-[50%] min-[800px]:h-[40px] max-[800px]:h-[30px] bg-white max-[700px]:text-[14px]">
-                {category.name}
-            </button>
-        </section>
-    )
-}
-
 
 export default Categories

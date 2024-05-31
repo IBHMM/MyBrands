@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { TakeBrands, TakeCategories } from './Datafetch';
 
 const initialState = {
-    ActiveCategory: {},
+    ActiveCategory: null,
     AllCategories: await TakeCategories(),
     Brands: await TakeBrands(),
     menu: false
@@ -14,6 +14,7 @@ export const homeSlice = createSlice({
     reducers: {
         ActiveCategory: (state, action) => {
             state.ActiveCategory = action.payload
+            console.log(action.payload)
         },
         setMenu: (state, action) => {
             state.menu = action.payload
