@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {TakeUserCard, TakeUserWishList} from '../Home/Datafetch'
 
 const initialState = {
-  wishlist: await TakeUserWishList(),
-  userCard: await TakeUserCard(),
+  wishlist: TakeUserWishList(),
+  userCard: TakeUserCard(),
   visitedPages: ["Ana səhifə"],
   name: "",
   loading: false,
