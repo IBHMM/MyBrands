@@ -2,15 +2,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {TakeUserCard, TakeUserWishList} from '../Home/Datafetch'
 
 const initialState = {
-  wishlist: TakeUserWishList(),
-  userCard: TakeUserCard(),
+  wishlist: await TakeUserWishList(),
+  userCard: await TakeUserCard(),
   visitedPages: ["Ana səhifə"],
   name: "",
   loading: false,
   error: null,
   ActiveProduct: {},
   gender: "",
-  address: []
+  address: [],
+  orders : [],
 };
 
 export const userSlice = createSlice({
@@ -33,10 +34,19 @@ export const userSlice = createSlice({
     removeProductfromcard: (state, action) => {
       state.userCard = state.userCard.filter(product => product.id !== action.payload.id);
     },
+    resetCard : (state, action) => {
+      state.userCard = [];
+    },
     setPages: (state, action) => {
       if (!state.visitedPages.includes(action.payload)) {
         state.visitedPages.push(action.payload);
       }
+    },
+    setOrder : (state, action) => {
+      state.orders = action.payload;
+    },
+    AddOrder : (state, action) => {
+      state.orders.push(action.payload)
     },
     setCard: (state, action) => {
       state.card.push(action.payload);
@@ -56,6 +66,6 @@ export const userSlice = createSlice({
   }
 });
 
-export const { addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard, UpdateProductcard, setGender, setAdr } = userSlice.actions;
+export const { resetCard, setOrder, AddOrder, addProduct, removeProduct, setPages, setCard, setName, setProduct, addProducttocard, removeProductfromcard, UpdateProductcard, setGender, setAdr } = userSlice.actions;
 
 export default userSlice.reducer;
