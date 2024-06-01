@@ -4,9 +4,9 @@ function Header() {
     return (
         <section className="flex w-[80%] items-center justify-between fixed top-0 bg-[#FAFAFA] max-[1200px]:w-full font-normal px-1">
             <div className="flex items-center justify-start gap-[10px] text-[12px]">
-                <Link href="/home/about">Haqqimizda</Link>
-                <Link href="">Musteri xidmetleri</Link>
-                <Link href="">Bloq</Link>
+                <Link to={"/home/about"}>Haqqimizda</Link>
+                <Link to="">Musteri xidmetleri</Link>
+                <Link to="">Bloq</Link>
             </div>
             <div className="text-[12px] max-[900px]:hidden mr-[10%]">
                 <p>
