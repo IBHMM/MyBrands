@@ -10,7 +10,7 @@ function About() {
             <Header />
             <Navbar />
             <WisitedPages />
-            {/* <AboutMain /> */}
+            <AboutMain />
             <Footer />
         </section>
     )
