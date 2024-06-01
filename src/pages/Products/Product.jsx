@@ -7,9 +7,11 @@ import Footer from '../../components/home/Layout/Footer';
 import WisitedPages from '../../components/home/Layout/WisitedPages';
 import NumberOFProduct from '../../components/products/NumberOFProduct'
 import ProductMain from '../../components/products/ProductMain';
+import { useState } from 'react';
 
 function Product() {
     const category = useSelector(state => state.home.CategoryType);
+    const [number, setNumber] = useState(0)
 
     return (
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
@@ -20,8 +22,8 @@ function Product() {
                 category != "" && <CategorieDropdown />
             }
             <WisitedPages pages={['home', 'products']}/>
-            <NumberOFProduct number={30}/>
-            <ProductMain />
+            <NumberOFProduct number={number}/>
+            <ProductMain setNumber={setNumber} search={""}/>
             <Footer />
         </section>
     );

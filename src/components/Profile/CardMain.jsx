@@ -10,6 +10,8 @@ import { UpdateProductcard, addProduct, removeProduct, removeProductfromcard, se
 import liked from '../../assets/products/likedC.png'
 import EmptyCard from "./EmptyCard";
 import info from '../../assets/products/info.png'
+import dlt from '../../assets/products/delete.png'
+import { Link } from "react-router-dom";
 
 function CardMain() {
 
@@ -96,7 +98,7 @@ function CardMain() {
                                 </p>
 
                             </div>
-                            <div className="w-full flex items-center justify-center">
+                            <Link className="w-full flex items-center justify-center">
                                 <button onClick={HandleOrder} className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
                                     {animate ? 
                                     <div role="status">
@@ -107,7 +109,7 @@ function CardMain() {
                                     </div>
                                     : "Səbəti təsdiq et"}
                                 </button>    
-                            </div>
+                            </Link>
                             <div className="w-full h-[77px] border border-[#14AE5C] bg-[#14AE5C] bg-opacity-5 flex flex-col items-start justify-center p-5">
                                 <div className="flex items-center gap-[10px]">
                                     <p className="text-[#14AE5C] text-[18px]">Pulsuz çatdırılma!</p>
@@ -128,10 +130,10 @@ function CardMain() {
     )
 }
 
-
 function Order({ order, card }) {
     const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
     const [count, setCount] = useState(order.quantity);
+    const [dl, setDelete] = useState(false)
     const dispatch = useDispatch();
     const wishlist = useSelector(state => state.user.wishlist);
 
@@ -143,8 +145,9 @@ function Order({ order, card }) {
         }
     };
 
-    const handleDelete = (e, order) => {
+    const handleDelete = e => {
         dispatch(removeProductfromcard(order));
+        setDelete(false)
     };
 
     return (
@@ -185,7 +188,7 @@ function Order({ order, card }) {
                             </div>
                         </div>
                         <div className="cardbox">
-                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => handleDelete(e, order)}>
+                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => setDelete(!dl)}>
                                 <img src={bin} alt="Delete" className="w-[15px] h-[17px]" />
                             </div>
                             <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]">
@@ -220,9 +223,48 @@ function Order({ order, card }) {
                     </div>
                 </div>
             </div>
+            {
+                dl ? <Delete handleDelete={handleDelete} setDelete={setDelete}/> : <></>
+            }
         </div>
     );
 }
 
+function Delete({ setDelete, handleDelete }) {
+    const [isVisible, setIsVisible] = useState(false);
+  
+    useEffect(() => {
+      setIsVisible(true);
+    }, []);
+  
+    const handleClose = () => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setDelete(false);
+      }, 500); // Matches the duration of the CSS transition
+    };
+  
+    return (
+      <section className={`bg-[#00000066] w-screen h-screen absolute top-0 left-0 flex items-center justify-center transition-opacity duration-200 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`w-[400px] flex flex-col items-center justify-center gap-[30px] bg-white h-[232px] transition-transform duration-200 transform ${isVisible ? 'scale-100' : 'scale-90'}`}>
+          <img src={dlt} alt="Delete" />
+          <p>
+            Ünvanı silmək istədiyinizdən əminsiniz ?
+          </p>
+          <div className="flex items-center justify-center gap-[10px]">
+            <button className="border border-gray-200 bg-white w-[176px] h-[40px]" onClick={handleClose}>
+              Bağla
+            </button>
+            <button className="border-none bg-[#26264C] w-[176px] h-[40px] text-white" onClick={() => {
+              handleDelete();
+              handleClose();
+            }}>
+              Sil
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+}
 
 export default CardMain;

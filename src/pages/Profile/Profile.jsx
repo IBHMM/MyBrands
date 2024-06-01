@@ -3,8 +3,16 @@ import Header from "../../components/home/Layout/Header"
 import Footer from "../../components/home/Layout/Footer"
 import WisitedPages from '../../components/home/Layout/WisitedPages'
 import ProfileMain from '../../components/Profile/Main'
+import { useEffect, useState } from "react"
 
 function Profile() {
+
+    const [isRegistered, setIsregistered] = useState(false);
+
+    useEffect(() => {
+        // Check user cokies
+    })
+
     return (
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Header />

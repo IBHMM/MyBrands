@@ -1,10 +1,9 @@
 
 
-
 function OrderFinishMain() {
     return (
         <section>
-            Sifaris
+            
         </section>
     )
 }
