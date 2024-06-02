@@ -7,12 +7,6 @@ import { useEffect, useState } from "react"
 
 function Profile() {
 
-    const [isRegistered, setIsregistered] = useState(false);
-
-    useEffect(() => {
-        // Check user cokies
-    })
-
     return (
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Header />

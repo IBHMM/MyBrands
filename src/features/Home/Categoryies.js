@@ -33,7 +33,6 @@ export const homeSlice = createSlice({
   reducers: {
     ActiveCategory: (state, action) => {
       state.ActiveCategory = action.payload;
-      console.log(action.payload);
     },
     setMenu: (state, action) => {
       state.menu = action.payload;

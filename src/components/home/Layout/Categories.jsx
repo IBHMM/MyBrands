@@ -7,7 +7,7 @@ function Categories() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const dispatch = useDispatch();
     const categories = useSelector(state => state.home.AllCategories);
-
+    
     const handleCategoryClick = (index, type, e) => {
         setSelectedCategory(index);
         dispatch(ActiveCategory(categories[index]));        

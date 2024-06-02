@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import Banner from "./Layout/Banner";
-import FormButton from "./Layout/FormButton";
-import RightImage from "./Layout/Desk-Right-Image";
-import HandleUserNumber from "../../utils/Registration/helperfunctions";
 import UseSignin from "../../hooks/Registration/Signin";
 
 function SigninForm() {
     const {
-        num, error, pas, code, 
-        method, HandleChange, 
-        DirectToHome, HandleCode,
-        setNum, setError, setCode,
-        setPas 
+        num, error,  pas, setNum, setPas, HandleSubmit
     } = UseSignin()
 
+    console.log(num, pas)
 
     return (
         <section className="flex justify-center items-center flex-col h-screen w-[40%] max-[1200px]:w-[50%] max-[1000px]:w-full">
@@ -23,69 +15,40 @@ function SigninForm() {
                     <p className="text-[32px] text-[#292D32] font-bold mb-[20px]">
                     Daxil ol
                     </p>
-                    <label htmlFor="accesspec" className="text-[14px]">
-                    {method == 1 ? "Mobil nomre" : "ID-ni daxil et"}
+                    <label htmlFor="number" className="text-[14px] mb-[-5px]">
+                        Nomre
                     </label>
-                    <div className={`flex items-center border rounded-[3px] py-2 pl-2 ${error.number  ? 'border-red-400' : 'borderr-gray-300'}`}>
-                    <span className={`${method == 2 ? "hidden" : "inline"}`}>
-                        +994
-                    </span>
-                    {
-                        method == 1 ? 
+                    <div className={`flex items-center justify-start border border-[#ECECEE] h-[48px] ${error ? "border-red-500" : "border-[#ECECEE]"}`}>
+                        <p className="pl-2">+994</p>
                         <input
-                            id="accesspec"
-                            onChange={e => HandleChange(e)}
-                            className="pl-2 focus:outline-none w-full h-full pb-[2px]"
-                            type="text"
-                            // value={num}
-                            placeholder={
-                            method == 1 ? "50 450 45 33" : "COFOT43VH2JDCOSLM"
-                            }
+                            id="number" 
+                            type="text" 
+                            placeholder="70 325 69 75" 
+                            className={`w-[80%] h-[46px] ml-3 focus:outline-none`}
+                            onChange={e => setNum("+994" + e.target.value)}    
                         />
-                        : 
-                        <input
-                            id="accesspec"
-                            onChange={e => HandleCode(e)}
-                            className="pl-2 focus:outline-none w-full h-full pb-[2px]"
-                            type="text"
-                            placeholder={"COFOT43VH2JDCOSLM"}
-                        />
-                    }
                     </div>
-                    <label htmlFor="sifre" className="text-[14px]">
-                    Sifre
+                    <label htmlFor="password" className="text-[14px] mb-[-5px]">
+                        Password
                     </label>
-                    <input
-                    type="password"
-                    className={`border ${error.password  ? 'border-red-400' : 'borderr-gray-300'} rounded-[3px] focus:outline-none py-2 pl-2`}
-                    placeholder="***********"
-                    onChange={e => setPas(e.target.value)}
+                    <div  className={`flex items-center justify-start border border-[#ECECEE] h-[48px] ${error ? "border-red-500" : "border-[#ECECEE]"}`}>
+                        <input 
+                        id="password" 
+                        type="text"
+                        value={pas}
+                        placeholder="**********" 
+                        className="w-[80%] h-[46px] ml-5 focus:outline-none"
+                        onChange={e => setPas(e.target.value)}    
                     />
-                    <a
-                    onClick={() => setForget(!forget)}
-                    className="flex w-full items-center justify-end text-[14px]"
-                    href="/forget"
-                    >
-                    Sifreni unutmusan ?
-                    </a>
-                    
-                    {/* send request to end point below button */}
-                    
-                    <div className="w-full" onClick={() => DirectToHome()}>
-                        <FormButton
-                            content="Daxil ol"
-                            style={{ bg: "#26264C", text: "#FFFFFF", border: "0px" }}
-                            method={undefined}
-                        />
                     </div>
+                    
+                    <button 
+                        className="bg-[#26264C] text-white h-[48px] mt-4 transition-all duration-200 hover:opacity-70 active:scale-90"
+                        onClick={HandleSubmit}    
+                    >                     
+                        Daxil ol
+                    </button>
 
-                    <FormButton
-                    content={
-                        method == 1 ? "MyBrands karti ilə daxil ol" : "Nomre ile Daxil ol"
-                    }
-                    method={method}
-                    style={{ bg: "#FFFFFF", text: "#26264C", border: "5px" }}
-                    />
                     <span className="text-[13px] text-[#9B96B7] w-full flex items-center justify-center gap-[3px] mt-[30px]">
                     Hesabiniz yoxdu?{" "}
                     <a className="text-[#26264C] underline font-semibold" href="/signup">

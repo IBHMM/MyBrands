@@ -1,51 +1,44 @@
-import { useState } from "react"
-import { useSelector } from "react-redux"
-import HandleUserNumber from "../../utils/Registration/helperfunctions"
+import { useState } from "react";
+import { redirect } from "react-router-dom";
 
 export default function UseSignin() {
-    const [num, setNum] = useState("")
-    const [pas, setPas] = useState("")
-    const [code, setCode] = useState("")
-    const [error, setError] = useState({number: false, password: false, code: false})
-    const method = useSelector((state) => state.register.LoginMethod);
+    const [num, setNum] = useState("");
+    const [pas, setPas] = useState("");
+    const [error, setError] = useState(false);
 
-    const HandleChange = (event) => {    
-        if(method == 1) {
-            let newValue = HandleUserNumber(event.target.value);
-            setNum(newValue);
-        }    
-        setNum(event.target.value)
-    }
 
-    const DirectToHome = () => {
-        if (num.length != 12 && pas.length < 4) {
-            setError({number: true, password: true})
-        }else if (num.length != 12 && pas.length >= 4) {
-            setError({number: true, password: false})
-        }else if (num.length == 12 && pas.length < 4) {
-            setError({number: false, password: true})
-        }else{
-            setError({number: false, password: false})
-            // Send request body {num, pass}
+    const HandleSubmit = async () => {
+        if (num.length === 13 && pas.length > 3) {
+            setError(false);
+            try {
+                const response = await fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/user/token/', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        mobile_number: num,
+                        password: pas
+                    })
+                });
+
+                if (response.ok || true) {
+                    const data = await response.json();
+                    localStorage.setItem("srdtkn", data.token)
+                    localStorage.setItem("resdtkn", data.token)
+                    redirect('/')
+                } else {
+                    console.error('Error:', response.status, response.statusText);
+                }
+            } catch (error) {
+                console.error('Error during request:', error);
+            }
+        } else {
+            setError(true);
         }
-    }
-
-    const HandleCode = e => {
-        if (code.length != 18) {
-            setError({...error, code : true})
-        }else {
-            setCode(code)
-            setError({...error, code: false})
-        }
-    }
-
+    };
 
     return {
-        num, error, pas, code, 
-        method, HandleChange, 
-        DirectToHome, HandleCode,
-        setNum, setError, setCode,
-         setPas 
-    }
-    
+        num, error, pas, setNum, setError, setPas, HandleSubmit
+    };
 }
