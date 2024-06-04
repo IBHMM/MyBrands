@@ -2,7 +2,7 @@ import axios from 'axios';
 
 async function TakeUserWishList() {
     try {
-        const response = await axios.get('http://ec2-100-27-211-19.compute-1.amazonaws.com/account/wishlist');
+        const response = await axios.get('https://ec2-100-27-211-19.compute-1.amazonaws.com/account/wishlist');
         
         console.log(response)
         return response.data.products;

@@ -13,7 +13,7 @@ export default function UseSignin() {
         if (num.length === 13 && pas.length > 3) {
             setError({bl: false, message: ""});
             try {
-                const response = await fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/user/token/', {
+                const response = await fetch('https://ec2-100-27-211-19.compute-1.amazonaws.com/user/token/', {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
