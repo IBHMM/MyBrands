@@ -72,7 +72,8 @@ function MobileM() {
             </div>
 
             <div className='w-full flex items-center justify-center px-3 mt-[20px] pb-1'>
-                <Link to={'/home/profile'} className='flex items-center justify-center bg-[#26264C] w-full h-[56px] hover:opacity-[0.7] transition-all rounded-sm'>
+                <Link
+                    to={'/home/profile'} className='flex items-center justify-center bg-[#26264C] w-full h-[56px] hover:opacity-[0.7] transition-all rounded-sm'>
                     <div className='flex items-center justify-center text-white gap-[9px]'>
                         <img src={Profile} alt="Profile" />
                         Hesabim
@@ -87,8 +88,6 @@ function MobileM() {
 function CategoryDropdown({category}) {
 
     const [isopen, setIsopen] = useState(false);
-
-    console.log(category)
 
     return (
         <section className='flex flex-col w-full'>

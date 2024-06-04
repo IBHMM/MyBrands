@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 export default function UseSignin() {
     const [num, setNum] = useState("");
     const [pas, setPas] = useState("");
-    const [error, setError] = useState(false);
-
+    const [error, setError] = useState({bl: false, message: ""});
+    const [loading, setLoading] = useState(false);
 
     const HandleSubmit = async () => {
+        setLoading(true);
+
         if (num.length === 13 && pas.length > 3) {
-            setError(false);
+            setError({bl: false, message: ""});
             try {
                 const response = await fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/user/token/', {
                     method: "POST",
@@ -22,23 +24,32 @@ export default function UseSignin() {
                     })
                 });
 
-                if (response.ok || true) {
+                if (response.ok) {
                     const data = await response.json();
-                    localStorage.setItem("srdtkn", data.token)
-                    localStorage.setItem("resdtkn", data.token)
-                    redirect('/')
+                    console.log(data);
+
+                    // // Set cookies for access and refresh tokens
+                    // Cookies.set("refresh", data.refresh, { expires: 7 }); // expires in 7 days
+                    // Cookies.set("access", data.access, { expires: 1 });  // expires in 1 day
+
+                    window.location = '/';
                 } else {
-                    console.error('Error:', response.status, response.statusText);
+                    const data = await response.json();
+                    setError({bl: true, message: data.detail});
+                    setLoading(false);
                 }
             } catch (error) {
                 console.error('Error during request:', error);
+                setError({bl: true, message: "Request failed"});
+                setLoading(false);
             }
         } else {
-            setError(true);
+            setError({bl: true, message: "Invalid Credentials"});
+            setLoading(false);
         }
     };
 
     return {
-        num, error, pas, setNum, setError, setPas, HandleSubmit
+        num, error, pas, setNum, setError, setPas, HandleSubmit, loading
     };
 }

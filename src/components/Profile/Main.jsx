@@ -1,25 +1,36 @@
-import { useSelector } from "react-redux"
-import {services} from '../../utils/Profile/Constants' 
+import { useDispatch, useSelector } from "react-redux";
+import { services } from '../../utils/Profile/Constants'; 
 import ProfileCard from "./Layout/ProfileCard";
 import { useEffect, useState } from "react";
-import Exit from './Layout/Exit'
+import Exit from './Layout/Exit';
 import Referal from "./Layout/Referal";
-import lock from '../../assets/profile/lock.png'
+import lock from '../../assets/profile/lock.png';
 import { Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
+import { setMenu } from "../../features/Home/Categoryies";
 
 function Main() {
-
     const name = useSelector(state => state.user.name);
-    const [exit, setExit] = useState(false)
-    const [referal, setReferal] = useState(false)
+    const [exit, setExit] = useState(false);
+    const [referal, setReferal] = useState(false);
     const [isreg, setReg] = useState(false);
+    const [cookies] = useCookies(['sessionid', 'csrftoken']);
+    const menu = useSelector(state => state.home.menu);
+    const dispatch = useDispatch()
 
-    useEffect (() => {
-        const token = localStorage.getItem("srdtkn");
-        if (token) {
-            setReg(true)
+    useEffect(() => {
+        const access = localStorage.getItem("access");
+        if (access) {
+            setReg(true);
+        }
+    }, [cookies]);
+
+    useEffect(() => {
+        if (menu == true) {
+            dispatch(setMenu(false));
         }
     }, [])
+
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%]">
@@ -53,8 +64,7 @@ function Main() {
             {exit && <Exit setExit={setExit}/>}
             {referal && <Referal setReferal={setReferal}/>}
         </section>
-    )
+    );
 }
 
-
-export default Main
+export default Main;
