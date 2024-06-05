@@ -21,17 +21,18 @@ function CardMain() {
     const [animate, setAnimate] = useState(false);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         let total = 0;
         card.forEach(element => {
-            total += element.price * element.quantity;
+            total += element.price;
         });
 
         if(total > 100) {
             setTotalCost(Math.round(total))
             setProductCost(Math.round(total))
         }else {
-            setTotalCost(Math.round(total) * 20 / 100)
+            setTotalCost(Math.round(total) + Math.round(total) * 20 / 100)
             setProductCost(Math.round(total))
         }
     }, [card]);

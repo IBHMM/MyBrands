@@ -1,18 +1,38 @@
 import { useState, useEffect } from "react"
 
+async function FetchBook() {
+    try{
+        const response = await fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/product', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem("access")
+            },
+        })
 
-function Book({image1, image2}) {
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }else{
+            return false;
+        }
+    }catch(err) {
+        return false
+    }
+} 
+
+function Book({image1}) {
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/product/1')
-        .then(res => res.json())
-        .then(json => setData(json))
-        .catch(err => console.error(err))
+        const d = FetchBook();
+        if(d) {
+            setData(d)
+        }else {
+            setData([])
+        }
     },[])
-
-    console.log(data)
 
     return (
         <section className="flex items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[70px] max-[898px]:flex-col max-[898px]:justify-center max-[898px]:gap-[30px]">

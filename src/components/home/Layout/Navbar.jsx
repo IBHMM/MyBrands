@@ -15,7 +15,6 @@ function Navbar() {
 
     const {search, menu, setSearch, dispatch, setPages, wishlistL, usercard, searchstr, setSearchstr} = useNavbar();
 
-    console.log(menu)
 
     return (
         <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>

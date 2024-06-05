@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { TakeUserCard, TakeUserWishList } from '../Home/Datafetch';
+import { TakeUserCard, TakeUserWishList, GetAddress } from './UserData';
 
-// Async thunks for fetching data
+
 export const fetchUserCard = createAsyncThunk(
   'user/fetchUserCard',
   async () => {
@@ -15,6 +15,14 @@ export const fetchUserWishList = createAsyncThunk(
   async () => {
     const wishList = await TakeUserWishList();
     return wishList;
+  }
+);
+
+export const fetchUserAddress = createAsyncThunk(
+  'user/fetchUserAddress',
+  async () => {
+    const address = await GetAddress();
+    return address;
   }
 );
 
@@ -104,7 +112,18 @@ export const userSlice = createSlice({
       .addCase(fetchUserWishList.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchUserAddress.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(fetchUserAddress.fulfilled, (state, action) => {
+        state.loading = false;
+        state.address = action.payload;
+      })
+      .addCase(fetchUserAddress.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
   }
 });
 

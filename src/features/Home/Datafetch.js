@@ -1,36 +1,10 @@
-import axios from 'axios';
-
-async function TakeUserWishList() {
-    try {
-        const response = await axios.get('https://ec2-100-27-211-19.compute-1.amazonaws.com/account/wishlist');
-        
-        console.log(response)
-        return response.data.products;
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
-        return [];
-    }
-}
-
-async function TakeUserCard() {
-    try {
-        const response = await axios.get('https://dummyjson.com/carts/6', {
-            params: {
-                limit: 2,
-                skip: 10,
-            }
-        });
-        return response.data.products;
-    } catch (error) {
-        console.error('Failed to fetch data:', error);
-        return [];
-    }
-}
-
 async function TakeCategories() {
     try {
-        const response = await axios.get('https://mocki.io/v1/74e38bf1-56c9-4dc6-8c47-1c8ca286796c');
-        return response.data;
+        const response = await fetch('https://mocki.io/v1/74e38bf1-56c9-4dc6-8c47-1c8ca286796c');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
     } catch (error) {
         console.error('Failed to fetch data:', error);
         return [];
@@ -39,13 +13,15 @@ async function TakeCategories() {
 
 async function TakeBrands() {
     try {
-        const response = await axios.get('https://mocki.io/v1/4434ebcb-d6e6-49f8-8dfa-29d5c4a4701e');
-        return response.data;
+        const response = await fetch('https://mocki.io/v1/4434ebcb-d6e6-49f8-8dfa-29d5c4a4701e');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
     } catch (error) {
         console.error('Failed to fetch data:', error);
         return [];
     }
 }
 
-
-export {TakeUserWishList, TakeCategories, TakeBrands, TakeUserCard}
+export {TakeCategories, TakeBrands}

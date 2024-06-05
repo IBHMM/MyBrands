@@ -45,6 +45,28 @@
     }
 }
 
+@keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
 .size {
     background-color: white;
     animation: size 2s ease-out alternate;
@@ -94,3 +116,22 @@
       display: none;
     }
 }
+  
+.expand {
+    animation: slideIn 0.5s forwards;
+}
+  
+.collapse {
+    animation: slideOut 0.5s forwards;
+}
+  
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+  
+.rotateb {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+  

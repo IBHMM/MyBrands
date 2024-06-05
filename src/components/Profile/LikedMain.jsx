@@ -8,8 +8,6 @@ import { useSelector } from "react-redux";
 function LikedMain() {  
     const products = useSelector(state => state.user.wishlist);
 
-    console.log(products)
-
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[30px]">
             <section className="w-full flex items-center justify-between py-5 px-3 border border-gray-50">

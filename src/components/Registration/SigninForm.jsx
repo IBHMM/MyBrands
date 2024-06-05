@@ -24,7 +24,7 @@ function SigninForm() {
                             type="text" 
                             placeholder="70 325 69 75" 
                             className={`w-[80%] h-[46px] ml-3 focus:outline-none`}
-                            onChange={e => setNum("+994" + e.target.value)}    
+                            onChange={e => setNum(e.target.value)}    
                         />
                     </div>
                     <label htmlFor="password" className="text-[14px] mb-[-5px]">

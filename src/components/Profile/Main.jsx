@@ -8,20 +8,24 @@ import lock from '../../assets/profile/lock.png';
 import { Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import { setMenu } from "../../features/Home/Categoryies";
+import { fetchUserAddress, fetchUserWishList } from "../../features/User/UserSlice";
+
 
 function Main() {
     const name = useSelector(state => state.user.name);
     const [exit, setExit] = useState(false);
     const [referal, setReferal] = useState(false);
     const [isreg, setReg] = useState(false);
-    const [cookies] = useCookies(['sessionid', 'csrftoken']);
+    const [cookies] = useCookies(['sessionid', 'csrftoken', 'access']);
     const menu = useSelector(state => state.home.menu);
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const access = localStorage.getItem("access");
+        const access = cookies.sessionid;
         if (access) {
             setReg(true);
+            dispatch(fetchUserWishList())
+            dispatch(fetchUserAddress())
         }
     }, [cookies]);
 
