@@ -14,7 +14,6 @@ function ProductMain({setNumber, search}) {
                 setShow(true);
             }
         }
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [])
@@ -22,7 +21,7 @@ function ProductMain({setNumber, search}) {
     return (
         <section className="w-[80%] flex items-start justify-center max-[1200px]:w-[90%] mt-[40px]">
             <SideBar show={show} setShow={setShow}/>
-            <ProductsMain setShow={setShow} search={search}/>
+            <ProductsMain setShow={setShow} search={search} setNumber={setNumber}/>
         </section>
     )
 }

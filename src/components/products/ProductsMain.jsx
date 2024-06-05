@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import filter from '../../assets/products/filter.png';
 import { useSelector } from "react-redux";
 import Card from '../home/Layout/Card';
+import { WaitingAnimation } from "../home/Animation";
 
-function ProductMain({ search, setShow }) {
+function ProductMain({ search, setShow, setNumber }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         setLoading(true);
-        const url ="https://dummyjson.com/products";
-        fetch("https://dummyjson.com/products")
+        const url = "https://dummyjson.com/products";
+        fetch(url)
             .then(res => res.json())
             .then(json => {
                 setProducts(json.products);
+                console.log(json.products.length); // Fixed property name
+                setNumber(json.products.length); // Fixed property name
                 setLoading(false);
             })
             .catch(err => {
@@ -21,7 +25,6 @@ function ProductMain({ search, setShow }) {
                 setLoading(false);
             });
     }, []);
-
 
 
     return (
@@ -42,8 +45,8 @@ function ProductMain({ search, setShow }) {
             ) : null}
 
             {loading ? (
-                <div className="flex items-center justify-center w-full h-64">
-                    <p>Loading...</p>
+                <div className="flex items-center justify-center w-full">
+                     <WaitingAnimation /> 
                 </div>
             ) : (
                 <div className="w-full flex items-center justify-between flex-wrap gap-[10xp] translate-y-[-15px] pl-3">
