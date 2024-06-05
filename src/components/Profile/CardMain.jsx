@@ -133,7 +133,7 @@ function CardMain() {
 
 function Order({ order, card }) {
     const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
-    const [count, setCount] = useState(order.quantity);
+    const [count, setCount] = useState(order.quantity || 1);
     const [dl, setDelete] = useState(false)
     const dispatch = useDispatch();
     const wishlist = useSelector(state => state.user.wishlist);
