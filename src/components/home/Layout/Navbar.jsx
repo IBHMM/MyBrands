@@ -17,7 +17,7 @@ function Navbar() {
 
 
     return (
-        <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>
+        <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px]'>
             <Link to={'/home'}>
                 <img src={Logo} alt="" className='min-w-[150px]'/>
             </Link>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export function useSideBar () {
 
-    const [gender, setGender] = useState({ value: [], state: false });
+        const [gender, setGender] = useState({ value: [], state: false });
         const [price, setPrice] = useState({ min: 0, max: 0, state: false });
         const [category, setCategory] = useState({ value: "", state: false });
         const [subCategory, setsubCategory] = useState({ value: [], state: false });

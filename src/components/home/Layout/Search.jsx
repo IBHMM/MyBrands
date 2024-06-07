@@ -3,11 +3,25 @@ import Close from '../../../assets/home/back.png';
 import Star from '../../../assets/home/star.png';
 import Fire from '../../../assets/home/fire.png';
 import '../style/style.css';
+import axios from "axios";
 
 function Search({ search }) {
     const [lastS, setLasts] = useState(JSON.parse(localStorage.getItem("lastsearch")) || []);
-    const [mostS] = useState(["Nazim", "Fazil", "Vedre"]);
-    const [trends] = useState(["Nazim", "Fazil", "Vedre"]);
+    const [mostS, setMost] = useState([]);
+    const [trends, setTrends] = useState([]);
+
+
+    useEffect(() => {
+        axios.get('http://ec2-100-27-211-19.compute-1.amazonaws.com/product/top-sold')
+            .then(response => {
+                setMost(response.data.results);
+            })
+            .catch(error => {
+                console.log(error);
+                setMost([]);
+                setTrends([]);
+            });
+    }, [])
 
     const cleanHistory = () => {
         localStorage.setItem("lastsearch", JSON.stringify([]));
@@ -40,7 +54,7 @@ function Search({ search }) {
     };
 
     return (
-        <section className="flex w-[80%] items-center justify-between font-normal absolute top-[80px] max-[1200px]:w-full borderserc animation bg-white max-[768px]:hidden zindex">
+        <section className="flex w-[80%] items-center justify-between absolute translate-y-[-11px] pt-10 max-[1200px]:w-full borderserc animation bg-white max-[768px]:hidden zindex">
             <div className="w-[180px] min-w-[100px] inline bg-white"></div>
             <div className="flex flex-col items-end w-full mr-[30px]">
 

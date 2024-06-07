@@ -8,6 +8,7 @@ import { setProduct } from '../../../features/User/UserSlice.js';
 
 function Card({ product }) {
     const [liked, setLiked] = useState(false);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
     const products = useSelector(state => state.user.wishlist);
 
@@ -17,12 +18,41 @@ function Card({ product }) {
       }
     }, [liked])
 
+    const HandleDelete = async () => {
+      const response = await fetch(`http://ec2-100-27-211-19.compute-1.amazonaws.com/account/api/wishlist/${product.id}`, {
+        method:"DELETE",
+      }) 
+
+      console.log(response)
+
+      if (response.ok) {
+        dispatch(removeProduct(product))
+      }
+      setLoading(false)
+    }
+
+    const HandleAdd = async () => {
+      const response = await fetch(`http://ec2-100-27-211-19.compute-1.amazonaws.com/account/wishlist`, {
+        method:"DELETE",
+        body: {
+          product
+        }
+      }) 
+
+      if (response.ok) {
+        dispatch(addProduct(product))
+      }
+
+      setLoading(false)
+    }
+
     const handleLike = e => {
       e.pereventDefault;
+      setLoading(true);
       if (liked) {
-          dispatch(removeProduct(product))
+        HandleDelete();
       } else {
-          dispatch(addProduct(product))
+        HandleAdd();
       }
       setLiked(() => setLiked(!liked));
     };
@@ -47,10 +77,18 @@ function Card({ product }) {
           </Link>
           <button
             id='possitive1'
-            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[500px]:hidden`}
+            className={`heart absolute top-2 right-2 ${liked && !loading ? 'bg-red-500' : 'bg-white'} rounded-full p-1 max-[500px]:hidden`}
             onClick={e => handleLike(product, liked)}
-          >
+          > {
+            loading ? 
+              <div role="status">
+                <svg aria-hidden="true" className="inline w-8 h-8 text-white animate-spin" viewBox="0 0 100 101" fill="#26264C" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                </svg>
+              </div> : 
             <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-5 h-5" />
+          }
           </button>
         </section>
 
@@ -60,10 +98,19 @@ function Card({ product }) {
           <p className="text-red-500">{product.price}$</p>
           <button
             id='possitive2'
-            className={`heart absolute top-2 right-2 ${liked ? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[500px]:block`}
+            className={`heart absolute top-2 right-2 ${liked && !loading? 'bg-red-500' : 'bg-white'} rounded-full p-1 hidden max-[500px]:block`}
             onClick={e => handleLike(product, liked)}
           >
-            <img src={liked ? whiteHeart : blackHeart} alt="heart" className="w-4 h-4" />
+             {
+              loading ? 
+                <div role="status">
+                  <svg aria-hidden="true" className="inline w-[20px] h-[20px] text-white animate-spin" viewBox="0 0 100 101" fill="#26264C" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                  </svg>
+                </div> : 
+              <img src={liked ? whiteHeart : blackHeart} alt="heart" className=" w-[20px] h-[20px]" />
+            }
           </button>
         </div>
       </section>
