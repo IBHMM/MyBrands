@@ -1,5 +1,6 @@
 import Banner from "./Layout/Banner";
 import UseSignin from "../../hooks/Registration/Signin";
+import { Link } from "react-router-dom";
 
 function SigninForm() {
     const {
@@ -41,6 +42,10 @@ function SigninForm() {
                     />
                     </div>
                     
+                    <Link to={'/forget'} className="flex w-full items-center justify-end text-[14px] text-[#26264C] font-semibold mb-[-2px]">
+                        Şifrəni unutmusan ?
+                    </Link>
+                    
                         {
                             error.bl ?
                             <p className="text-[10px] text-red-500">
@@ -64,10 +69,10 @@ function SigninForm() {
                     </button>
 
                     <span className="text-[13px] text-[#9B96B7] w-full flex items-center justify-center gap-[3px] mt-[30px]">
-                    Hesabiniz yoxdu?{" "}
-                    <a className="text-[#26264C] underline font-semibold" href="/signup">
-                        Qeydiyyatdan keç
-                    </a>
+                        Hesabiniz yoxdu?{" "}
+                        <a className="text-[#26264C] underline font-semibold" href="/signup">
+                            Qeydiyyatdan keç
+                        </a>
                     </span>
                 </div>
         </section>

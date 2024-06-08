@@ -16,10 +16,13 @@ function TakeGender() {
 
     const status = useSelector((state) => state.home.status);
     const dispatch = useDispatch();
+    
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);
     const category = useSelector(state => state.home.CategoryType);
+
+
 
     return (
         <>

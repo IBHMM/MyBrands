@@ -13,9 +13,9 @@ function SideBar({show, setShow}) {
         <>
             {
                 show && 
-                <aside className={`flex flex-col min-w-[294px] bg-white  ${show ? 'expand' : 'collapse'} ${window.innerWidth <= 700 ? 'px-5 min-h-full min-w-full z-50 absolute items-start justify-start' : ''}`}>
+                <aside className={`flex flex-col min-w-[294px] bg-white  ${show ? 'expand' : 'collapse'} ${window.innerWidth <= 840 ? 'px-5 min-h-full min-w-full z-50 absolute items-start justify-start' : ''}`}>
                     
-                    <div className={` flex items-center justify-end w-full py-4 px-2  ${window.innerWidth > 700 ? "hidden" : ""}`}  onClick={e => setShow(!show)}>
+                    <div className={` flex items-center justify-end w-full py-4 px-2  ${window.innerWidth > 840 ? "hidden" : ""}`}  onClick={e => setShow(!show)}>
                         <img src={filter} alt=""/>
                     </div>
 

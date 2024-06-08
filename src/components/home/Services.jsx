@@ -4,7 +4,7 @@ import Emot from '../../assets/home/Emot.png'
 
 function Services() {
     return (
-        <section className="flex items-center justify-between w-[80%] max-[1200px]:w-[90%] mt-[100px] max-[557px]:flex-col max-[557px]:gap-10">
+        <section className="flex items-center justify-between w-[80%] mb-[-50px]  max-[1200px]:w-[90%] mt-[100px] max-[557px]:flex-col max-[557px]:gap-10">
             <div className='flex items-center justify-center flex-col gap-[10px]'>
                 <img src={Emot} alt="" className='h-[]'/>
                 <p>PULSUZ ÇATDIRILMA</p>

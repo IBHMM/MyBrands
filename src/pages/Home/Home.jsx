@@ -44,10 +44,10 @@ import { fetchBrands, fetchCategories } from '../../features/Home/Categoryies';
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
     const start = useSelector(state => state.basic.firsttime);
-    const dispatch = useDispatch();
     const status = useSelector((state) => state.home.status);
     const error = useSelector((state) => state.home.error);
-
+    
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchCategories());
         dispatch(fetchBrands());

@@ -19,13 +19,16 @@ function Main() {
     const [cookies] = useCookies(['sessionid', 'csrftoken', 'access']);
     const menu = useSelector(state => state.home.menu);
     const dispatch = useDispatch()
+    const wishlist = useSelector(state => state.user.wishlist)
 
     useEffect(() => {
         const access = cookies.sessionid;
         if (access) {
             setReg(true);
-            dispatch(fetchUserWishList())
-            dispatch(fetchUserAddress())
+            if (wishlist.lenght == 0) {
+                dispatch(fetchUserWishList())
+                dispatch(fetchUserAddress())
+            }
         }
     }, [cookies]);
 

@@ -134,4 +134,22 @@
     transform: rotate(0deg);
     transition: transform 0.3s ease;
 }
-  
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+  gap: 30px;
+  transform: translateY(-15px);
+  padding-left: 20px;
+}
+
+@media (max-width: 840px) {
+  .grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    transform: translateY(0px);
+    gap: 10px;
+    padding-left: 0px;
+  }
+}

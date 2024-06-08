@@ -50,7 +50,12 @@ export const userSlice = createSlice({
       state.wishlist = state.wishlist.filter(product => product.id !== action.payload.id);
     },
     addProducttocard: (state, action) => {
-      state.userCard.push(action.payload);
+      const index = state.userCard.findIndex(prd => prd.id == action.id);
+      if (index == -1) {
+        state.userCard.push(action.payload);
+      }else {
+        state.userCard[index].quantity += 1;
+      }
     },
     UpdateProductcard: (state, action) => {
       const index = state.userCard.findIndex(order => order.id === action.payload.id);
