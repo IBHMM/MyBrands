@@ -108,6 +108,32 @@ function ProductOrderPart({product}) {
         }
     };
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= product.images.length) {
+            newIndex = 0;
+        }
+        setCurrentIndex(newIndex);
+    }
+
+    const handlePrev = () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+            newIndex = product.images.length - 1;
+        }
+        setCurrentIndex(newIndex);
+    }
+
+    const handleSlide = (e) => {
+        if (e.clientX > window.innerWidth / 2) {
+            handleNext();
+        } else {
+            handlePrev();
+        }
+    }
+
     return (
         <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[800px]:flex-col max-[800px]:w-full gap-[10px]">
 
@@ -122,16 +148,23 @@ function ProductOrderPart({product}) {
                     }
                 </section>
 
-                <section className="w-full items-center justify-evenly overflow-x-auto hidden max-[1300px]:flex">
-
-                    {
-                        product.images.map((img, index) => {
-                            return (
-                                <img src={img} alt="" key={index}  className="min-[800px]:h-[611px] h-[500px] w-full max-[800px]:w-[50%]" />                
-                            )
-                        })
-                    }
-                
+                <section className="w-full items-center justify-evenly overflow-x-auto hidden max-[1300px]:flex relative transition-all duration-300">
+                    <img
+                        src={product.images[currentIndex]}
+                        alt=""
+                        className="slide-image min-[800px]:h-[611px] h-[400px] w-full"
+                        onClick={e => handleSlide(e)}
+                    />
+                    <div className="h-[22px] bg-gray-300 items-center justify-center gap-[3px] absolute hidden max-[1300px]:flex px-3 rounded-[20px] bottom-0">
+                        {
+                            product.images.map((e,i) => {
+                                return (
+                                    <div className={`w-[8px] h-[8px] rounded-[50%] ${i == currentIndex ? "bg-white" : "bg-red-500"}`}>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </section>
 
                 <section className="flex w-full items-center justify-evenly overflow-x-auto max-[1300px]:hidden">
