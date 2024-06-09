@@ -9,7 +9,7 @@ function About() {
         <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
             <Header />
             <Navbar />
-            <WisitedPages />
+            <WisitedPages pages={['Home', 'About']} />
             <AboutMain />
             <Footer />
         </section>

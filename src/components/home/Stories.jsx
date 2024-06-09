@@ -8,9 +8,9 @@ function Shorts() {
     const [click, setClick] = useState(undefined)
     
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
-        .then(res => res.json())
-        .then(json => setData(json.products))
+        fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/detail/get-statuses')
+        .then(res =>  res.json())
+        .then(json => setData(json))
         .catch(err => console.error(err))
     }, [])
 
@@ -30,7 +30,7 @@ function Shorts() {
                     {data.map((short, index) => (
                         <div className="flex items-center justify-center flex-col w-[82px] hover:scale-90 transition-all duration-300 " key={index} onClick={e => handleShort(e, short)}>
                             <div className="flex items-center justify-center rounded-[50%] w-[58px] h-[58px] p-[2px] border-[2px] border-red-500">
-                                <img src={short.thumbnail} alt="" className="rounded-[50%] w-full h-full" />
+                                <img src={short.images[0]} alt="" className="rounded-[50%] w-full h-full" />
                             </div>
                         </div>
                     ))}

@@ -6,31 +6,47 @@ import bin from '../../assets/products/bin.png'
 import redM from '../../assets/products/redminus.png'
 import blackM from '../../assets/products/blackminus.png'
 import redplus from '../../assets/products/redplus.png'
-import { UpdateProductcard, addProduct, removeProduct, removeProductfromcard, setProduct } from "../../features/User/UserSlice";
+import { UpdateProductcard, addProduct, removeProduct, removeProductfromcard, setProduct, AddOrder, resetCard } from "../../features/User/UserSlice";
 import liked from '../../assets/products/likedC.png'
 import EmptyCard from "./EmptyCard";
 import info from '../../assets/products/info.png'
+import dlt from '../../assets/products/delete.png'
+import { Link } from "react-router-dom";
 
 function CardMain() {
 
     const card = useSelector(state => state.user.userCard);
     const [totalCost, setTotalCost] = useState();
     const [productcost, setProductCost] = useState();
+    const [animate, setAnimate] = useState(false);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         let total = 0;
         card.forEach(element => {
-            total += element.price * element.quantity;
+            total += element.price;
         });
 
         if(total > 100) {
             setTotalCost(Math.round(total))
             setProductCost(Math.round(total))
         }else {
-            setTotalCost(Math.round(total) * 20 / 100)
+            setTotalCost(Math.round(total) + Math.round(total) * 20 / 100)
             setProductCost(Math.round(total))
         }
     }, [card]);
+
+
+    const HandleOrder = e => {
+        e.preventDefault();
+        setAnimate(true);
+        setTimeout(() => {
+            dispatch(AddOrder(card))
+            dispatch(resetCard());
+            setAnimate(false)
+        }, 2000)
+    }
 
 
     return (
@@ -83,11 +99,18 @@ function CardMain() {
                                 </p>
 
                             </div>
-                            <div className="w-full flex items-center justify-center">
-                                <button className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
-                                    Səbəti təsdiq et
+                            <Link className="w-full flex items-center justify-center">
+                                <button onClick={HandleOrder} className="w-full h-[48px] bg-[#26264C] text-white flex items-center justify-center gap-[10px] text-[16px] font-semibold transition-all duration-300 hover:rounded-xl active:scale-90">
+                                    {animate ? 
+                                    <div role="status">
+                                        <svg aria-hidden="true" className="inline w-8 h-8 text-white animate-spin" viewBox="0 0 100 101" fill="#26264C" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                        </svg>
+                                    </div>
+                                    : "Səbəti təsdiq et"}
                                 </button>    
-                            </div>
+                            </Link>
                             <div className="w-full h-[77px] border border-[#14AE5C] bg-[#14AE5C] bg-opacity-5 flex flex-col items-start justify-center p-5">
                                 <div className="flex items-center gap-[10px]">
                                     <p className="text-[#14AE5C] text-[18px]">Pulsuz çatdırılma!</p>
@@ -108,10 +131,10 @@ function CardMain() {
     )
 }
 
-
 function Order({ order, card }) {
     const [minuscolor, setMinusColor] = useState(card.length > 1 ? redM : blackM);
-    const [count, setCount] = useState(order.quantity);
+    const [count, setCount] = useState(order.quantity || 1);
+    const [dl, setDelete] = useState(false)
     const dispatch = useDispatch();
     const wishlist = useSelector(state => state.user.wishlist);
 
@@ -123,8 +146,9 @@ function Order({ order, card }) {
         }
     };
 
-    const handleDelete = (e, order) => {
+    const handleDelete = e => {
         dispatch(removeProductfromcard(order));
+        setDelete(false)
     };
 
     return (
@@ -165,7 +189,7 @@ function Order({ order, card }) {
                             </div>
                         </div>
                         <div className="cardbox">
-                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => handleDelete(e, order)}>
+                            <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]" onClick={e => setDelete(!dl)}>
                                 <img src={bin} alt="Delete" className="w-[15px] h-[17px]" />
                             </div>
                             <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#FAFAFA]">
@@ -200,9 +224,48 @@ function Order({ order, card }) {
                     </div>
                 </div>
             </div>
+            {
+                dl ? <Delete handleDelete={handleDelete} setDelete={setDelete}/> : <></>
+            }
         </div>
     );
 }
 
+function Delete({ setDelete, handleDelete }) {
+    const [isVisible, setIsVisible] = useState(false);
+  
+    useEffect(() => {
+      setIsVisible(true);
+    }, []);
+  
+    const handleClose = () => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setDelete(false);
+      }, 500); // Matches the duration of the CSS transition
+    };
+  
+    return (
+      <section className={`bg-[#00000066] w-screen h-screen absolute top-0 left-0 flex items-center justify-center transition-opacity duration-200 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`w-[400px] flex flex-col items-center justify-center gap-[30px] bg-white h-[232px] transition-transform duration-200 transform ${isVisible ? 'scale-100' : 'scale-90'}`}>
+          <img src={dlt} alt="Delete" />
+          <p>
+            Ünvanı silmək istədiyinizdən əminsiniz ?
+          </p>
+          <div className="flex items-center justify-center gap-[10px]">
+            <button className="border border-gray-200 bg-white w-[176px] h-[40px]" onClick={handleClose}>
+              Bağla
+            </button>
+            <button className="border-none bg-[#26264C] w-[176px] h-[40px] text-white" onClick={() => {
+              handleDelete();
+              handleClose();
+            }}>
+              Sil
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+}
 
 export default CardMain;

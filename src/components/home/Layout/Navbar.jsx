@@ -15,10 +15,11 @@ function Navbar() {
 
     const {search, menu, setSearch, dispatch, setPages, wishlistL, usercard, searchstr, setSearchstr} = useNavbar();
 
+
     return (
-        <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-full font-normal h-[96px] px-1'>
+        <nav className='flex w-[80%] items-center justify-between bg-[#FFFFFF] max-[1200px]:w-[90%] font-normal h-[96px] '>
             <Link to={'/home'}>
-                <img src={Logo} alt="" className='min-w-[150px]'/>
+                <img src={Logo} alt="" className='min-w-[130px] mt-[10px] w-[250px]'/>
             </Link>
             <div className='flex items-center justify-end w-full mr-[30px] '>
                 {

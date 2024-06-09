@@ -6,6 +6,11 @@ function CategorieDropdown() {
     const category = useSelector(state => state.home.ActiveCategory);
     const dispatch = useDispatch(); 
     
+    const HandleClick = (item) => {
+        console.log(HandleClick)
+        window.location = `/products?gender=${category.main}&product=${item}` 
+    }
+
     return (
         <section
             className={`flex w-[80%] z h-[502px] mt-[38px] items-start absolute justify-start bg-white max-[1200px]:w-full font-normal px-1 max-[768px]:hidden animation ${category == null ? 'hidden' : 'flex'}`}
@@ -23,7 +28,7 @@ function CategorieDropdown() {
                             <section className="flex flex-col items-start justify-start flex-wrap max-h-[400px] w-full">
                                 {ct.items.map((item, idx) => {
                                     return (
-                                        <div key={idx} className="text-sm text-gray-700 p-3 transition-all duration-300 hover:scale-90 cursor-pointer">
+                                        <div key={idx} className="text-sm text-gray-700 p-3 transition-all duration-300 hover:scale-90 cursor-pointer" onClick={() => HandleClick(item)}>
                                             {item}
                                         </div>
                                     );

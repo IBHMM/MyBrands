@@ -50,13 +50,13 @@ function Row({ questionsdata }) {
 
     return (
         <section className='felx flex-col w-full justify-center items-start'>
-            <p className='text-[16px] text-[#9B96B7] p-3'>{questionsdata.title}</p>
+            <p className='text-[18px] text-[#9B96B7] p-3'>{questionsdata.title}</p>
             {questionsdata.faqs.map((faq, index) => {
                 const isOpen = openIndexes.includes(index);
                 return (
-                    <div className='flex flex-col items-between justify-start w-full border border-gray-100 p-3 py-5' key={index}>
+                    <div className='flex flex-col items-between justify-start w-full border border-gray-100 p-3 py-4' key={index}>
                         <div className='flex w-full items-center justify-between ' onClick={() => handleAccordionClick(index)}>
-                            <p className=''>{faq.question}</p>
+                            <p className='text-[14px]'>{faq.question}</p>
                             <p className='cursor-pointer text-[25px]'>{isOpen ? '-' : '+'}</p>
                         </div>
                         <div className={`accordionanimate ${isOpen ? 'open' : 'closed'}`}>

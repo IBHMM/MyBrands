@@ -38,22 +38,25 @@ import Footer from '../../components/home/Layout/Footer';
 import { useEffect, useState } from 'react';
 import {WaitingAnimation} from '../../components/home/Animation'
 import { setFirstTime } from '../../features/Home/Loading';
+import { fetchUserCard, fetchUserWishList } from '../../features/User/UserSlice';
+import { fetchBrands, fetchCategories } from '../../features/Home/Categoryies';
 
 function Home() {
     const category = useSelector(state => state.home.CategoryType);
     const start = useSelector(state => state.basic.firsttime);
+    const status = useSelector((state) => state.home.status);
+    const error = useSelector((state) => state.home.error);
+    
     const dispatch = useDispatch();
-
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(setFirstTime(true));
-        }, 2000)
-    }, [])
+        dispatch(fetchCategories());
+        dispatch(fetchBrands());
+    }, [dispatch]);
 
     return (
         <>
             {
-                start ? 
+                status == "succeeded" ? 
                 <section className="w-full font-[Flow Circular] flex items-center justify-center flex-col relative">
                     <Header />
                     <Navbar />
@@ -71,8 +74,9 @@ function Home() {
                     <BrendCard />
                     <Services />
                     <Footer />
-                </section> :  
-                    <WaitingAnimation />
+                </section> : (status == "loading") ?   
+                    <WaitingAnimation /> :
+                    <div>Error</div>
             }
         </>
     );

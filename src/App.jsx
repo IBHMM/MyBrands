@@ -22,6 +22,7 @@ import ProductCard from './pages/Products/Card'
 import UserCard from './pages/Profile/UserCard'
 import TakeGender from './pages/Home/TakeGender'
 import Orders from './pages/Profile/Orders'
+import FinishOrder from './pages/Profile/FinishOrder'
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route path='/profile/CustomerService' element={<CustomerService />} />
               <Route path='/profile/Card' element={<UserCard />} />
               <Route path='/profile/order' element={<Orders />} />
+              <Route path='/profile/order/finish' element={<FinishOrder />} />
               <Route path='/home/about' element={<About />} />
               <Route path='/products' element={<Product />} />
               <Route path='/products/product' element={<ProductCard />} />

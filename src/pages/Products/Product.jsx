@@ -7,8 +7,18 @@ import Footer from '../../components/home/Layout/Footer';
 import WisitedPages from '../../components/home/Layout/WisitedPages';
 import NumberOFProduct from '../../components/products/NumberOFProduct'
 import ProductMain from '../../components/products/ProductMain';
+import { useEffect, useState } from 'react';
+import { fetchCategories } from '../../features/Home/Categoryies';
 
 function Product() {
+    const [number, setNumber] = useState(0)
+    
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, [dispatch]);
+    
     const category = useSelector(state => state.home.CategoryType);
 
     return (
@@ -20,8 +30,8 @@ function Product() {
                 category != "" && <CategorieDropdown />
             }
             <WisitedPages pages={['home', 'products']}/>
-            <NumberOFProduct number={30}/>
-            <ProductMain />
+            <NumberOFProduct number={number}/>
+            <ProductMain setNumber={setNumber} search={""}/>
             <Footer />
         </section>
     );

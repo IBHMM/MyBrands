@@ -23,9 +23,9 @@ function LikedMain() {
 
             {
                 products.length != 0 ? 
-                    <section className="w-full mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 px-1">
+                    <section className="w-full mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center mt-10 mb-5">
                             {
-                            products.map((product, index) => <Card key={index} product={product} />)
+                            products.map((product, index) => <Card key={index} product={product} type={2}/>)
                             }
                     </section> : 
                     

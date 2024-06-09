@@ -1,51 +1,56 @@
-import { useState } from "react"
-import { useSelector } from "react-redux"
-import HandleUserNumber from "../../utils/Registration/helperfunctions"
+import { useState } from "react";
+import Cookies from 'js-cookie';
 
 export default function UseSignin() {
-    const [num, setNum] = useState("")
-    const [pas, setPas] = useState("")
-    const [code, setCode] = useState("")
-    const [error, setError] = useState({number: false, password: false, code: false})
-    const method = useSelector((state) => state.register.LoginMethod);
+    const [num, setNum] = useState("");
+    const [pas, setPas] = useState("");
+    const [error, setError] = useState({bl: false, message: ""});
+    const [loading, setLoading] = useState(false);
 
-    const HandleChange = (event) => {    
-        if(method == 1) {
-            let newValue = HandleUserNumber(event.target.value);
-            setNum(newValue);
-        }    
-        setNum(event.target.value)
-    }
+    const HandleSubmit = async () => {
+        setLoading(true);
 
-    const DirectToHome = () => {
-        if (num.length != 12 && pas.length < 4) {
-            setError({number: true, password: true})
-        }else if (num.length != 12 && pas.length >= 4) {
-            setError({number: true, password: false})
-        }else if (num.length == 12 && pas.length < 4) {
-            setError({number: false, password: true})
-        }else{
-            setError({number: false, password: false})
-            // Send request body {num, pass}
+        if (num.length === 9 && pas.length > 3) {
+            setError({bl: false, message: ""});
+            try {
+                const response = await fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/user/token/', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        mobile_number: "+994" + num,
+                        password: pas
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    Cookies.set("refresh", data.refresh, { expires: 7 });
+                    Cookies.set("access", data.access, { expires: 7 });  
+                    Cookies.set("csrftoken", data.access, { expires: 7 }); 
+                    Cookies.set("sessionid", data.access, { expires: 7 });  
+                    localStorage.setItem("access", data.access);
+
+                    window.location = '/';
+                } else {
+                    const data = await response.json();
+                    setError({bl: true, message: data.detail});
+                    setLoading(false);
+                }
+            } catch (error) {
+                console.error('Error during request:', error);
+                setError({bl: true, message: "Request failed"});
+                setLoading(false);
+            }
+        } else {
+            setError({bl: true, message: "Invalid Credentials"});
+            setLoading(false);
         }
-    }
-
-    const HandleCode = e => {
-        if (code.length != 18) {
-            setError({...error, code : true})
-        }else {
-            setCode(code)
-            setError({...error, code: false})
-        }
-    }
-
+    };
 
     return {
-        num, error, pas, code, 
-        method, HandleChange, 
-        DirectToHome, HandleCode,
-        setNum, setError, setCode,
-         setPas 
-    }
-    
+        num, error, pas, setNum, setError, setPas, HandleSubmit, loading
+    };
 }

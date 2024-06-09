@@ -25,10 +25,15 @@ function MobileM() {
 
     const HandleGender = (e, gender) => {
         if (gender != "usaq") {
-            e.preventDefault();
             dispatch(setMenu(false));
             dispatch(setGender(gender));
+        }else {
+            dispatch(setMenu(false));
         }
+    }
+
+    const HandleChild = (e, gender) => {
+        
     }
 
     return (
@@ -65,14 +70,15 @@ function MobileM() {
                 {
                     categories.map((ctg, index) => {
                         return (
-                            <CategoryDropdown category={ctg} key={index}/>
+                            <CategoryDropdown category={ctg} key={index} gender={gender} dispatch={dispatch}/>
                         )
                     })
                 }
             </div>
 
             <div className='w-full flex items-center justify-center px-3 mt-[20px] pb-1'>
-                <Link to={'/home/profile'} className='flex items-center justify-center bg-[#26264C] w-full h-[56px] hover:opacity-[0.7] transition-all rounded-sm'>
+                <Link
+                    to={'/home/profile'} className='flex items-center justify-center bg-[#26264C] w-full h-[56px] hover:opacity-[0.7] transition-all rounded-sm'>
                     <div className='flex items-center justify-center text-white gap-[9px]'>
                         <img src={Profile} alt="Profile" />
                         Hesabim
@@ -84,11 +90,15 @@ function MobileM() {
 }
 
 
-function CategoryDropdown({category}) {
+function CategoryDropdown({category, gender, dispatch}) {
 
     const [isopen, setIsopen] = useState(false);
 
-    console.log(category)
+    const HandleItemNavigation = item => {
+        const i = item.toLowerCase();
+        dispatch(setMenu(false))
+        window.location = `/products?gender=${gender}&item=${i}`;
+    }
 
     return (
         <section className='flex flex-col w-full'>
@@ -112,11 +122,11 @@ function CategoryDropdown({category}) {
                                         {
                                             ctg.items.map((item, index) => {
                                                 return (
-                                                    <Link className='flex w-full items-center justify-between py-3 border-b-1'>
+                                                    <div className='flex w-full items-center justify-between py-3 border-b-1' key={index} onClick={() => HandleItemNavigation(item)}>
                                                         <p className='text-gray-500 text-[14px] hover:translate-x-2 transition-all duration-100 active:scale-90 w-full'>
                                                             {item}
                                                         </p>
-                                                    </Link>
+                                                    </div>
                                                 )
                                             })
                                         }
