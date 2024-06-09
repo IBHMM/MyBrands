@@ -87,8 +87,8 @@ function Footer () {
         </div>
 
         <div className="flex  gap-[10px] order-last max-[400px]:flex-col">
-            <img src={appstore} alt="" />
-            <img src={googleplay} alt="" />
+            <img src={appstore} alt="" className=" max-w-[50%]"/>
+            <img src={googleplay} alt="" className=" max-w-[50%]"/>
         </div>
 
     </footer>

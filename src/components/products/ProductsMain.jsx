@@ -34,7 +34,7 @@ function ProductMain({ search, setShow, setNumber, loading, setLoading, products
 
                 <div className="grid">
                     {products.map((product, index) => (
-                        <Card key={index} product={product} />
+                        <Card key={index} product={product} type={2}/>
                     ))}
                 </div>
         </section>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { setProduct } from '../../../features/User/UserSlice.js';
 import '../style/style.css'
 
-function Card({ product }) {
+function Card({ product, type }) {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
     const wishlist = useSelector(state => state.user.wishlist);
@@ -60,7 +60,7 @@ function Card({ product }) {
     return (
       <section 
 
-        className="my-custom-card">
+        className={`${type == 1 ? "my-custom-card" : "my-custom-card2"}`}>
         
         <section 
             className="w-full max-h-[240px] max-[500px]:max-h-[230px]">
@@ -84,7 +84,7 @@ function Card({ product }) {
           </button>
         </section>
 
-        <div className="relative  flex flex-col justify-center items-start w-full pl-2 py-2 max-[500px]:max-h-[120px]">
+        <div className="relative  flex flex-col justify-center items-start w-full pl-2 py-2 max-[500px]:max-h-[120px] overflow-hidden">
           <p className='text-[18px] max-[500px]:text-[15px]'>{product.category}</p>
           <p className="text-xs text-gray-500">{product.title}</p>
           <p className="text-red-500">{product.price}$</p>

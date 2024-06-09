@@ -166,7 +166,26 @@
   
   @media (max-width: 500px) {
     .my-custom-card {
-      min-width: 170px;
+      min-width: 180px;
+      max-height: 300px;
+    }
+  }
+  
+  .my-custom-card2 {
+    margin: 1rem 0;
+    position: relative;
+    max-width: 294px;
+    max-height: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f68b; 
+  }
+  
+  @media (max-width: 500px) {
+    .my-custom-card2 {
+      min-width: 50%;
       max-height: 300px;
     }
   }

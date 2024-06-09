@@ -20,7 +20,7 @@ function BestSellers() {
             </div>
             <div className="flex items-center justify-between w-full overflow-y-auto gap-[47px]  max-[500px]:gap-3">
                 {data != undefined && data.map((item, idx) => (
-                    <Card product={item} key={idx} />
+                    <Card product={item} key={idx} type={1}/>
                 ))}
             </div>
         </section>

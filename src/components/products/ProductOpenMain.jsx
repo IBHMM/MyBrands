@@ -300,7 +300,7 @@ function SimilarProducts({product}) {
             </div>
             <div className="flex items-center justify-between w-full overflow-y-auto gap-[18px] max-[500px]:gap-3">
                 {similar.map((item, idx) => (
-                    <Card product={item} key={idx} />
+                    <Card product={item} key={idx} type={1}/>
                 ))}
             </div>
         </section>
