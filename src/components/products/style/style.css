@@ -190,6 +190,10 @@
     }
 }
 
-.slide-image {
+.slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+.slide-in {
     animation: slideIn 0.5s forwards;
 }

@@ -116,7 +116,8 @@ function ProductOrderPart({product}) {
             newIndex = 0;
         }
         setCurrentIndex(newIndex);
-    }
+        e.target.classList.add('slide-out');
+    };
 
     const handlePrev = () => {
         let newIndex = currentIndex - 1;
@@ -124,15 +125,17 @@ function ProductOrderPart({product}) {
             newIndex = product.images.length - 1;
         }
         setCurrentIndex(newIndex);
-    }
+        e.target.classList.add('slide-in');
+    };
 
-    const handleSlide = (e) => {
+    const handleSlide = (e, index) => {
+        e.preventDefault();
         if (e.clientX > window.innerWidth / 2) {
             handleNext();
         } else {
             handlePrev();
         }
-    }
+    };
 
     return (
         <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[800px]:flex-col max-[800px]:w-full gap-[10px]">
@@ -152,8 +155,8 @@ function ProductOrderPart({product}) {
                     <img
                         src={product.images[currentIndex]}
                         alt=""
-                        className="slide-image min-[800px]:h-[611px] h-[400px] w-full"
-                        onClick={e => handleSlide(e)}
+                        className={`min-[800px]:h-[611px] h-[400px] w-full max-w-[500px]`}
+                        onTouchEnd={e => handleSlide(e)}
                     />
                     <div className="h-[22px] bg-gray-300 items-center justify-center gap-[3px] absolute hidden max-[1300px]:flex px-3 rounded-[20px] bottom-0">
                         {
@@ -168,7 +171,7 @@ function ProductOrderPart({product}) {
                 </section>
 
                 <section className="flex w-full items-center justify-evenly overflow-x-auto max-[1300px]:hidden">
-                    <img src={activesrc} alt="" className="min-[800px]:h-[611px] h-[500px] w-full" />                
+                    <img src={activesrc} alt="" className="min-[800px]:h-[611px] h-[500px] w-full max-w-[500px]" />                
                 </section>
 
 
