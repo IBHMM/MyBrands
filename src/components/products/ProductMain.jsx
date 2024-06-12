@@ -13,6 +13,7 @@ function ProductMain({setNumber, search}) {
     const [products, setProducts] = useState([]);
   
     const item = searchParams.get('q');
+    console.log(item)
 
     useEffect(() => {
         const handleResize = () => {
@@ -29,7 +30,7 @@ function ProductMain({setNumber, search}) {
 
     
     useEffect(() => {
-        const url = `https://dummyjson.com/products?q=${item}`;
+        const url = `https://dummyjson.com/products/search?q=${item}`;
         fetch(url)
             .then(res => res.json())
             .then(json => {
@@ -43,7 +44,7 @@ function ProductMain({setNumber, search}) {
             });
     }, []);
 
-
+    console.log(products)
 
     return (
         <section className="w-[80%] flex items-start justify-center max-[1200px]:w-[90%] mt-[40px]">

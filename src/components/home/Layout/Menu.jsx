@@ -38,6 +38,17 @@ function MobileM() {
         
     }
 
+    const HandleSearch = e => {
+        if (search.trim() != "") {
+            if (lastS.some(s => s !== search)) {
+                const newHistory = [...lastS, search];
+                localStorage.setItem("lastsearch", JSON.stringify(newHistory));
+                setLasts(newHistory);
+            }
+            window.location = `/products?q=${search}`
+        }
+    }
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Enter') {
@@ -66,7 +77,7 @@ function MobileM() {
             <div className='w-full flex items-center justify-center px-3 mt-[20px] pb-1'>
                 <div className='w-full flex items-center justify-center px-2 py-2 h-[56px] border border-gray-100 rounded-md'>
                     <input type="text" className='h-[40px] w-full focus:outline-none pl-5' placeholder='Metni daxil edin' onChange={e => setSearch(e.target.value)}/>
-                    <img src={SearchIcon} alt="Search" className='pr-2' />
+                    <img src={SearchIcon} alt="Search" className='pr-2' onClick={e => HandleSearch(e)}/>
                 </div>
             </div>
 

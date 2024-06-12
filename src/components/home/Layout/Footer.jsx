@@ -12,7 +12,7 @@ import '../style/style.css'
 
 function Footer () {
   return (
-    <footer className='flex flex-col items-stretch justify-between w-[80%] max-[1200px]:w-[90%] pb-10  gap-[40px] relative left-0 mt-[150px]  border-t-[1px] pt-1 border-gray-100 max-[970px]:flex-col'>
+    <footer className='flex flex-col items-stretch justify-between w-[80%] max-[1200px]:w-[90%] pb-10  gap-[40px] relative left-0 mt-[150px] border-t-[1px] pt-1 border-gray-100 max-[970px]:flex-col'>
         
         <div className="flex items-stretch justify-between w-full gap-[100px] pt-10 max-[970px]:flex-col">
             <div className="flex items-start justify-between w-full min-[390px]:gap-[30px] order-1">

@@ -141,11 +141,11 @@ function ProductOrderPart({product}) {
         <section className="w-full flex items-center justify-start px-3 py-2 max-h-full max-[800px]:flex-col max-[800px]:w-full gap-[10px]">
 
             <section className="flex items-center justify-between w-full min-[800]:w-[60%]">
-                <section className="flex flex-col items-start justify-start gap-[10px] h-[611px] max-[1300px]:hidden">
+                <section className="flex flex-col items-start justify-start gap-[10px] h-[611px] max-[1300px]:hidden overflow-scroll">
                     {
                         product.images.map((src, index) => {
                             return (
-                                <img src={src} alt="src" key={index} className={`rounded-sm w-[82px] h-[112px] border ${activesrc == src ? 'border-red-300' : 'border-gray-300 '} `} onClick={() => setActiveSrc(src)}/>
+                                <img src={src} alt="src" key={index} className={`rounded-sm w-[82px] h-[112px] py-5 border ${activesrc == src ? 'border-red-300' : 'border-gray-300 '} `} onClick={() => setActiveSrc(src)}/>
                             )
                         })
                     }
@@ -157,6 +157,7 @@ function ProductOrderPart({product}) {
                         alt=""
                         className={`min-[800px]:h-[611px] h-[400px] w-full max-w-[500px]`}
                         onTouchEnd={e => handleSlide(e)}
+                        onClick={e =>  handleSlide(e)}
                     />
                     <div className="h-[22px] bg-gray-300 items-center justify-center gap-[3px] absolute hidden max-[1300px]:flex px-3 rounded-[20px] bottom-0">
                         {

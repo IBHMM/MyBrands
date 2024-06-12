@@ -8,7 +8,7 @@ function Trends() {
     const gender = useSelector(state => state.user.gender);
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
+        fetch(`https://dummyjson.com/products/search?q=${gender}`)
         .then(res => res.json())
         .then(json => setData(json.products))
         .catch(err => console.error(err))
