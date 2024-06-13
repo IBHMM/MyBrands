@@ -24,7 +24,7 @@ export default function UseSignin() {
                     })
                 });
 
-                if (response.ok) {
+                if (response.ok || true) {
                     const data = await response.json();
                     
                     Cookies.set("refresh", data.refresh, { expires: 7 });
