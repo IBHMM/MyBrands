@@ -25,8 +25,8 @@ function BrendCard() {
     return (
         <section className="flex items-stretch justify-between w-[80%] max-[1200px]:w-[90%] mt-[100px]">
             <section className="bg-[#26264C] flex flex-col justify-center items-start w-[50%] pl-10 max-[500px]:hidden">
-                <p className="text-[13px] text-[#9B96B7]">Type</p>
-                <p className='text-white text-[56px] max-[1000px]:text-[40px] max-[750px]:text-[30px] max-[650px]:text-[22px]'>General name</p>
+                <p className="text-[13px] text-[#9B96B7]">Krossovka | Kedlər</p>
+                <p className='text-white text-[56px] max-[1000px]:text-[40px] max-[750px]:text-[30px] max-[650px]:text-[22px]'>Lacoste Krossovka</p>
                 <button className="w-[35%] min-[800px]:h-[40px] max-[800px]:h-[30px] bg-white max-[700px]:text-[14px] mt-10">
                     Sifaris et
                 </button>
@@ -38,8 +38,8 @@ function BrendCard() {
                 <div className='hidden max-[500px]:flex flex-col items-center justify-center absolute w-full bottom-5'> 
                     <p className="text-[14px] text-[#9B96B7] w-[80%] p-0 m-0">Type</p>
                     <p className='text-white text-[30px] w-[80%] p-0 m-0'>General name</p>
-                    <button className="w-[80%] max-[800px]:h-[40px] bg-white max-[700px]:text-[14px]">
-                        Sifaris et
+                    <button className="w-[80%] max-[800px]:h-[40px] bg-white max-[700px]:text-[14px] h-[60px]">
+                        
                     </button>
                 </div>
                 <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
