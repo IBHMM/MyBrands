@@ -52,13 +52,13 @@ const Shorts = ({ data, setOpen }) => {
         >
             <div 
                 onClick={handlePrev} 
-                className='flex items-center justify-center w-[40px] h-[40px] text-white text-[20px] rounded-[50%] bg-gray-500 cursor-pointer max-[500px]:hidden'
+                className='flex items-center justify-center w-[40px] h-[40px] text-white text-[20px] rounded-[50%] bg-gray-400 cursor-pointer max-[500px]:hidden'
             >
                 {'<'}
             </div>
 
             <div className='relative flex items-center justify-center h-[652px] w-[400px] overflow-hidden max-[500px]:h-screen max-[500px]:w-screen'>
-                <img src={images[index]} alt="" className='min-[500px]:w-[400px] h-full max-[500px]:h-screen max-[500px]:w-screen' />
+                <img src={images[index]} alt="" className='min-[500px]:w-[400px] max-[500px]:h-screen max-[500px]:w-[90%] h-[60%] w-[80%]' />
                 
                 <div className='flex items-center justify-between absolute top-9 w-[90%]'>
                     <div className="flex items-center justify-start gap-[10px]">

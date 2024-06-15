@@ -3,6 +3,7 @@ import ProductsMain from './ProductsMain.jsx'
 import SideBar from './Sidebar.jsx'
 import { WaitingAnimation } from '../home/Animation.jsx';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function ProductMain({setNumber, search}) {
 
@@ -11,6 +12,7 @@ function ProductMain({setNumber, search}) {
     const [searchParams] = useSearchParams();
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const gender = useSelector(state => state.user.gender)
   
     const item = searchParams.get('q');
 
@@ -26,10 +28,16 @@ function ProductMain({setNumber, search}) {
         return () => window.removeEventListener('resize', handleResize);
     }, [])
 
-
-    
     useEffect(() => {
-        const url = `https://dummyjson.com/products?q=${item}`;
+        let url;
+        if (item != null) {
+            if (gender != "") {
+                url = `https://dummyjson.com/products/search?q=${gender}`;
+            }else {
+                url = `https://dummyjson.com/products`;
+            }
+        }
+        console.log(url)
         fetch(url)
             .then(res => res.json())
             .then(json => {
@@ -42,7 +50,6 @@ function ProductMain({setNumber, search}) {
                 setLoading(false);
             });
     }, []);
-
 
 
     return (

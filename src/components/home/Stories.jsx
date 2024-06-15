@@ -8,11 +8,13 @@ function Shorts() {
     const [click, setClick] = useState(undefined)
     
     useEffect(() => {
-        fetch('http://ec2-100-27-211-19.compute-1.amazonaws.com/detail/get-statuses')
+        fetch('https://dummyjson.com/products?q=clothers')
         .then(res =>  res.json())
-        .then(json => setData(json))
+        .then(json => setData(json.products))
         .catch(err => console.error(err))
     }, [])
+
+    console.log(data)
 
     const handleShort = (e, short) => {
         e.preventDefault();

@@ -4,7 +4,7 @@ import Profile from '../../../assets/home/profileWhite.png';
 import useNavbar from '../../../hooks/Home/Menu';
 import { setMenu } from '../../../features/Home/Categoryies';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import right from '../../../assets/home/leftb.png';
 import { Link } from 'react-router-dom';
 import { setGender } from '../../../features/User/UserSlice';
@@ -16,6 +16,8 @@ function MobileM() {
     const categories = useSelector(state => state.home.AllCategories);
     const gender = useSelector(state => state.user.gender);
     const [activeCategory, setActiveCategory] = useState(gender == 'kisi' ? 0 : gender == "qadin" ? 1 : 2);
+    const [search, setSearch] = useState("");
+    const [lastS, setLasts] = useState(JSON.parse(localStorage.getItem("lastsearch")) || []);
 
     // const handleCategoryClick = (index) => {
     //     setSelectedCategory(index);
@@ -36,6 +38,35 @@ function MobileM() {
         
     }
 
+    const HandleSearch = e => {
+        if (search.trim() != "") {
+            if (lastS.some(s => s !== search)) {
+                const newHistory = [...lastS, search];
+                localStorage.setItem("lastsearch", JSON.stringify(newHistory));
+                setLasts(newHistory);
+            }
+            window.location = `/products?q=${search}`
+        }
+    }
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                if (lastS.some(s => s !== search)) {
+                    const newHistory = [...lastS, search];
+                    localStorage.setItem("lastsearch", JSON.stringify(newHistory));
+                    setLasts(newHistory);
+                }
+                window.location = `/products?q=${search}`
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [search, lastS]);
+
     return (
         <section className="absolute top-0 left-0 w-screen bg-white flex justify-start flex-col min-[768px]:hidden zindex max-w-screen min-h-screen  overflow-scroll">
             <div className='w-full flex items-center justify-between px-3 mt-[20px] border-b-[1px] pb-1 border-gray-100'>
@@ -45,8 +76,8 @@ function MobileM() {
 
             <div className='w-full flex items-center justify-center px-3 mt-[20px] pb-1'>
                 <div className='w-full flex items-center justify-center px-2 py-2 h-[56px] border border-gray-100 rounded-md'>
-                    <input type="text" className='h-[40px] w-full focus:outline-none pl-5' placeholder='Metni daxil edin' />
-                    <img src={SearchIcon} alt="Search" className='pr-2' />
+                    <input type="text" className='h-[40px] w-full focus:outline-none pl-5' placeholder='Metni daxil edin' onChange={e => setSearch(e.target.value)}/>
+                    <img src={SearchIcon} alt="Search" className='pr-2' onClick={e => HandleSearch(e)}/>
                 </div>
             </div>
 
