@@ -1,6 +1,6 @@
+import { brends } from "../../utils/Home/constants"
 
-
-function Brends({brends}) {
+function Brends() {
     return (
         <section className="relative flex flex-col justify-start items-center w-[80%] max-[1200px]:w-[90%] px-1 mt-[50px] gap-[30px]">
             <div className="flex items-center justify-between w-full">

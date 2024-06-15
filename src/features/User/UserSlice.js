@@ -34,7 +34,7 @@ const initialState = {
   loading: false,
   error: null,
   ActiveProduct: {},
-  gender: "",
+  gender: "men",
   address: [],
   orders: [],
 };
