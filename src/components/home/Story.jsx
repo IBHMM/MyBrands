@@ -63,7 +63,7 @@ const Shorts = ({ data, setOpen }) => {
                 <div className='flex items-center justify-between absolute top-9 w-[90%]'>
                     <div className="flex items-center justify-start gap-[10px]">
                         <div className="flex items-center justify-center rounded-[50%] w-[48px] h-[48px] p-[2px] border-[2px] border-red-500">
-                            <img src={images[0]} alt="" className="rounded-[50%] w-full h-full" />
+                            <img src={images[0]} alt="" className="rounded-[50%] w-full h-[60%]" />
                         </div>
                         <p className='text-white font-semibold'>
                             {data.title}
