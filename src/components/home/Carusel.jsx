@@ -45,11 +45,11 @@ export default function Carousel() {
       <button onClick={prevSlide} className="absolute top-1/2 transform -translate-y-1/2 left-[10px] w-10 h-10 rounded-md bg-[rgba(255,255,255,0.5)] max-[500px]:hidden">
         <img src={Left} alt="Previous" className="w-6 h-6 mx-auto" />
       </button>
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
         {company.map((_, index) => (
           <div
             key={index}
-            className={`inline-block w-10 h-[3px] mx-1 rounded-full ${index === currentImage ? 'bg-gray-500' : 'bg-gray-300'}`}
+            className={`inline-block min-w-[20px] h-[3px] mx-1 rounded-full ${index === currentImage ? 'bg-gray-500 w-[30px]' : 'bg-gray-300'}`}
           />
         ))}
       </div>

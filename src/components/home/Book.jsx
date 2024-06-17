@@ -42,10 +42,10 @@ function Book() {
 
     return (
         <section className="flex items-center justify-between gap-[70px] w-[80%] max-[1200px]:w-[90%] mt-[70px] max-[898px]:flex-col max-[898px]:justify-center max-[898px]:gap-[40px]">
-            <section className="w-[48%] h-[400px] flex items-center justify-center relative max-[898px]:w-[100%] max-[600px]:h-[270px] max-[400px]:h-[200px]" >
+            <section className="w-[48%] h-[400px] flex items-center justify-center relative max-[898px]:w-[100%] max-[600px]:h-[300px] max-[400px]:h-[250px]" >
                 <img src={images[0]} alt="" className="w-full h-full "/>
             </section>
-            <section className="w-[48%] h-[400px] flex items-center justify-center relative max-[898px]:w-[100%] max-[600px]:h-[270px] max-[400px]:h-[200px]">
+            <section className="w-[48%] h-[400px] flex items-center justify-center relative max-[898px]:w-[100%] max-[600px]:h-[300px] max-[400px]:h-[250px]">
                 <img src={images[1]} alt="" className="w-full h-full "/>
             </section>
         </section>

@@ -45,20 +45,20 @@ const Shorts = ({ data, setOpen }) => {
 
     return (
         <section 
-            className='z w-screen h-screen bg-[#292D32] absolute top-0 flex items-center justify-center gap-[20px]'
+            className='z w-screen h-screen bg-gray-500 absolute top-0 flex items-center justify-center gap-[20px]'
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
             <div 
                 onClick={handlePrev} 
-                className='flex items-center justify-center w-[40px] h-[40px] text-white text-[20px] rounded-[50%] bg-gray-400 cursor-pointer max-[500px]:hidden'
+                className='flex items-center justify-center w-[40px] h-[40px] text-white text-[20px] rounded-[50%] bg-gray-200 cursor-pointer max-[500px]:hidden'
             >
                 {'<'}
             </div>
 
             <div className='relative flex items-center justify-center h-[652px] w-[400px] overflow-hidden max-[500px]:h-screen max-[500px]:w-screen'>
-                <img src={images[index]} alt="" className='min-[500px]:w-[400px] max-[500px]:h-screen max-[500px]:w-[90%] h-[60%] w-[80%]' />
+                <img src={images[index]} alt="" className='min-[500px]:w-[400px] max-[500px]:h-[50%] max-[500px]:w-[90%] h-[60%] w-[80%]' />
                 
                 <div className='flex items-center justify-between absolute top-9 w-[90%]'>
                     <div className="flex items-center justify-start gap-[10px]">
@@ -81,7 +81,7 @@ const Shorts = ({ data, setOpen }) => {
                     ))}
                 </div>
 
-                <Link className='flex items-center justify-center w-[90%] bg-white h-[45px] absolute bottom-3 rounded-1' to={'/products'}>
+                <Link className='flex items-center justify-center w-[90%] bg-white h-[45px] absolute bottom-10 rounded-1' to={'/products'}>
                     Alış-verişə başla
                 </Link>
             </div>
