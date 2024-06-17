@@ -29,7 +29,6 @@ function Book() {
     const {woman, man, child} = offers;
     const [images, setImages] = useState(man)
     const gender = useSelector(state => state.user.gender);
-    console.log(images)
 
     useEffect(() => {
         if (gender == "men") {

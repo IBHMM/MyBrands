@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import img1 from '../../assets/temp/slide.png';
-import Story from './Story'
+import Story from './Story';
+import './style/style.css'
 
 function Shorts() {
     const [data, setData] = useState([]);
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(undefined)
+    const [click, setClick] = useState(undefined);
+    const [Loading, setLoading] = useState(true);
     
     useEffect(() => {
-        fetch('https://dummyjson.com/products?q=clothers')
-        .then(res =>  res.json())
-        .then(json => setData(json.products))
-        .catch(err => console.error(err))
-    }, [])
-
-    console.log(data)
+        fetch('https://dummyjson.com/products?limit=10')
+        .then(res => res.json())
+        .then(json => {
+            setData(json.products);
+            setLoading(false);
+        })
+        .catch(err => console.error(err));
+    }, []);
 
     const handleShort = (e, short) => {
         e.preventDefault();
@@ -26,20 +28,22 @@ function Shorts() {
         <>
             {
                 open ? 
-                <Story data={click} setOpen={setOpen}/> :
-
-                <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px] overflow-auto gap-[20px]">
+                <Story data={click} setOpen={setOpen} /> :
+                <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px] overflow-auto gap-[10px]">
                     {data.map((short, index) => (
-                        <div className="flex items-center justify-center flex-col w-[82px] hover:scale-90 transition-all duration-300 " key={index} onClick={e => handleShort(e, short)}>
-                            <div className="flex items-center justify-center rounded-[50%] w-[58px] h-[58px] p-[2px] border-[2px] border-red-500">
-                                <img src={short.images[0]} alt="" className="rounded-[50%] w-full h-full" />
-                            </div>
+                        <div className="flex items-center justify-center flex-col w-[82px] hover:scale-90 transition-all duration-300" key={index} onClick={e => handleShort(e, short)}>
+                             {Loading ? 
+                                <div className="loading-circle"> </div> : 
+                                
+                                <div className="flex items-center justify-center rounded-full w-[58px] h-[58px] p-[2px] border-[2px] border-red-500">
+                                    <img src={short.images[0]} alt="" className="rounded-[50%] w-full h-full" />
+                                </div>
+                            }    
                         </div>
                     ))}
                 </section>
             }
         </>
-
     );
 }
 

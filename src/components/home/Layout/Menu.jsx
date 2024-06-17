@@ -68,8 +68,8 @@ function MobileM() {
     }, [search, lastS]);
 
     return (
-        <section className="absolute top-0 left-0 w-screen bg-white flex justify-start flex-col min-[768px]:hidden zindex max-w-screen min-h-screen  overflow-scroll">
-            <div className='w-full flex items-center justify-between px-3 mt-[20px] border-b-[1px] pb-1 border-gray-100'>
+        <section className="absolute top-[15px] left-0 w-screen bg-white items-center flex justify-start flex-col min-[768px]:hidden zindex max-w-screen h-screen overflow-scroll animatedMenu">
+            <div className='w-[90%] flex items-center justify-between mt-[20px] border-b-[1px] pb-1 border-gray-100'>
                 <p className='text-[20px]'>Menu</p>
                 <img src={Close} alt="Close" onClick={() => dispatch(setMenu(false))} />
             </div>
