@@ -2,7 +2,7 @@ import { Link  } from "react-router-dom"
 
 function Header() {
     return (
-        <section className="flex w-[80%] items-center justify-between fixed top-0 bg-[#FAFAFA] max-[1200px]:w-full font-normal px-1">
+        <section className="flex w-[80%] items-center justify-between absolute top-0 bg-[#FAFAFA] max-[1200px]:w-[90%] font-normal">
             <div className="flex items-center justify-start gap-[10px] text-[12px]">
                 <Link to={"/home/about"}>Haqqimizda</Link>
                 <Link to="">Musteri xidmetleri</Link>
