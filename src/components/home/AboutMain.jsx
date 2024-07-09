@@ -28,7 +28,7 @@ function AboutMain() {
             <section className="w-full flex flex-col items-center justify-center mt-[50px] flex-wrap">
                 <div className='flex flex-col items-center justify-center mt-[30px] mb-[30px]  gap-[20px] text-[16px]'>
                     <p className='text-[40px] font-bold'>
-                        Məqsədimiz Ziyani sapartdamaq
+                        Məqsədimiz
                     </p>
                     <p className='text-center w-[50%] max-[600px]:w-full'>
                         Ən yüksək keyfiyyətli məhsullar təqdim edən dünya brendlərini geniş çeşiddə təqdim etmək. Təkliflərimizin keyfiyyətinə görə tam məsuliyyət daşıdığımız üçün Sizə yalnız etibarlı məhsullar təqdim etmək istəyirik.
