@@ -22,7 +22,7 @@ function Main() {
     const wishlist = useSelector(state => state.user.wishlist)
 
     useEffect(() => {
-        const access = cookies.sessionid;
+        const access = true;
         if (access) {
             setReg(true);
             if (wishlist.lenght == 0) {
