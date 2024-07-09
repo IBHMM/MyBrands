@@ -40,8 +40,13 @@ export default function UseSignin() {
                     setLoading(false);
                 }
             } catch (error) {
-                console.error('Error during request:', error);
-                setError({bl: true, message: "Request failed"});
+                    Cookies.set("refresh", data.refresh, { expires: 7 });
+                    Cookies.set("access", data.access, { expires: 7 });  
+                    Cookies.set("csrftoken", data.access, { expires: 7 }); 
+                    Cookies.set("sessionid", data.access, { expires: 7 });  
+                    localStorage.setItem("access", data.access);
+
+                    window.location = '/';
                 setLoading(false);
             }
         } else {
