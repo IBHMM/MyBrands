@@ -21,7 +21,7 @@ export async function TakeUserWishList() {
                 'sessionid':localStorage.getItem("sessionid")
             },
         });
-        console.log("response is : ", response)
+        
         return response.data.products;
     } catch (error) {
         console.error('Failed to fetch data:', error);

@@ -139,7 +139,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     width: 100%;
-    gap: 2%;
+    gap: 1%;
     transform: translateY(-15px);
     padding-left: 20px;
   }

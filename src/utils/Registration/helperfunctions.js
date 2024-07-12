@@ -1,5 +1,4 @@
 
-
 export default function HandleUserNumber(number) {
         if (number.length == 13) {
             let newnumber = "";

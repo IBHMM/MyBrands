@@ -42,8 +42,8 @@ async function SetCardItem(product) {
 
 
 function ProductOrderPart({product}) {
-    // const temp = [{size : 'XS', aviable: true},{size : 'S', aviable: false},{size : 'M', aviable: true},{size : 'L', aviable: false},{size : 'XL', aviable: true}];
-    const temp = product.size ? product.size : [];
+    const t = [{size : 'XS', aviable: true},{size : 'S', aviable: false},{size : 'M', aviable: true},{size : 'L', aviable: false},{size : 'XL', aviable: true}];
+    const temp = product.size ? product.size : t;
     const [activesrc, setActiveSrc] = useState(product.images[0]);
     const [activecolor, setActiveColor] = useState(product.images[0]);
     const [card, setCard] = useState(false);
@@ -244,7 +244,6 @@ function ProductOrderPart({product}) {
                                 temp.map((size, index) => {
                                     return (
                                         <div
-
                                             className={`flex items-center justify-center w-[56px] h-[40px] border rounded-md cursor-pointer transition-all duration-300 
                                             ${activesize.size == size.size ? 'border-[#F84568] text-[#F84568] bg-[#F8456814]' : (size.aviable) ? 
                                             'border-[#ECECEE] bg-white' : 'border-[#F4F4F6] line-through text-[#9B96B7]'} hover:scale-110 active:scale-90`} 

@@ -39,7 +39,7 @@ function NotFound() {
     }, []);
 
     return (
-        <div className="container">
+        <div className="flex w-full h-full items-center justify-center container">
             <h1 className="first-four">4</h1>
             <div className="cog-wheel1">
                 <div className="cog1">
@@ -67,7 +67,7 @@ function NotFound() {
             </div>
             <h1 className="second-four">4</h1>
             <Link className="wrong-para">Uh Oh! Page not found!</Link>
-            <Link to={'/home'} className="wrong-para">Refresh the page</Link>
+            <Link to={'/home'} className="wrong-para translate-y-7">Go to home</Link>
         </div>
     );
 }
