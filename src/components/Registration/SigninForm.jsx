@@ -34,7 +34,7 @@ function SigninForm() {
                     <div  className={`flex items-center justify-start border border-[#ECECEE] h-[48px] ${error.bl ? "border-red-500" : "border-[#ECECEE]"}`}>
                         <input 
                         id="password" 
-                        type="text"
+                        type="password"
                         value={pas}
                         placeholder="**********" 
                         className="w-[80%] h-[46px] ml-5 focus:outline-none"

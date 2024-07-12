@@ -1,3 +1,4 @@
+
 export const colors = [
     { name: "Red", hex: "#FF0000" },
     { name: "Lime", hex: "#00FF00" },
@@ -126,3 +127,437 @@ export const childs = [
     "Pencəklər"
 ];
 
+export const categories = [
+    {
+        main: "Kişi",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                    "Idman",
+                    "Papaqlar",
+                    "Şərflər",
+                    "Пальто",
+                    "Çiyindən aşırmalı çantalar",
+                    "Digər",
+                    "Куртки / Блейзеры",
+                    "Çiyindən asmalı çantalar",
+                    "Corablar",
+                    "Səndəllər"
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Qadın",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                    "Idman",
+                    "Papaqlar",
+                    "Şərflər",
+                    "Пальто",
+                    "Çiyindən aşırmalı çantalar",
+                    "Digər",
+                    "Куртки / Блейзеры",
+                    "Çiyindən asmalı çantalar",
+                    "Corablar",
+                    "Səndəllər"
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Uşaq",
+        categories: [
+            {
+                title: "Oğlan",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                    "Idman",
+                    "Papaqlar",
+                    "Şərflər",
+                    "Пальто",
+                    "Çiyindən aşırmalı çantalar",
+                    "Digər",
+                    "Куртки / Блейзеры",
+                    "Çiyindən asmalı çantalar",
+                    "Corablar",
+                    "Səndəllər"
+                ]
+            },
+            {
+                title: "Qız",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                    "Idman",
+                    "Papaqlar",
+                    "Şərflər",
+                    "Пальто",
+                    "Çiyindən aşırmalı çantalar",
+                    "Digər",
+                    "Куртки / Блейзеры",
+                    "Çiyindən asmalı çantalar",
+                    "Corablar",
+                    "Səndəllər"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Çanta&Aksesuar",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Çiyindən aşırmalı çantalar",
+                    "Kəmərlər",
+                    "Şlyapalar",
+                    "Eynəklər",
+                    "Zinət əşyaları",
+                    "Saatlar",
+                    "Əlcəklər",
+                    "Ətirlər",
+                    "Qızılgüllər",
+                    "Makiyaj çantaları"
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Gucci",
+                    "Louis Vuitton",
+                    "Prada",
+                    "Hermès",
+                    "Chanel",
+                    "Dior",
+                    "Burberry",
+                    "Cartier",
+                    "Tiffany & Co.",
+                    "Versace"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Endirim",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                    "Idman",
+                    "Papaqlar",
+                    "Şərflər",
+                    "Пальто",
+                    "Çiyindən aşırmalı çantalar",
+                    "Digər",
+                    "Куртки / Блейзеры",
+                    "Çiyindən asmalı çantalar",
+                    "Corablar",
+                    "Səndəllər"
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    }
+];
+
+
+export const half = [
+    {
+        main: "Kişi",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Qadın",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                 "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Uşaq",
+        categories: [
+            {
+                title: "Oğlan",
+                items: [
+                    "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                ]
+            },
+            {
+                title: "Qız",
+                items: [
+                   "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                ]
+            }
+        ]
+    },
+    {
+        main: "Çanta&Aksesuar",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                    "Çiyindən aşırmalı çantalar",
+                    "Kəmərlər",
+                    "Şlyapalar",
+                    "Eynəklər",
+                    "Zinət əşyaları",
+                    "Saatlar",
+                    "Əlcəklər",
+                    "Ətirlər",
+                    "Qızılgüllər",
+                    "Makiyaj çantaları"
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Gucci",
+                    "Louis Vuitton",
+                    "Prada",
+                    "Hermès",
+                    "Chanel",
+                    "Dior",
+                    "Burberry",
+                    "Cartier",
+                    "Tiffany & Co.",
+                    "Versace"
+                ]
+            }
+        ]
+    },
+    {
+        main: "Endirim",
+        categories: [
+            {
+                title: "Categories",
+                items: [
+                     "Bluzlar / Koftalar",
+                    "Köynəklər",
+                    "Sviterlər / Kardiqanlar",
+                    "Donlar",
+                    "Şalvarlar",
+                    "Cinslər",
+                    "Şortlar",
+                    "Ətəklər",
+                    "Kombinezonlar",
+                    "Üst geyimləri",
+                    "Qısaqol köynəklər / Pololar",
+                    "Alt paltarları / Gecə geyimləri",
+                    "Çimərlik geyimləri",
+                    "Kombinezonlar / Dəstlər",
+                ]
+            },
+            {
+                title: "Brands",
+                items: [
+                    "Calvin Klein",
+                    "Liu Jo",
+                    "OVS",
+                    "Sisley",
+                    "Tommy Hilfiger",
+                    "United Colors of Benetton",
+                    "Monsoon Accessorize",
+                    "Adidas"
+                ]
+            }
+        ]
+    }
+];

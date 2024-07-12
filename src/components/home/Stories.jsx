@@ -29,7 +29,7 @@ function Shorts() {
             {
                 open ? 
                 <Story data={click} setOpen={setOpen} /> :
-                <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px] overflow-auto gap-[10px]">
+                <section className="flex w-[80%] items-center justify-start max-[1200px]:w-[90%] font-normal h-[96px] mb-[20px] overflow-auto gap-[5px]">
                     {data.map((short, index) => (
                         <div className="flex items-center justify-center flex-col w-[82px] hover:scale-90 transition-all duration-300" key={index} onClick={e => handleShort(e, short)}>
                              {Loading ? 

@@ -23,6 +23,7 @@ import UserCard from './pages/Profile/UserCard'
 import TakeGender from './pages/Home/TakeGender'
 import Orders from './pages/Profile/Orders'
 import FinishOrder from './pages/Profile/FinishOrder'
+import NotFound from './components/home/Layout/Error/Error'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
       <>
           <Routes>
               <Route path='/' element={<TakeGender />}/>
+              <Route path='/notfound' element={<NotFound />}/>
               <Route path='/home' element={<Home />}/>
               <Route path='/signin' element={<Signin />} />
               <Route path='/forget' element={<ForgetPassword />} />

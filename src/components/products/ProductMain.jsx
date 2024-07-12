@@ -53,7 +53,7 @@ function ProductMain({setNumber, search}) {
 
 
     return (
-        <section className="w-[80%] flex items-start justify-center max-[1200px]:w-[90%] mt-[40px]">
+        <section className="w-[80%] flex items-start justify-center max-[1200px]:w-[90%] mt-[40px] mb-[150px]">
             {
                 loading ? 
                     <WaitingAnimation /> : 
