@@ -36,8 +36,13 @@ function Main() {
         if (menu == true) {
             dispatch(setMenu(false));
         }
-    }, [])
 
+        if (localStorage.getItem("access")) {
+            setReg(true);
+        }else {
+            setReg(false);
+        }
+    }, [])
 
     return (
         <section className="flex flex-col items-center justify-between w-[80%] max-[1200px]:w-[90%]">

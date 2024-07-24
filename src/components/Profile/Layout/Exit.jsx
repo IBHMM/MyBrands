@@ -1,3 +1,4 @@
+import Cookies  from 'js-cookie';
 import { Link } from 'react-router-dom';
 import exitIcon from '../../../assets/profile/exit.png';
 import React from 'react';
@@ -6,7 +7,7 @@ import '../style/style.css'
 function Exit({ setExit }) {
 
     const HandleCookies = e => {
-        // delete user cookies
+        localStorage.removeItem('access');
     }
 
     return (
