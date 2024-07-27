@@ -38,7 +38,6 @@ export default function UseSignin() {
         //             // Cookies.set("csrftoken", data.access, { expires: 7 }); 
         //             Cookies.set("sessionid", "session_id_value", { expires: 7 });  // Set a sample sessionid
         //             localStorage.setItem("access", data.access);
-
         //             // Redirect user after successful login
         //             setTimeout(() => {
         //                 window.location = '/';
